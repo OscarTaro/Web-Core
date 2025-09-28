@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&family=Noto+Sans+Shona&family=Noto+Sans+Ndebele&display=swap');
+
+:root {
+  --bg: #f7f9fc;
+  --text: #1f1f1f;
+  --accent: #00b4d8;
+  --card-bg: #ffffff;
+  --border: #e1e5eb;
+  --font-main: 'Noto Serif', serif;
+  --font-shona: 'Noto Sans Shona', sans-serif;
+  --font-ndebele: 'Noto Sans Ndebele', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-main);
+  padding: 2rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.card h2 {
+  margin-top: 0;
+  color: var(--accent);
+}
+
+.back-button {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #f0f8ff;
+  color: #1f2d3d;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid #00b4d8;
+}
+
+.back-button:hover {
+  background-color: #00b4d8;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.faq-header {
+  position: relative;
+  text-align: left;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #00b4d8;
+  padding-bottom: 1rem;
+}
+
+/* Mobile collapsible layout */
+@media (max-width: 768px) {
+  .card {
+    padding: 0.75rem;
+  }
+}
+
+/* Print-friendly */
+@media print {
+  .card, .no-print {
+    display: none;
+  }
+  body {
+    font-size: 11pt;
+    background: white;
+    color: black;
+  }
+}

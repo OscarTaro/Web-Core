@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Terms of Service | ConnectAid{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/terms.css') }}" type="text/css">
+{% endblock %}
+
+{% block content %}
+<main class="privacy-container">
+    <div class="privacy-header">
+        <h1 data-translate="terms-title">Terms of Service</h1>
+        <p data-translate="terms-effective-date">Effective Date: July 2025</p>
+    </div>
+    <section class="privacy-section">
+        <h2 data-translate="terms-acceptance">1. Acceptance of Terms</h2>
+        <p data-translate="terms-acceptance-desc">By accessing or using ConnectAid, you agree to comply with and be bound by these Terms of Service.</p>
+        
+        <h2 data-translate="terms-use">2. Use of the Platform</h2>
+        <p data-translate="terms-use-desc">All users must use the platform lawfully and ethically, avoiding misuse, false reporting, or unauthorized access.</p>
+
+        <h2 data-translate="terms-data-protection">3. Data Protection</h2>
+        <p data-translate="terms-data-desc">ConnectAid protects your privacy in accordance with the Constitution of Zimbabwe and applicable data laws.</p>
+
+        <h2 data-translate="terms-modifications">4. Modifications</h2>
+        <p data-translate="terms-modifications-desc">We reserve the right to update these terms. Changes will be posted and effective immediately upon publication.</p>
+
+        <h2 data-translate="terms-contact">5. Contact</h2>
+        <p data-translate="terms-contact-desc">If you have questions, please <a href="{{ url_for('info') }}" data-translate="terms-contact-link">contact us</a>.</p>
+    </section>
+</main>
+{% endblock %}

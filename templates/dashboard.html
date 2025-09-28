@@ -1,0 +1,330 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard | ConnectAid{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}">
+{% endblock %}
+{% block content %}
+<div class="dashboard-container">
+    {% if current_user.is_authenticated %}
+    <!-- Notification System -->
+    <div class="notification-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="notification notification-{{ category }}" data-duration="5000">
+                    <div class="notification-content">
+                        <span class="notification-message">{{ message }}</span>
+                        <button class="notification-close" aria-label="Close notification">
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <h1>Incident Management Dashboard</h1>
+        <div class="user-controls">
+            <div class="user-menu">
+                <button class="user-btn" aria-label="User menu" aria-expanded="false">
+                    <img src="{{url_for('static', filename='images/avatars/default-avatar.svg')}}" 
+                         alt="User avatar" width="32" height="32">
+                    <span class="user-name">{{ current_user.username }}</span>
+                    <svg class="dropdown-arrow" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </button>
+                <div class="dropdown-content">
+                    <a href="{{url_for('profile')}}" class="dropdown-item">
+                        <svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"/></svg>
+                        My Profile
+                    </a>
+                    <a href="{{url_for('settings')}}" class="dropdown-item">
+                        <svg viewBox="0 0 24 24" width="16" height="16"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+                        Settings
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{{url_for('logout')}}" class="dropdown-item logout-btn">
+                        <svg viewBox="0 0 24 24" width="16" height="16"><path d="M16 17v-3h-3v-2h3V9l4 3-4 3zm-2-7H7V6.09C7 4.38 8.39 3 10.1 3h3.8c1.71 0 3.1 1.38 3.1 3.09V8h2V6.09C19 3.79 16.81 2 14.9 2h-3.8C9.19 2 7 3.79 7 6.09V8H4v14h10v-2H6V10h8z"/></svg>
+                        Log Out
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard Content -->
+    <main class="dashboard-content">
+        <section class="dashboard-section">
+            <div class="section-header">
+                <h2>Recent Incident Reports</h2>
+                <div class="section-actions">
+                    <button class="btn btn-export">
+                        <svg viewBox="0 0 24 24" width="16" height="16"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                        Export
+                    </button>
+                    <div class="table-controls">
+                        <label for="incident-filter">Filter:</label>
+                        <select id="incident-filter" class="form-select">
+                            <option value="all">All Incidents</option>
+                            <option value="harassment">Harassment</option>
+                            <option value="discrimination">Discrimination</option>
+                            <option value="violence">Violence</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Contact</th>
+                                <th>Location</th>
+                                <th>Incident Type</th>
+                                <th>Details</th>
+                                <th>Consent</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for incident in report %}
+                            <tr>
+                                <td>
+                                    <div class="user-avatar">
+                                        {{ incident.firstName[:1]|upper }}{{ incident.lastName[:1]|upper }}
+                                    </div>
+                                    {{ incident.firstName }} {{ incident.lastName }}
+                                </td>
+                                <td>
+                                    <div>{{ incident.email }}</div>
+                                    <small class="text-muted">{{ incident.phone }}</small>
+                                </td>
+                                <td>{{ incident.location }}</td>
+                                <td>
+                                    <span class="incident-tag incident-{{ incident.incidentType|lower|replace(' ', '-') }}">
+                                        {{ incident.incidentType }}
+                                    </span>
+                                </td>
+                                <td class="truncate-text" title="{{ incident.message }}">
+                                    {{ incident.message|truncate(50) }}
+                                </td>
+                                <td>
+                                    {% if incident.consent %}
+                                    <span class="badge badge-success">Yes</span>
+                                    {% else %}
+                                    <span class="badge badge-danger">No</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <button class="btn-icon btn-view" title="View details">
+                                        <svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                                    </button>
+                                    <button class="btn-icon btn-flag" title="Flag for review">
+                                        <svg viewBox="0 0 24 24" width="16" height="16"><path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/></svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-footer">
+                    <div class="table-info">
+                        Showing {{ report|length }} of {{ report_total }} reports
+                    </div>
+                    <div class="pagination">
+                        <button class="btn-pagination" disabled>
+                            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                        </button>
+                        <span class="page-indicator">Page 1 of 5</span>
+                        <button class="btn-pagination">
+                            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-section">
+            <div class="section-header">
+                <h2>Contact Inquiries</h2>
+                <div class="section-actions">
+                    <div class="search-box">
+                        <svg viewBox="0 0 24 24" width="16" height="16"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                        <input type="text" placeholder="Search inquiries...">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>From</th>
+                                <th>Subject</th>
+                                <th>Message</th>
+                                <th>Received</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for question in questions %}
+                            <tr>
+                                <td>
+                                    <strong>{{ question.name }}</strong>
+                                    <div class="text-muted">{{ question.email }}</div>
+                                </td>
+                                <td>{{ question.subject }}</td>
+                                <td class="truncate-text" title="{{ question.message }}">
+                                    {{ question.message|truncate(50) }}
+                                </td>
+                                <td>
+                                    <time datetime="{{ question.timestamp|datetimeformat('%Y-%m-%d') }}">
+                                        {{ question.timestamp|datetimeformat('%b %d, %Y') }}
+                                    </time>
+                                </td>
+                                <td>
+                                    <span class="badge badge-warning">Pending</span>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {% else %}
+    <!-- Unauthenticated Access -->
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <img src="{{url_for('static', filename='images/logo.svg')}}" alt="ConnectAid" class="auth-logo">
+                <h1>Access Dashboard</h1>
+                <p>Please sign in to continue</p>
+            </div>
+
+            <div class="notification-container">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                        <div class="notification notification-{{ category }}" data-duration="5000">
+                            <div class="notification-content">
+                                <span class="notification-message">{{ message }}</span>
+                                <button class="notification-close" aria-label="Close notification">
+                                    <svg viewBox="0 0 24 24" width="16" height="16">
+                                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+            <form action="{{ url_for('login') }}" method="POST" class="auth-form">
+                <input type="hidden" name="form_type" value="dashboard">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-with-icon">
+                        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-with-icon password-input">
+                        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                        <button type="button" class="toggle-password" aria-label="Show password">
+                            <svg class="eye-icon" viewBox="0 0 24 24" width="20" height="20">
+                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="form-options">
+                        <a href="{{ url_for('request_password_reset') }}" class="text-link">Forgot password?</a>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="{{ url_for('register') }}" class="text-link">Register here</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Password visibility toggle
+    document.querySelectorAll('.toggle-password').forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const input = this.parentElement.querySelector('input');
+            const isHidden = input.type === 'password';
+            
+            input.type = isHidden ? 'text' : 'password';
+            this.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+            this.querySelector('.eye-icon').style.opacity = isHidden ? 0.7 : 1;
+        });
+    });
+
+    // User menu dropdown
+    const userBtn = document.querySelector('.user-btn');
+    if (userBtn) {
+        userBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !expanded);
+            document.querySelector('.dropdown-content').classList.toggle('show');
+        });
+
+        document.addEventListener('click', () => {
+            document.querySelector('.dropdown-content').classList.remove('show');
+            userBtn.setAttribute('aria-expanded', 'false');
+        });
+    }
+
+    // Notifications
+    document.querySelectorAll('.notification').forEach(notification => {
+        const closeBtn = notification.querySelector('.notification-close');
+        const duration = parseInt(notification.dataset.duration);
+
+        const dismiss = () => {
+            notification.style.animation = 'fadeOut 0.3s forwards';
+            setTimeout(() => notification.remove(), 300);
+        };
+
+        setTimeout(dismiss, duration);
+
+        closeBtn.addEventListener('click', dismiss);
+    });
+
+    // Table row interactions
+    document.querySelectorAll('.data-table tbody tr').forEach(row => {
+        row.addEventListener('click', function(e) {
+            if (!e.target.closest('button')) {
+                // Implement modal opening for details view
+                console.log('View details for row');
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

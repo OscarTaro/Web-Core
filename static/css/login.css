@@ -1,0 +1,215 @@
+.alert-info{
+    text-align:center;    
+    border:2px;
+    background:blue;
+    color:white;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Base Styles */
+fieldset {
+    border: 2px solid #00b4d8;
+    border-radius: 8px;
+    padding: 2rem;
+    max-width: 500px;
+    margin: 2rem auto;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+legend {
+    font-size: 1.5rem;
+    color: #1f2d3d;
+    padding: 0 1rem;
+    font-weight: 600;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #00b4d8;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.2);
+}
+
+/* Buttons */
+button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button[type="submit"] {
+    background: #00b4d8;
+    color: white;
+    margin-right: 1rem;
+}
+
+button[type="submit"]:hover {
+    background: #0082a8;
+}
+
+button[type="reset"] {
+    background: #f0f0f0;
+    color: #555;
+}
+
+button[type="reset"]:hover {
+    background: #ddd;
+}
+
+/* Alert Messages */
+.alert {
+    padding: 0.8rem;
+    border-radius: 4px;
+    max-width: 500px;
+    margin: 1rem auto;
+    text-align: center;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.alert-error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Additional Signup Styles */
+.auth-redirect {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #555;
+}
+
+.auth-redirect a {
+    color: #00b4d8;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-redirect a:hover {
+    text-decoration: underline;
+}
+
+.form-actions {
+    margin-top: 1.5rem;
+}
+
+.required::after{
+    content:' *';
+    color:red;
+}
+
+
+    .rate-limit-alert {
+        background-color: #fff3f3;
+        border-left: 4px solid #ff6b6b;
+        padding: 8px 12px;
+        margin-top: 10px;
+        color: #d32f2f;
+        font-size: 0.9rem;
+    }
+    #countdown {
+        font-weight: bold;
+    }
+    .disabled-form {
+        opacity: 0.7;
+        pointer-events: none;
+    }
+
+    /* Notification animations */
+    .notification-container {
+        position: fixed;
+        top: 20px;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1000;
+    }
+    .notification {
+        position: relative;
+        padding: 15px 20px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        color: white;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        transform: translateY(-100px);
+        opacity: 0;
+        animation: slideIn 0.5s forwards, fadeOut 0.5s 3s forwards;
+    }
+    .notification-success {
+        background-color: #4CAF50;
+    }
+    .notification-error {
+        background-color: #f44336;
+    }
+    .notification-info {
+        background-color: #2196F3;
+    }
+    .notification-warning {
+        background-color: #ff9800;
+    }
+    .notification-close {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+    @keyframes slideIn {
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    @keyframes fadeOut {
+        to {
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+    }
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    fieldset {
+        padding: 1.5rem;
+        margin: 1.5rem;
+    }
+    
+    .form-actions {
+        display: flex;
+        gap: 0.5rem;
+    }
+    
+    button {
+        flex: 1;
+    }
+}

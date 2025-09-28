@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% block title %} Security Feature | ConnectAid {% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/security.css')}}" type="text/css">
+{% endblock %}
+{% block content %}
+<div class="security-container">
+    <div class="security-header">
+        <h1 data-translate="security-title">Security Features</h1>
+        <p data-translate="security-subtitle">Your safety and privacy are our top priorities. Learn about the measures we take to protect your information.</p>
+    </div>
+
+    <section class="security-features">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 11H5C3.89543 11 3 11.8954 3 13V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V13C21 11.8954 20.1046 11 19 11Z" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h3 data-translate="encryption-title">End-to-End Encryption</h3>
+            <p data-translate="encryption-desc">All communications and data submissions are encrypted using industry-standard TLS 1.3 protocols to ensure your information remains private.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 12L11 14L15 10" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h3 data-translate="storage-title">Secure Data Storage</h3>
+            <p data-translate="storage-desc">Your sensitive information is stored with AES-256 encryption and protected by multiple layers of security controls.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M13.73 21C13.5542 21.3031 13.3019 21.5547 12.9982 21.7295C12.6946 21.9044 12.3504 21.9965 12 21.9965C11.6496 21.9965 11.3054 21.9044 11.0018 21.7295C10.6982 21.5547 10.4458 21.3031 10.27 21" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M14 9H10" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 7V11" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h3 data-translate="anonymous-title">Anonymous Reporting</h3>
+            <p data-translate="anonymous-desc">Choose to submit reports anonymously with no personal information collected or stored.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 12L11 14L15 10" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h3 data-translate="compliance-title">Legal Compliance</h3>
+            <p data-translate="compliance-desc">We strictly adhere to Zimbabwe's Data Protection Act and other relevant privacy legislation.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 15V17" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5 9C5 7.89543 5.89543 7 7 7H17C18.1046 7 19 7.89543 19 9V19C19 20.1046 18.1046 21 17 21H7C5.89543 21 5 20.1046 5 19V9Z" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 7V5C6 4.46957 6.21071 3.96086 6.58579 3.58579C6.96086 3.21071 7.46957 3 8 3H16C16.5304 3 17.0391 3.21071 17.4142 3.58579C17.7893 3.96086 18 4.46957 18 5V7" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h3 data-translate="2fa-feature-title">Two-Factor Authentication</h3>
+            <p data-translate="2fa-feature-desc">Optional 2FA adds an extra layer of security to your account when accessing sensitive features.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 5L5 19" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 6L11 11" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M13 13L18 18" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16 8L20 4" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M4 20L8 16" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h3 data-translate="purging-title">Automatic Data Purging</h3>
+            <p data-translate="purging-desc">Unnecessary data is automatically deleted after 90 days unless required for ongoing legal matters.</p>
+        </div>
+    </section>
+
+    <section class="security-tips">
+        <h2 data-translate="tips-title">Your Role in Security</h2>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.5 10.5V6.5C16.5 4.01 14.49 2 12 2C9.51 2 7.5 4.01 7.5 6.5V10.5" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 14.5V16.5" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M19.5 10.5H4.5C3.39543 10.5 2.5 11.3954 2.5 12.5V19.5C2.5 20.6046 3.39543 21.5 4.5 21.5H19.5C20.6046 21.5 21.5 20.6046 21.5 19.5V12.5C21.5 11.3954 20.6046 10.5 19.5 10.5Z" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 data-translate="password-tip-title">Create Strong Passwords</h3>
+                <p data-translate="password-tip-desc">Use a mix of letters, numbers, and symbols. Avoid using personal information.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 7C16 6.46957 15.7893 5.96086 15.4142 5.58579C15.0391 5.21071 14.5304 5 14 5H10C9.46957 5 8.96086 5.21071 8.58579 5.58579C8.21071 5.96086 8 6.46957 8 7C8 7.53043 7.78929 8.03914 7.41421 8.41421C7.03914 8.78929 6.53043 9 6 9C5.46957 9 4.96086 8.78929 4.58579 8.41421C4.21071 8.03914 4 7.53043 4 7C4 5.14348 4.7375 3.36301 6.05025 2.05025C7.36301 0.737498 9.14348 0 11 0C12.8565 0 14.637 0.737498 15.9497 2.05025C17.2625 3.36301 18 5.14348 18 7C18 7.53043 17.7893 8.03914 17.4142 8.41421C17.0391 8.78929 16.5304 9 16 9C15.4696 9 14.9609 8.78929 14.5858 8.41421C14.2107 8.03914 14 7.53043 14 7Z" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 14V16" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 21H15" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 18H14C15.1046 18 16 17.1046 16 16V13C16 11.8954 15.1046 11 14 11H10C8.89543 11 8 11.8954 8 13V16C8 17.1046 8.89543 18 10 18Z" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 data-translate="credentials-tip-title">Keep Credentials Private</h3>
+                <p data-translate="credentials-tip-desc">Never share your login details with anyone, including ConnectAid staff.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V9" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 17L21 12L16 7" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 12H9" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 data-translate="logout-tip-title">Log Out After Sessions</h3>
+                <p data-translate="logout-tip-desc">Always log out from public or shared devices to prevent unauthorized access.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 16.92V19.92C22 20.52 21.53 21 20.93 21H3.07C2.47 21 2 20.52 2 19.92V16.92C2 16.32 2.47 15.85 3.07 15.85H20.93C21.53 15.85 22 16.32 22 16.92Z" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M5 15.85V8.15C5 5.21 7.21 3 10.15 3H13.85C16.79 3 19 5.21 19 8.15V15.85" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 9V12" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 15.85V15.85" stroke="#2E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 data-translate="contact-tip-title">Update Contact Info</h3>
+                <p data-translate="contact-tip-desc">Keep your recovery email and phone number current in case we need to verify your identity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="emergency-protocols">
+        <h2 data-translate="protocols-title">Emergency Security Protocols</h2>
+        <div class="protocols-content">
+            <div class="protocol-item">
+                <h3 data-translate="threat-response-title">Immediate Threat Response</h3>
+                <p data-translate="threat-response-desc">If you believe your account has been compromised, contact us immediately at <a href="mailto:security@connectaid.org">security@connectaid.org</a> or call our 24/7 security line at +263 242 700 000.</p>
+            </div>
+            <div class="protocol-item">
+                <h3 data-translate="breach-title">Data Breach Notification</h3>
+                <p data-translate="breach-desc">We will notify all affected users within 72 hours of discovering any potential data breach.</p>
+            </div>
+            <div class="protocol-item">
+                <h3 data-translate="legal-protection-title">Legal Protection</h3>
+                <p data-translate="legal-protection-desc">All reports are protected under Zimbabwean whistleblower protection laws when applicable.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="security-footer">
+        <p data-translate="footer-text">For more detailed information, please review our <a href="{{url_for('privacy')}}" data-translate="privacy-link">Privacy Policy</a> and <a href="{{url_for('terms')}}" data-translate="terms-link">Terms of Service</a>.</p>
+    </div>
+</div>
+{% endblock %}

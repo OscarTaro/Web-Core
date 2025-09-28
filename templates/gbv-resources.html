@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{%block title %} Violence Support Resources | ConnectAid {% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/gbv-resources.css')}}" type="text/css">
+{% endblock %}
+{% block content %}
+    <header>
+        <!-- Your existing header content -->
+    </header>
+
+    <main>
+        <section class="privacy-container">
+            <a href="{{url_for('home')}}" class="back-home-link" aria-label="Back Home">
+                <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" >
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                </svg>
+                Back Home
+            </a>
+
+            <div class="privacy-header">
+                <h1>Violence Support Resources</h1>
+                <p>Information available in multiple languages</p>
+            </div>
+
+            <div class="language-tabs">
+                <button class="language-tab active" onclick="switchLanguage('english')">English</button>
+                <button class="language-tab" onclick="switchLanguage('shona')">Shona</button>
+                <button class="language-tab" onclick="switchLanguage('ndebele')">Ndebele</button>
+                <button class="language-tab" onclick="switchLanguage('venda')">TshiVenda</button>
+            </div>
+
+            <!-- Gender Based Violence -->
+            <div id="gbv-english" class="violence-content active">
+                <div class="violence-section">
+                    <h2>Gender Based Violence Support</h2>
+                    <p><strong>Emergency Contacts:</strong> National GBV Hotline: 080 80111</p>
+                    <p><strong>Legal Protection:</strong> Zimbabwe's Domestic Violence Act (Chapter 5:16) provides protection orders and legal recourse for victims of violence. It is crucial to know your rights and seek help when needed.</p>
+                    <p><strong>Services Available:</strong> Comprehensive support services including medical care, legal aid, counseling, and safe shelters are available through organizations like Musasa Project and Adult Rape Clinic. Remember, you are not alone, and help is available.</p>
+                    <p class="quote">"No woman should live in fear of violence. Together, we can create a world where every woman feels safe and empowered." - Un Women</p>
+                </div>
+            </div>
+
+            <div id="gbv-shona" class="violence-content">
+                <div class="violence-section">
+                    <h2>Rubatsiro Yemhiririro Yevanhukadzi</h2>
+                    <p><strong>Nharembozha:</strong> 080 80111</p>
+                    <p><strong>Dziviriro Pamutemo:</strong> Mutemo weDomestic Violence (Chitsauko 5:16) unopa mirairo yekudzivirira uye nzira yekumhan'ara kune vanotambudzwa. Zvakakosha kuziva kodzero dzako uye kutsvaga rubatsiro kana zvichidiwa.</p>
+                    <p><strong>Mabasa Aripo:</strong> Rubatsiro rwakazara rwemishonga, rubatsiro rwemutemo, kupihwa mazano, uye pekugara zvakachengeteka kuburikidza nemasangano akaita seMusasa Project. Rangarira, hauzivi wega, uye rubatsiro rwuri kuwanikwa.</p>
+                    <p class="quote">"Hakuna mukadzi anofanira kugara achitya mhirizhonga. Pamwe chete, tinogona kugadzira nyika iyo mukadzi wese anonzwa akachengeteka uye akasimba." - Unknown</p>
+                </div>
+            </div>
+
+            <div id="gbv-ndebele" class="violence-content">
+                <div class="violence-section">
+                    <h2>Ukuxhaswa Kwezindaba Zobulili</h2>
+                    <p><strong>Amakhokhi Wezimo Ezingalindelekile:</strong> 080 80111</p>
+                    <p><strong>Ukuvikelwa Ngokomthetho:</strong> Umthetho Wezindaba Zasekhaya (Isahluko 5:16) unikeza iziyalezo zokuvikela kanye nezindlela zokufuna usizo lomthetho kubantu abathintekayo. Kubalulekile ukwazi amalungelo akho nokufuna usizo uma kudingeka.</p>
+                    <p><strong>Izinsizakalo Ezitholakalayo:</strong> Ukunakekelwa kwezempilo, usizo lwezomthetho, izeluleko, kanye nezindawo zokuhlala eziphephile zikhona ngokubambisana nezinhlelo ezifana neMusasa Project. Khumbula, awuwedwa, futhi usizo lukhona.</p>
+                    <p class="quote">"Akukho mkhaya okufanele uphila ngokuqhuba udlame. Ndawonye, singakha umhlaba lapho wonke umuntu ezwa ephephile futhi eqinile." - Unknown</p>
+                </div>
+            </div>
+
+            <div id="gbv-venda" class="violence-content">
+                <div class="violence-section">
+                    <h2>Thikhodzo ya Vhulwane ha Vhathu</h2>
+                    <p><strong>Nambara dza Khagala:</strong> 080 80111</p>
+                    <p><strong>Thivhudzo ya Mulayo:</strong> Mulayo wa Vhulwane ha Vhathu (Chapter 5:16) u nea thivhudzo na ndila ya u toda thuso ya mulayo. Zwi khou takalela u ḓivha u ḓivha na u ṱoḓa thuso.</p>
+                    <p><strong>Mabasa Aripo:</strong> U wanḓa u ḓivha, u ṱoḓa thuso ya mulayo, u ṱoḓa u ṱanganedza, na u ḓivha u ḓivha na masangano a saṅwaho a Musasa Project. Hu na vhukuma, u si na u ḓivha, na thuso i na.</p>
+                    <p class="quote">"A si na mukadzi a fanela u ḓivha na mhiririro. U bva na u bva, ri nga kona u sika shango ḽi na vhukuma na u ḓivha." - Unknown</p>
+                </div>
+            </div>
+
+            <!-- Religious Violence -->
+            <div id="religion-english" class="violence-content active">
+                <div class="violence-section">
+                    <h2>Religious Violence Support</h2>
+                    <p><strong>Emergency Contacts:</strong> Zimbabwe Human Rights Commission: +263 242 703596</p>
+                    <p><strong>Legal Protection:</strong> Protected under Section 60 of Zimbabwe Constitution (freedom of religion). It is essential to stand against any form of violence that targets individuals based on their beliefs.</p>
+                    <p><strong>Services Available:</strong> Documentation of violations through Zimbabwe Peace Project, legal support from Zimbabwe Lawyers for Human Rights. Your voice matters, and reporting incidents can help bring about change.</p>
+                    <p class="quote">"Injustice anywhere is a threat to justice everywhere." - Martin Luther King Jr.</p>
+                </div>
+            </div>
+
+            <div id="religion-shona" class="violence-content">
+                <div class="violence-section">
+                    <h2>Rubatsiro Yemhiririro Yechitendero</h2>
+                    <p><strong>Nharembozha:</strong> Zimbabwe Human Rights Commission: +263 242 703596</p>
+                    <p><strong>Dziviriro Pamutemo:</strong> Inodzivirirwa pasi peChikamu 60 cheBumbiro reZimbabwe (rusununguko rwekunamata). Zvakakosha kumira kupikisa chero mhando yemhirizhonga inotarget vanhu maererano nezvitendero zvavo.</p>
+                    <p><strong>Mabasa Aripo:</strong> Kunyora zviito zvisiri pamutemo kuburikidza neZimbabwe Peace Project, rubatsiro rwemutemo kubva kuZimbabwe Lawyers for Human Rights. Izwi rako rinokosha, uye kutaurira zviitiko kunogona kubatsira kuunza shanduko.</p>
+                    <p class="quote">"Kusagadzikana kupi zvako kunotyisidzira kugadzikana kwese." - Martin Luther King Jr.</p>
+                </div>
+            </div>
+
+            <div id="religion-ndebele" class="violence-content">
+                <div class="violence-section">
+                    <h2>Ukuxhaswa Kwezindaba Zokholo</h2>
+                    <p><strong>Amakhokhi Wezimo Ezingalindelekile:</strong> Zimbabwe Human Rights Commission: +263 242 703596</p>
+                    <p><strong>Ukuvikelwa Ngokomthetho:</strong> Kuvikelwa ngaphansi kweSahluko 60 seBumbano laseZimbabwe (inkululeko yokholo). Kubalulekile ukumelana nanoma iyiphi indlela yokuhlukumeza ethinta abantu ngenxa yokholo lwabo.</p>
+                    <p><strong>Izinsizakalo Ezitholakalayo:</strong> Ukubhaliswa kwezinsolo zokuhlukumeza ngokusebenzisa iZimbabwe Peace Project, usizo lwezomthetho oluvela kuZimbabwe Lawyers for Human Rights. Izwi lakho libalulekile, futhi ukuveza izigameko kungasiza ukulethela ushintsho.</p>
+                    <p class="quote">"Uhlupho kuphi khona luyingozi ekutholeni ubulungiswa kuyo yonke indawo." - Martin Luther King Jr.</p>
+                </div>
+            </div>
+
+            <div id="religion-venda" class="violence-content">
+                <div class="violence-section">
+                    <h2>Thikhodzo ya Vhulwane ya Vhathu</h2>
+                    <p><strong>Nambara dza Khagala:</strong> Zimbabwe Human Rights Commission: +263 242 703596</p>
+                    <p><strong>Thivhudzo ya Mulayo:</strong> U thivhudziwa nga Vhumbelo 60 ha Bumbiro la Zimbabwe (rusununguko rwa vhukuma). Zwi khou takalela u ḓivha u ḓivha na u ṱoḓa thuso ya mulayo.</p>
+                    <p><strong>Mabasa Aripo:</strong> U wanḓa u ḓivha, u ṱoḓa thuso ya mulayo, u ṱoḓa u ṱanganedza, na u ḓivha u ḓivha na masangano a saṅwaho a Musasa Project. Hu na vhukuma, u si na u ḓivha, na thuso i na.</p>
+                    <p class="quote">"Uhlupho kupi khona luyingozi ekutholeni ubulungiswa kuyo yonke indawo." - Martin Luther King Jr.</p>
+                </div>
+            </div>
+
+            <!-- Political Violence -->
+            <div id="political-english" class="violence-content active">
+                <div class="violence-section">
+                    <h2>Political Violence Support</h2>
+                    <p><strong>Emergency Contacts:</strong> Zimbabwe Human Rights NGO Forum Hotline: +263 772 883 670</p>
+                    <p><strong>Legal Protection:</strong> Protected under Section 67 of Zimbabwe Constitution (political rights). It is vital to understand your rights and seek assistance if you face political violence.</p>
+                    <p><strong>Services Available:</strong> Medical and legal aid through Zimbabwe Association of Doctors for Human Rights. Your safety and well-being are paramount, and there are resources available to help you.</p>
+                    <p class="quote">"The only thing necessary for the triumph of evil is for good men to do nothing." - Edmund Burke</p>
+                </div>
+            </div>
+
+            <div id="political-shona" class="violence-content">
+                <div class="violence-section">
+                    <h2>Rubatsiro Yemhiririro Yezvematongerwo Enyika</h2>
+                    <p><strong>Nharembozha:</strong> Zimbabwe Human Rights NGO Forum: +263 772 883 670</p>
+                    <p><strong>Dziviriro Pamutemo:</strong> Inodzivirirwa pasi peChikamu 67 cheBumbiro reZimbabwe (kodzero dzezvematongerwo enyika). Zvakakosha kunzwisisa kodzero dzako uye kutsvaga rubatsiro kana uchisangana nemhirizhonga yezvematongerwo enyika.</p>
+                    <p><strong>Mabasa Aripo:</strong> Rubatsiro rwekurapa uye rwemutemo kuburikidza neZimbabwe Association of Doctors for Human Rights. Kuchengetedzwa kwako uye hutano hwako zvakakosha, uye pane zviwanikwa zviripo kuti zvibatsire.</p>
+                    <p class="quote">"Chinhu chimwe chete chinodiwa kuti chakaipa chitsvage, ndechekuti varume vakanaka vasadaro." - Edmund Burke</p>
+                </div>
+            </div>
+
+            <div id="political-ndebele" class="violence-content">
+                <div class="violence-section">
+                    <h2>Ukuxhaswa Kwezindaba Zepolitiki</h2>
+                    <p><strong>Amakhokhi Wezimo Ezingalindelekile:</strong> Zimbabwe Human Rights NGO Forum: +263 772 883 670</p>
+                    <p><strong>Ukuvikelwa Ngokomthetho:</strong> Kuvikelwa ngaphansi kweSahluko 67 seBumbano laseZimbabwe (amalungelo ezepolitiki). Kubalulekile ukuqonda amalungelo akho nokufuna usizo uma ubhekene nokuhlukumezeka kwezepolitiki.</p>
+                    <p><strong>Izinsizakalo Ezitholakalayo:</strong> Ukunakekelwa kwezempilo kanye nosizo lwezomthetho ngokubambisana neZimbabwe Association of Doctors for Human Rights. Ukuphepha kwakho nokuphila kwakho kubalulekile, futhi kukhona izinsiza ezitholakalayo ukuze zikusize.</p>
+                    <p class="quote">"Uhlupho kupi khona luyingozi ekutholeni ubulungiswa kuyo yonke indawo." - Edmund Burke</p>
+                </div>
+            </div>
+
+            <div id="political-venda" class="violence-content">
+                <div class="violence-section">
+                    <h2>Thikhodzo ya Vhulwane ya Vhathu</h2>
+                    <p><strong>Nambara dza Khagala:</strong> Zimbabwe Human Rights NGO Forum: +263 772 883 670</p>
+                    <p><strong>Thivhudzo ya Mulayo:</strong> U thivhudziwa nga Vhumbelo 67 ha Bumbiro la Zimbabwe (ndila dza vhukuma). Zwi khou takalela u ḓivha u ḓivha na u ṱoḓa thuso ya mulayo.</p>
+                    <p><strong>Mabasa Aripo:</strong> U wanḓa u ḓivha, u ṱoḓa thuso ya mulayo, u ṱoḓa u ṱanganedza, na u ḓivha u ḓivha na masangano a saṅwaho a Musasa Project. Hu na vhukuma, u si na u ḓivha, na thuso i na.</p>
+                    <p class="quote">"Chinhu chimwe chete chinodiwa kuti chakaipa chitsvage, ndechekuti varume vakanaka vasadaro." - Edmund Burke</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section>
+            <article class="flex2">
+                <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <title>privacy</title>
+                            <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11.5C15.4,11.5 16,12.1 16,12.7V16.5C16,17.1 15.4,17.7 14.8,17.7H9.2C8.6,17.7 8,17.1 8,16.5V12.6C8,12 8.6,11.4 9.2,11.4V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,9.5V11.5H13.5V9.5C13.5,8.7 12.8,8.2 12,8.2Z"/>
+                    </svg> 
+                    <a href="{{url_for('privacy')}}">Your Privacy Rights</a></p>
+                <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <title>contact</title>
+                            <path d="M20,4H4C2.9,4 2,4.9 2,6V18C2,19.1 2.9,20 4,20H20C21.1,20 22,19.1 22,18V6C22,4.9 21.1,4 20,4M20,8L12,13L4,8V6L12,11L20,6V8Z"/>
+                    </svg> 
+                    <a href="{{url_for('info')}}">Contact Legal Support</a></p>
+                <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <title>lawyers</title>
+                            <path d="M12,3L2,12H5V20H19V12H22L12,3M12,5.7L16.9,10.5H15.5V12.5H13.5V10.5H12.5V12.5H10.5V10.5H8.5V12.5H6.5V10.5H5.1L12,5.7M11,14H13V16H11V14M15,14H17V16H15V14M7,14H9V16H7V14M11,17H13V19H11V17M15,17H17V19H15V17M7,17H9V19H7V17Z"/>
+                    </svg> 
+                    <a href="{{url_for('lawyers')}}">Pro Bono Lawyers</a></p>
+            </article>
+            <article class="flex3">
+                <p class="align">&copy; 2025 Connect Aid. All Rights Reserved.</p>
+                <p class="align">Confidentiality guaranteed under Zimbabwean law</p>
+                <p class="align"><a href="{{url_for('privacy')}}">Privacy</a> &#124; <a href="{{url_for('terms')}}">Terms</a> &#124; <a href="{{url_for('bod')}}">Board of Directors</a></p>
+            </article>
+        </section>
+    </footer>
+
+    <script>
+        function switchLanguage(lang) {
+            // Update tabs
+            document.querySelectorAll('.language-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Hide all content
+            document.querySelectorAll('.violence-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Show selected language content
+            document.querySelectorAll(`[id$="-${lang}"]`).forEach(content => {
+                content.classList.add('active');
+            });
+        }
+    </script>
+{% endblock %}
+
+
+

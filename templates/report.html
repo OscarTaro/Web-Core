@@ -1,0 +1,261 @@
+{% extends 'base.html' %}
+{%block title %} File A Report | ConnectAid {% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/report.css')}}" type="text/css">
+<link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}" type="text/css">
+{% endblock %}
+{% block content %}
+{% if current_user.is_authenticated %}
+    <main>
+        <a href="{{url_for('home')}}" class="back-home-link">← Back to Home</a>
+        <h1>File a Secure Report</h1>
+
+        <div class= "form-container">
+            <form id= "reportForm" action= "{{url_for('report')}}" method= "POST">
+                <fieldset>
+                    <legend>Incident Details</legend>
+                    <input type="hidden" name="form_type" value="incident_report">
+
+                    <div class="form-group">
+                        <label for="firstName" class= "required">First Name</label>
+                        <input type="text" id= "firstName" name= "firstName" placeholder= "Enter your first name" required>
+                        <span class="error-message" id= "firstNameError">Please enter your first name</span>
+                    </div>
+
+                    <div class= "form-group">
+                        <label for= "lastName" class= "required">Last Name</label>
+                        <input type= "text" id= "lastName" name= "lastName" placeholder= "Enter your surname" required>
+                        <span class= "error-message" id= "lastNameError">Please enter your last name</span>
+                    </div>
+
+                    <div class= "form-group">
+                        <label for="phone" class= "required">Phone Number</label>
+                        <input type= "tel" id="phone" name= "phone" placeholder= "Enter your phone number" required>
+                        <span class= "error-message" id="phoneError">Please enter a valid phone number</span>
+                    </div>
+
+                    <div class= "form-group">
+                        <label for= "email">Email Address</label>
+                        <input type= "email" id= "email" name= "email" placeholder= "Enter your email address">
+                        <span class= "error-message" id= "emailError">Please enter a valid email address</span>
+                    </div>
+
+                    <div class= "form-group">
+                        <label for= "location">Location of Incident</label>
+                        <input type= "text" id= "location" name= "location" placeholder= "Where did this happen?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="incidentType" class='required'>Type of Incident</label>
+                        <select id="incidentType" name="incidentType" required>
+                            <option value= "">Select an option </option>
+                            <option value= "harassment">Harassment</option>
+                            <option value= "discrimination">Discrimination</option>
+                            <option value= "violence">Violence</option>
+                            <option value= "rights-violation">Rights Violation</option>
+                            <option value= "other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class= "form-group">
+                        <label for= "message" class= "required">Detailed Description</label>
+                        <textarea id= "message" name= "message" placeholder= "Please describe what happened in detail..." required></textarea>
+                        <span class= "error-message" id= "messageError">Please provide a description of the incident</span>
+                    </div>
+
+                    <div class= "form-group">
+                        <label>
+                            <input type= "checkbox" name= "consent" required> 
+                            I understand that this information will be handled confidentially
+                        </label>
+                        <span class= "error-message" id= "consentError">You must agree to continue</span>
+                    </div>
+
+                    <div class= "button-group">
+                        <button type= "submit">Submit Report</button>
+                        <button type= "reset">Clear Form</button>
+                    </div>
+                </fieldset>
+            </form>
+    </main>
+{% else %}
+<div class="notification-container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="notification notification-{{ category }}" data-duration="5000">
+                    <span class="notification-message">{{ message }}</span>
+                    <button class="notification-close">&times;</button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+<fieldset>
+    <legend>Create Account</legend>
+    <form action="{{ url_for('info') }}" method="POST" id="signup-form">
+        <input type="hidden" name="form_type" value="signup">
+        
+        <div class="form-group">
+            <label for="username" class="required">Username:</label>
+            <small id="username-help" class="form-help">4-20 characters, letters and numbers only</small>
+            <input type="text" name="username" id="username" placeholder="Enter Username" required
+                   aria-describedby="username-help">
+        </div>
+        
+        <div class="form-group">
+            <label for="email" class="required">Email:</label>
+            <input type="email" name="email" id="email" placeholder="Enter Email" required
+                   aria-describedby="email-help">
+            <small id="email-help" class="form-help">We'll never share your email</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="password" class="required">Password:</label>
+            <div class="password-input-wrapper">
+                <input type="password" name="password" id="password" placeholder="Enter Password" required
+                       aria-describedby="password-help password-requirements"
+                       minlength="8" maxlength="64"
+                       pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$">
+                <button type="button" class="toggle-password" aria-label="Show password"
+                        aria-controls="password" data-toggle="password">
+                    <svg class="eye-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.82 9.82 0 0 0 17.64 0 9.82 9.82 0 0 0-17.64 0z"/>
+                    </svg>
+                </button>
+            </div>
+            <small id="password-help" class="form-help">Minimum 8 characters</small>
+            <div id="password-requirements" class="requirements">
+                <span data-requirement="length">8+ characters</span>
+                <span data-requirement="uppercase">Uppercase letter</span>
+                <span data-requirement="number">Number</span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="confirm_password" class="required">Confirm Password:</label>
+            <div class="password-input-wrapper">
+                <input type="password" name="confirm_password" id="confirm_password" 
+                       placeholder="Repeat Password" required
+                       aria-describedby="confirm-help">
+                <button type="button" class="toggle-password" aria-label="Show password"
+                        aria-controls="confirm_password" data-toggle="password">
+                    <svg class="eye-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.82 9.82 0 0 0 17.64 0 9.82 9.82 0 0 0-17.64 0z"/>
+                    </svg>
+                </button>
+            </div>
+            <small id="confirm-help" class="form-help">Must match password</small>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Register</button>
+            <button type="reset" class="btn-secondary">Clear</button>
+        </div>
+        
+        <p class="auth-redirect">
+            Already have an account? <a href="{{ url_for('login') }}">Log In</a>
+        </p>
+    </form>
+</fieldset>
+
+<style>
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+}
+
+.password-input-wrapper input {
+    padding-right: 40px;
+    width: 100%;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    color: #666;
+}
+
+.toggle-password:hover, .toggle-password:focus {
+    color: #333;
+    outline: none;
+}
+
+.eye-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.requirements {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+}
+
+.requirements span {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.requirements span::before {
+    content: "✓";
+    color: green;
+}
+
+.form-help {
+    display: block;
+    margin-top: 0.25rem;
+    color: #666;
+    font-size: 0.85rem;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Password visibility toggle
+    document.querySelectorAll('[data-toggle="password"]').forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const inputId = this.getAttribute('aria-controls');
+            const input = document.getElementById(inputId);
+            const isHidden = input.type === 'password';
+            
+            input.type = isHidden ? 'text' : 'password';
+            this.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+            this.querySelector('.eye-icon').style.opacity = isHidden ? 0.7 : 1;
+        });
+    });
+
+    // Password strength validation
+    const passwordInput = document.getElementById('password');
+    if (passwordInput) {
+        passwordInput.addEventListener('input', function() {
+            const value = this.value;
+            const requirements = {
+                length: value.length >= 8,
+                uppercase: /[A-Z]/.test(value),
+                number: /\d/.test(value)
+            };
+            
+            Object.keys(requirements).forEach(key => {
+                const element = document.querySelector(`[data-requirement="${key}"]`);
+                if (element) {
+                    element.style.color = requirements[key] ? 'green' : 'gray';
+                    element.querySelector('span').textContent = requirements[key] ? '✓' : '✗';
+                }
+            });
+        });
+    }
+});
+</script>
+{% endif %}
+{% endblock %}

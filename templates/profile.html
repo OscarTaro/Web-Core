@@ -1,0 +1,322 @@
+{% extends 'base.html' %}
+{% block title %}My Profile | ConnectAid{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/profile.css')}}">
+{% endblock %}
+{% block content %}
+<div class="profile-container">
+    <!-- Notification System -->
+    <div class="notification-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="notification notification-{{ category }}" data-duration="5000">
+                    <div class="notification-content">
+                        <span class="notification-message">{{ message }}</span>
+                        <button class="notification-close" aria-label="Close notification">
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- Profile Header -->
+    <header class="profile-header">
+        <div class="breadcrumb">
+            <a href="{{url_for('dashboard')}}">Dashboard</a> / <span>My Profile</span>
+        </div>
+        <h1>My Profile</h1>
+        <p>Manage your account settings and preferences</p>
+    </header>
+
+    <div class="profile-content">
+        <!-- Sidebar Navigation -->
+        <aside class="profile-sidebar">
+            <nav class="profile-nav">
+                <a href="#personal-info" class="nav-item active" data-tab="personal-info">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"/></svg>
+                    Personal Information
+                </a>
+                <a href="#security" class="nav-item" data-tab="security">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                    Security Settings
+                </a>
+                <a href="#preferences" class="nav-item" data-tab="preferences">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+                    Preferences
+                </a>
+                <a href="#activity" class="nav-item" data-tab="activity">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+                    Activity History
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Profile Content -->
+        <main class="profile-main">
+            <!-- Personal Information Tab -->
+            <div id="personal-info" class="tab-content active">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Personal Information</h2>
+                        <p>Update your basic profile details</p>
+                    </div>
+                    <form class="profile-form">
+                        <div class="avatar-section">
+                            <div class="avatar-upload">
+                                <div class="avatar-preview">
+                                    <img src="{{url_for('static', filename='images/avatars/default-avatar.svg')}}" 
+                                         alt="Profile avatar" id="avatarPreview">
+                                </div>
+                                <div class="avatar-controls">
+                                    <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+                                    <button type="button" class="btn btn-secondary" onclick="document.getElementById('avatarUpload').click()">
+                                        Change Photo
+                                    </button>
+                                    <small>JPG, PNG or GIF, max 2MB</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" name="username" 
+                                       value="{{ current_user.username }}" readonly>
+                                <small>Username cannot be changed</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" 
+                                       value="{{ current_user.email }}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" id="fullName" name="fullName" 
+                                       placeholder="Enter your full name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" 
+                                       placeholder="+263 XX XXX XXXX">
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="bio">Bio</label>
+                                <textarea id="bio" name="bio" rows="4" 
+                                          placeholder="Tell us about yourself..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Security Settings Tab -->
+            <div id="security" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Security Settings</h2>
+                        <p>Manage your password and account security</p>
+                    </div>
+                    
+                    <form class="security-form">
+                        <div class="form-group">
+                            <label for="currentPassword">Current Password</label>
+                            <input type="password" id="currentPassword" name="currentPassword" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" id="newPassword" name="newPassword" required>
+                            <small>Password must be at least 8 characters long</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm New Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Update Password</button>
+                        </div>
+                    </form>
+
+                    <div class="security-section">
+                        <h3>Session Management</h3>
+                        <div class="session-list">
+                            <div class="session-item">
+                                <div class="session-info">
+                                    <strong>Current Session</strong>
+                                    <span>Chrome on Windows • {{ current_time }}</span>
+                                </div>
+                                <button class="btn btn-danger btn-sm">Log Out</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preferences Tab -->
+            <div id="preferences" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Preferences</h2>
+                        <p>Customize your ConnectAid experience</p>
+                    </div>
+
+                    <form class="preferences-form">
+                        <div class="preference-group">
+                            <h3>Language & Region</h3>
+                            <div class="form-group">
+                                <label for="language">Preferred Language</label>
+                                <select id="language" name="language">
+                                    <option value="en">English</option>
+                                    <option value="sn">Shona</option>
+                                    <option value="nd">Ndebele</option>
+                                    <option value="ve">Shivenda</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="timezone">Timezone</label>
+                                <select id="timezone" name="timezone">
+                                    <option value="Africa/Harare">Harare, CAT (UTC+2)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="preference-group">
+                            <h3>Notifications</h3>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="email_notifications" checked>
+                                    <span class="checkmark"></span>
+                                    Email notifications
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="sms_notifications">
+                                    <span class="checkmark"></span>
+                                    SMS alerts
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="newsletter" checked>
+                                    <span class="checkmark"></span>
+                                    Newsletter updates
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Save Preferences</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Activity History Tab -->
+            <div id="activity" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Activity History</h2>
+                        <p>Your recent activities on ConnectAid</p>
+                    </div>
+
+                    <div class="activity-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            </div>
+                            <div class="activity-content">
+                                <strong>Account Created</strong>
+                                <span>Welcome to ConnectAid!</span>
+                                <small>Just now</small>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/></svg>
+                            </div>
+                            <div class="activity-content">
+                                <strong>Profile Updated</strong>
+                                <span>You updated your personal information</span>
+                                <small>5 minutes ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Tab Navigation
+    const navItems = document.querySelectorAll('.nav-item');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    navItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all items
+            navItems.forEach(nav => nav.classList.remove('active'));
+            tabContents.forEach(tab => tab.classList.remove('active'));
+            
+            // Add active class to clicked item
+            this.classList.add('active');
+            
+            // Show corresponding tab content
+            const tabId = this.getAttribute('data-tab');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+
+    // Avatar Upload Preview
+    const avatarUpload = document.getElementById('avatarUpload');
+    const avatarPreview = document.getElementById('avatarPreview');
+
+    avatarUpload.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                avatarPreview.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Form Submissions
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add form submission logic here
+            alert('Profile updated successfully!');
+        });
+    });
+
+    // Notifications
+    document.querySelectorAll('.notification-close').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.closest('.notification').style.display = 'none';
+        });
+    });
+});
+</script>
+{% endblock %}

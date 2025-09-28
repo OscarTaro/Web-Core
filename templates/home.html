@@ -1,0 +1,935 @@
+{% extends 'base.html' %}
+{% block title %} connectaid.org {% endblock %}
+{% block content %}
+        <header>
+            <div class="splash-screen">
+                <div class="splash-content">
+                    <img src="{{url_for('static', filename='images/logos/connect_logo.png')}}" alt="Connect Aid Logo" class="splash-logo">
+                    <p class="powered-by">Justice Through Community Support</p>
+                </div>
+            </div>
+            
+            <div class="notification-container">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="notification notification-{{ category }}" data-duration="5000">
+                                <span class="notification-message">{{ message }}</span>
+                                <button class="notification-close">&times;</button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+            <section class="hero">
+                <img src="{{url_for('static', filename='images/hero/connect.jpeg')}}" alt="Community legal support gathering"/>
+            </section>
+        
+            <section class="flex urgent-access">
+                {% if current_user.is_authenticated %}
+                <div class="user-nav">
+                    <a href="{{url_for('profile')}}"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"/></svg>
+                        My Profile
+                    </a>
+                    <a href="{{url_for('logout')}}"> <svg viewBox="0 0 24 24" width="16" height="16"><path d="M16 17v-3h-3v-2h3V9l4 3-4 3zm-2-7H7V6.09C7 4.38 8.39 3 10.1 3h3.8c1.71 0 3.1 1.38 3.1 3.09V8h2V6.09C19 3.79 16.81 2 14.9 2h-3.8C9.19 2 7 3.79 7 6.09V8H4v14h10v-2H6V10h8z"/></svg>
+                        Logout
+                    </a>
+                </div>
+                {% endif %}
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                        <title>security</title>
+                        <path d="M12,12H19C18.47,16.11 15.72,19.78 12,20.92V12H5V6.3L12,3.19M12,1L3,5V11C3,16.55 6.84,21.73 12,23C17.16,21.73 21,16.55 21,11V5L12,1Z"/>
+                    </svg>
+                    <a href="{{url_for('security')}}" data-translate="security-features">Security Features</a>
+                </p>
+                <!-- chatbot -->
+                <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                    <title data-translate="robot-icon">Robot</title>
+                    <g fill="currentColor">
+                        <!-- antenna -->
+                        <circle cx="12" cy="2.5" r="1.2"/>
+                        <rect x="11.4" y="3.6" width="1.2" height="2.2" rx="0.3"/>
+                        <!-- head -->
+                        <rect x="6" y="5.5" width="12" height="7" rx="1.4"/>
+                        <!-- eyes -->
+                        <circle cx="9" cy="9.5" r="0.9"/>
+                        <circle cx="15" cy="9.5" r="0.9"/>
+                        <!-- mouth / speaker -->
+                        <rect x="9" y="12.2" width="6" height="0.9" rx="0.3"/>
+                        <!-- body -->
+                        <rect x="5" y="13.8" width="14" height="6" rx="1.2"/>
+                        <!-- chest detail -->
+                        <rect x="8.2" y="15.2" width="3" height="2" rx="0.3"/>
+                        <rect x="13.8" y="15.2" width="2.5" height="2" rx="0.3"/>
+                        <!-- legs -->
+                        <rect x="7" y="19.2" width="2" height="1.2" rx="0.3"/>
+                        <rect x="15" y="19.2" width="2" height="1.2" rx="0.3"/>
+                    </g>
+                </svg>
+                <a href="{{ url_for('chatbot_page') }}" data-translate="legal-assistant">Legal Information Assistant</a>
+            </p>
+            </section>
+        </header>
+
+        <main>
+            <section class="safety-notice">
+                <div class="safety-alert">
+                    <span class="safety-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <title>lock</title>
+                            <path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10A2,2 0 0,1 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"/>
+                        </svg>
+                    </span>
+                    <section class="hero-messages">
+                        <p data-translate="rights-matter">YOUR RIGHTS MATTER <br> We stand as vigilant protectors of your constitutional freedoms and legal entitlements.</p>
+                        <p data-translate="safe-confidential">SAFE & CONFIDENTIAL <br> Secure reporting channels with guaranteed privacy protection for sensitive matters.</p>
+                        <p data-translate="free-resources">FREE LEGAL RESOURCES <br> Comprehensive legal guidance and tools available at no cost to empower you.</p>
+                        <p data-translate="crisis-support">24/7 CRISIS SUPPORT <br> Immediate assistance whenever your rights are threatened or violated.</p>
+                        <p data-translate="know-rights-msg">KNOW YOUR RIGHTS <br> Essential legal facts and protections every citizen should understand.</p>
+                        <p data-translate="not-alone">YOU'RE NOT ALONE <br> Compassionate support from dedicated professionals who care about your situation.</p>
+                         <!-- Language Selection Section -->
+                    </section>
+                    <p data-translate="confidential-notice">All communications are confidential. Your safety is our priority.</p>
+                    <section class="language-selector">
+                        <div class="language-container">
+                            <span class="language-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                                    <title>language</title>
+                                    <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12C4,14.09 4.8,16 6.11,17.41L7,14H9V12H11V10H13V12H15V14H17L17.89,17.41C19.2,16 20,14.09 20,12A8,8 0 0,0 12,4M12,6A1,1 0 0,1 13,7A1,1 0 0,1 12,8A1,1 0 0,1 11,7A1,1 0 0,1 12,6M6,12A1,1 0 0,1 7,11A1,1 0 0,1 8,12A1,1 0 0,1 7,13A1,1 0 0,1 6,12M18,12A1,1 0 0,1 17,11A1,1 0 0,1 18,10A1,1 0 0,1 19,11A1,1 0 0,1 18,12Z"/>
+                                </svg>
+                            </span>
+                            <span data-translate="language" class="language-label">Languages</span>
+                            <div class="language-options">
+                                <button class="language-btn active" data-lang="en">English</button>
+                                <button class="language-btn" data-lang="sn">Shona</button>
+                                <button class="language-btn" data-lang="nd">Ndebele</button>
+                                <button class="language-btn" data-lang="ve">Shivenda</button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <h1 data-translate="main-title">Trusted Legal Support Network</h1>
+            <section class="help-sources">
+                <article class="help-box emergency-contact">
+                    <a href="tel:+263242744785" aria-label="Zimbabwe Republic Police emergency number">
+                        <span class="icon" aria-hidden="true"><img src = "{{url_for('static', filename='images/logos/zrp.png')}}" alt = "zrp logo" width = "60" height = "60"></span>
+                        <h3 data-translate="police-assistance">Immediate Police Assistance</h3>
+                        <p data-translate="victim-unit">Victim Friendly Unit: +263 242 744 785</p>
+                    </a>
+                </article>
+                <article class="help-box">
+                    <a href="https://angelofhopezim.org" aria-label="Angel of hope Foundation website" target = "_blank">
+                        <span class="icon" aria-hidden="true"><img src = "{{url_for('static', filename='images/logos/aof.png')}}" alt = "zrp logo" width = "60" height = "60"></span>
+                        <h3 data-translate="angel-foundation">Angel Of Home Foundation</h3>
+                        <p data-translate="touching-lives">Touching lives (024) 2709934</p>
+                    </a>
+                </article>
+                <article class="help-box">
+                    <a href="https://www.lrfzim.com/" target="_blank" rel="noopener noreferrer" aria-label="Legal Resources Foundation website">
+                        <span class="icon" aria-hidden="true"><img src = "{{url_for('static', filename='images/logos/lrf.png')}}" alt = "Legal Resorces Foundation logo" width = "60" height = "60"></span>
+                        <h3 data-translate="legal-foundation">Legal Resources Foundation</h3>
+                        <p data-translate="free-education">Free legal education and assistance programs</p>
+                    </a>
+                </article>
+
+                <article class="help-box">
+                    <a href="https://www.hrforumzim.org/" target="_blank" rel="noopener noreferrer" aria-label="Zimbabwe Human Rights NGO Forum website">
+                        <span class="icon" aria-hidden="true"><img src = "{{url_for('static', filename='images/logos/ngo.png')}}" alt = "ngo logo" width = "60" height = "60"></span>
+                        <h3 data-translate="hr-forum">Human Rights NGO Forum</h3>
+                        <p data-translate="rights-documentation">Documentation of rights violations</p>
+                    </a>
+                </article>
+
+                <article class="help-box">
+                    <a href="https://www.childline.org.zw/" target="_blank" rel="noopener noreferrer" aria-label="Childline Zimbabwe website">
+                        <span class="icon" aria-hidden="true"><img src = "{{url_for('static', filename='images/logos/chld.png')}}" alt = "Childline Zimbabwe logo" width = "60" height = "60"></span>
+                        <h3 data-translate="childline">Childline Zimbabwe</h3>
+                        <p data-translate="helpline">24/7 helpline: 116 (toll-free)</p>
+                    </a>
+                </article>
+
+                <article class="help-box">
+                    <a href="https://www.zhrc.org.zw/" target="_blank" rel="noopener noreferrer" aria-label="Zimbabwe Human Rights Commission website">
+                        <span class="icon" aria-hidden="true"><img src = "{{url_for('static', filename='images/logos/zmri.png')}}" alt = "Zimbabwe Human Rights Commission logo" width = "60" height = "60"></span>
+                        <h3 data-translate="hr-commission">Zimbabwe Human Rights Commission</h3>
+                        <p data-translate="complaints-mechanism">Official complaints mechanism</p>
+                    </a>
+                </article>
+
+                <article class="help-box">
+                    <a href="https://adultrapeclinic.org/" target="_blank" rel="noopener noreferrer" aria-label="Adult Rape Clinic website">
+                        <span class="icon" aria-hidden="true"><img src = "{{url_for('static', filename='images/logos/arc.png')}}" alt = "Adult Rape Clinic logo" width = "60" height = "60"></span>
+                        <h3 data-translate="rape-clinic">Adult Rape Clinic</h3>
+                        <p data-translate="medical-legal">Medical and legal support services</p>
+                    </a>
+                </article>
+
+                <article class="help-box">
+                    <a href="https://www.justiceforchildren.org.zw/" target="_blank" rel="noopener noreferrer" aria-label="Justice For Children website">
+                        <span class="icon" aria-hidden="true"><img src = "{{url_for('static', filename='images/logos/justice_chld.png')}}" alt = "Justice for Children logo" width = "60" height = "60"></span>
+                        <h3 data-translate="justice-children">Justice For Children</h3>
+                        <p data-translate="juvenile-aid">Specialized juvenile legal aid</p>
+                    </a>
+                </article>
+
+                <article class="help-box">
+                    <a href="https://habakkuktrust.org/" target="_blank" rel="noopener noreferrer" aria-label="Habakkuk Trust website">
+                        <span class="icon" aria-hidden="true"><img src = "{{url_for('static', filename='images/logos/ht.png')}}" alt = "Hubakkuk Trust logo" width = "60" height = "60"></span>
+                        <h3 data-translate="habakkuk-trust">Habakkuk Trust</h3>
+                        <p data-translate="community-rights">Community rights mobilization</p>
+                    </a>
+                </article>
+                <article class="help-box">
+                    <a href="{{url_for('gbvResources')}}" target="_blank" rel="noopener noreferrer" aria-label="Gender Based Violence resources">
+                        <span class="icon" aria-hidden="true"><img src="{{url_for('static', filename='images/logos/gbv.png')}}" alt="GBV Support" width="60" height="60"></span>
+                        <h3 data-translate="gbv-title">Sexual Harassment and Gender Based Violence (GBV)</h3>
+                        <p data-translate="gbv-description">24/7 crisis support, legal aid and counseling for all forms of gender violence</p>
+                    </a>
+                </article>
+            </section>
+
+            <!-- Educational Section -->
+            <section class="educational-section">
+                <h2 data-translate="education-title">Legal Education Resources</h2>
+                <div class="educational-content">
+                    <article class="educational-card">
+                        <h3 data-translate="court-processes-title">Understanding Court Processes in Zimbabwe</h3>
+                        <p data-translate="court-processes-desc">Learn about the step-by-step procedures for civil and criminal cases in Zimbabwean courts.</p>
+                        <ul>
+                            <li data-translate="filing-case">Filing a case</li>
+                            <li data-translate="court-appearances">Court appearances</li>
+                            <li data-translate="evidence-submission">Evidence submission</li>
+                            <li data-translate="judgment-appeals">Judgment and appeals</li>
+                        </ul>
+                        <a href="#" class="learn-more-btn" data-content="court-processes" data-translate="learn-more">Learn More</a>
+                    </article>
+                    
+                    <article class="educational-card">
+                        <h3 data-translate="police-rights-title">Your Rights in Police Custody</h3>
+                        <p data-translate="police-rights-desc">Know what protections you have when interacting with law enforcement in Zimbabwe.</p>
+                        <ul>
+                            <li data-translate="right-silent">Right to remain silent</li>
+                            <li data-translate="right-lawyer">Right to legal representation</li>
+                            <li data-translate="protection-detention">Protection against unlawful detention</li>
+                            <li data-translate="access-medical">Access to medical care</li>
+                        </ul>
+                        <a href="#" class="learn-more-btn" data-content="police-rights" data-translate="learn-more">Learn More</a>
+                    </article>
+                    
+                    <article class="educational-card">
+                        <h3 data-translate="family-law-title">Family Law Matters</h3>
+                        <p data-translate="family-law-desc">Essential information about marriage, divorce, child custody, and inheritance laws.</p>
+                        <ul>
+                            <li data-translate="marriage-types">Customary vs civil marriage</li>
+                            <li data-translate="divorce-procedures">Divorce procedures</li>
+                            <li data-translate="child-maintenance">Child maintenance</li>
+                            <li data-translate="inheritance-rights">Inheritance rights</li>
+                        </ul>
+                        <a href="#" class="learn-more-btn" data-content="family-rights" data-translate="learn-more">Learn More</a>
+                    </article>
+                </div>
+            </section>
+            <fieldset class="priority-services">
+                <legend data-translate="immediate-assistance">Immediate Assistance</legend>
+                <section class="support-services">
+                    <a href="{{url_for('emergency')}}" class="service-item emergency">
+                        <span class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,5.7L16.9,10.5H15.5V12.5H13.5V10.5H12.5V12.5H10.5V10.5H8.5V12.5H6.5V10.5H5.1L12,5.7Z"/>
+                            </svg>
+                        </span>
+                        <span class="service-text">
+                            <strong data-translate="emergency-contacts">Emergency Contacts</strong>
+                            <small data-translate="emergency-desc">Police, medical, crisis support</small>
+                        </span>
+                        <span class="service-arrow">&rsaquo;</span>
+                    </a>
+                    
+                    <a href="{{url_for('report')}}" class="service-item">
+                        <span class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M13,13H7V15H13V13M13,9H7V11H13V9M13,17H7V19H13V17Z"/>
+                            </svg>
+                        </span>
+                        <span class="service-text">
+                            <strong data-translate="document-incident">Document an Incident</strong>
+                            <small data-translate="secure-reporting">Secure, confidential reporting</small>
+                        </span>
+                        <span class="service-arrow">&rsaquo;</span>
+                    </a>
+                    
+                    <a href="{{url_for('rights')}}" class="service-item">
+                        <span class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path d="M12,3C10.73,3 9.6,3.8 9.18,5H3V7H4.95L2,14C1.53,16 3,17 5.5,17C8,17 9.56,16 9,14L6.05,7H9.17C9.5,7.85 10.15,8.5 11,8.83V20H2V22H22V20H13V8.82C13.85,8.5 14.5,7.85 14.82,7H17.95L15,14C14.53,16 16,17 18.5,17C21,17 22.56,16 22,14L19.05,7H21V5H14.83C14.4,3.8 13.27,3 12,3M12,5A1,1 0 0,1 13,6A1,1 0 0,1 12,7A1,1 0 0,1 11,6A1,1 0 0,1 12,5Z"/>
+                            </svg>
+                        </span>
+                        <span class="service-text">
+                            <strong data-translate="legal-rights">Your Legal Rights</strong>
+                            <small data-translate="protections-exist">Know what protections exist</small>
+                        </span>
+                        <span class="service-arrow">&rsaquo;</span>
+                    </a>
+                    
+                    <a href="{{url_for('lawyers')}}" class="service-item">
+                        <span class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <title>lawyers</title>
+                                <path d="M12,3L2,12H5V20H19V12H22L12,3M12,8.5C13.38,8.5 14.5,9.62 14.5,11C14.5,12.38 13.38,13.5 12,13.5C10.62,13.5 9.5,12.38 9.5,11C9.5,9.62 10.62,8.5 12,8.5Z"/>
+                            </svg>
+                        </span>
+                        <span class="service-text">
+                            <strong data-translate="find-representation">Find Legal Representation</strong>
+                            <small data-translate="probono-directory">Pro bono lawyers directory</small>
+                        </span>
+                        <span class="service-arrow">&rsaquo;</span>
+                    </a>
+                </section>
+            </fieldset>
+            <!-- Downloadable Resources Section -->
+            <section class="downloadable-resources">
+                <h2 data-translate="downloadable-title">Downloadable Legal Resources</h2>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon"><img src="{{url_for('static', filename='images/logos/affidavit-logo.png')}}" width="60" height="60"></div>
+                        <h3 data-translate="affidavit-template">Affidavit Template</h3>
+                        <p data-translate="affidavit-desc">Standard format for sworn statements to be used in Zimbabwean courts.</p>
+                        <a href="../assets/affidavit-template.pdf" download class="download-btn" data-translate="download-pdf">Download PDF</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon"><img src="{{url_for('static', filename='images/logos/constitution-logo.png')}}" width="60" height="60"></div>
+                        <h3 data-translate="constitution-title">Constitution of Zimbabwe</h3>
+                        <p data-translate="constitution-desc">Complete text of the Zimbabwean Constitution (2021 Amendment).</p>
+                        <a href="../assets/zimbabwe-constitution.pdf" download class="download-btn" data-translate="download-pdf">Download PDF</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon"><img src="{{url_for('static', filename='images/logos/court-application-logo.png')}}" width="60" height="60"></div>
+                        <h3 data-translate="court-forms-title">Court Application Forms</h3>
+                        <p data-translate="court-forms-desc">Standard court forms for various legal applications and procedures.</p>
+                        <a href="../assets/court-forms.zip" download class="download-btn" data-translate="download-zip">Download ZIP</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon"><img src="{{url_for('static', filename='images/logos/legal-logo.png')}}" width="60" height="60"></div>
+                        <h3 data-translate="handbook-title">Legal Rights Handbook</h3>
+                        <p data-translate="handbook-desc">Comprehensive guide to citizens' rights under Zimbabwean law.</p>
+                        <a href="../assets/rights-handbook.pdf" download class="download-btn" data-translate="download-pdf">Download PDF</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon"><img src="{{url_for('static', filename='images/logos/small-claims-logo.png')}}" width="60" height="60"></div>
+                        <h3 data-translate="small-claims-title">Small Claims Court Guide</h3>
+                        <p data-translate="small-claims-desc">Step-by-step guide to filing claims in Zimbabwe's Small Claims Courts.</p>
+                        <a href="../assets/small-claims-guide.pdf" download class="download-btn" data-translate="download-pdf">Download PDF</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon"><img src="{{url_for('static', filename='images/logos/emergency-logo.png')}}" width="60" height="60"></div>
+                        <h3 data-translate="emergency-contacts-title">Emergency Contacts List</h3>
+                        <p data-translate="emergency-contacts-desc">All essential legal aid and emergency service contacts nationwide.</p>
+                        <a href="../assets/emergency-contacts.pdf" download class="download-btn" data-translate="download-pdf">Download PDF</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <section>
+                <article class="flex2">
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <title>privacy</title>
+                            <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11.5C15.4,11.5 16,12.1 16,12.7V16.5C16,17.1 15.4,17.7 14.8,17.7H9.2C8.6,17.7 8,17.1 8,16.5V12.6C8,12 8.6,11.4 9.2,11.4V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,9.5V11.5H13.5V9.5C13.5,8.7 12.8,8.2 12,8.2Z"/>
+                        </svg>
+                        <a href="{{url_for('privacy')}}" data-translate="privacy-rights">Your Privacy Rights</a>
+                    </p>
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <title>contact</title>
+                            <path d="M20,4H4C2.9,4 2,4.9 2,6V18C2,19.1 2.9,20 4,20H20C21.1,20 22,19.1 22,18V6C22,4.9 21.1,4 20,4M20,8L12,13L4,8V6L12,11L20,6V8Z"/>
+                        </svg>
+                        <a href="{{url_for('info')}}" data-translate="contact-support">Contact ConnectAid Support</a>
+                    </p>
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <title>lawyers</title>
+                            <path d="M12,3L2,12H5V20H19V12H22L12,3M12,5.7L16.9,10.5H15.5V12.5H13.5V10.5H12.5V12.5H10.5V10.5H8.5V12.5H6.5V10.5H5.1L12,5.7M11,14H13V16H11V14M15,14H17V16H15V14M7,14H9V16H7V14M11,17H13V19H11V17M15,17H17V19H15V17M7,17H9V19H7V17Z"/>
+                        </svg>
+                        <a href="{{url_for('lawyers')}}" data-translate="probono-lawyers">Pro Bono Lawyers</a>
+                    </p>
+                </article>
+                <article class="flex3">
+                    <p class="align" data-translate="copyright">&copy; 2025 Connect Aid. All Rights Reserved.</p>
+                    <p class="align" data-translate="confidentiality-guarantee">Confidentiality guaranteed under Zimbabwean law</p>
+                    <p class="align">
+                        <a href="{{url_for('privacy')}}" data-translate="privacy">Privacy</a> &#124; 
+                        <a href="{{url_for('terms')}}" data-translate="terms">Terms</a> &#124; 
+                        <a href="{{url_for('bod')}}" data-translate="board-directors">Board of Directors</a>
+                    </p>
+                </article>
+            </section>
+        </footer>
+
+        <!-- Modal Template -->
+        <div class="modal-overlay" id="educationalModal" style="display: none;" aria-hidden="true" role="dialog" aria-modal="true">
+            <div class="modal-container" role="document">
+                <button class="modal-close" aria-label="Close modal">&times;</button>
+                <div class="modal-content" id="modalContent">
+                    <!-- Content will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <script src="{{url_for('static', filename='js/languages.js')}}"></script>
+        <script>
+            // Splash screen control
+            if (!sessionStorage.getItem('splashShown')) {
+                document.querySelector('.splash-screen').style.display = 'flex';
+                sessionStorage.setItem('splashShown', 'true');
+                
+                setTimeout(() => {
+                    document.querySelector('.splash-screen').style.opacity = '0';
+                    setTimeout(() => {
+                        document.querySelector('.splash-screen').style.display = 'none';
+                    }, 500);
+                }, 3000);
+            } else {
+                document.querySelector('.splash-screen').style.display = 'none';
+            }
+
+            // Modal functionality
+            document.addEventListener('DOMContentLoaded', function() {
+                const modal = document.getElementById('educationalModal');
+                const modalContent = document.getElementById('modalContent');
+                const modalClose = document.querySelector('.modal-close');
+                
+                // Close modal when clicking X or overlay
+                modalClose.addEventListener('click', () => {
+                    modal.style.display = 'none';
+                    modal.setAttribute('aria-hidden', 'true');
+                });
+                
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                        modal.setAttribute('aria-hidden', 'true');
+                    }
+                });
+                
+                
+                // Learn More button click handlers
+                document.querySelectorAll('.learn-more-btn').forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const contentId = this.getAttribute('data-content');
+                        loadModalContent(contentId);
+                        modal.style.display = 'flex';
+                        modal.setAttribute('aria-hidden', 'false');
+                        modal.focus();
+                    });
+                });
+                
+                // Escape key to close modal
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && modal.style.display === 'flex') {
+                        modal.style.display = 'none';
+                        modal.setAttribute('aria-hidden', 'true');
+                    }
+                });
+                
+                
+            });
+
+            // Move this function outside the if(modal) block to make it globally accessible
+            window.loadModalContent = function(contentId) {
+                const currentLang = localStorage.getItem('selectedLanguage') || 'en';
+                let content = '';
+                
+                switch(contentId) {
+                    case 'court-processes':
+                        if (currentLang === 'sn') {
+                            content = `
+                                <h2 data-translate="court-processes-title">Kunzwisisa Maitiro eDare muZimbabwe</h2>
+                                <p data-translate="court-processes-desc">Mutemo weZimbabwe unotevera maitiro akarongwa edare kumhando dzese dzematare epabonde nemhosva. Kunzwisisa maitiro aya kunogona kukubatsira kufamba musystem zvirinani.</p>
+                                
+                                <h3 data-translate="court-stages-title">Zvikamu Zvakakosha muMaitiro eDare</h3>
+                                <ol>
+                                    <li data-translate="filing-case"><strong>Kumhan'ara Nyaya:</strong> Kuisa mapapepa (summons, declaration, plea) kuhofisi yakakodzera yedare.</li>
+                                    <li data-translate="service-process"><strong>Service of Process:</strong> Kutumira pamutemo mapapepa edare kune rimwe bato.</li>
+                                    <li data-translate="pretrial-conference"><strong>Pre-Trial Conference:</strong> Musangano wekubata nyaya kuti uone zvinhu uye uise mazuva.</li>
+                                    <li data-translate="trial-stage"><strong>Trial:</strong> Kuratidza uchapupu, uchapupu hwezvapupu, nekupokana kwemutemo.</li>
+                                    <li data-translate="judgment-stage"><strong>Judgment:</strong> Sarudzo yekupedzisira yedare panyaya.</li>
+                                    <li data-translate="execution-stage"><strong>Execution:</strong> Kuita mutongo wedare kana zvichidhiwa.</li>
+                                </ol>
+                                
+                                <h3 data-translate="important-considerations">Zvinhu Zvakakosha Zvekutarisa</h3>
+                                <ul>
+                                    <li data-translate="court-jurisdiction">Matare akasiyana ane miganho yakasiyana (Small Claims, Magistrate, High Court)</li>
+                                    <li data-translate="time-limits">Nguva dzakasimba dzinoshanda pakuisa magwaro uye kukwidza nyaya</li>
+                                    <li data-translate="legal-representation">Kurudziro yekuwana gweta kune nyaya dzakaoma</li>
+                                    <li data-translate="alternative-resolution">Dzimwe nzira dzekugadzirisa gakava dzinogona kuwanikwa</li>
+                                </ul>
+                                
+                                <div class="modal-footer">
+                                    <a href="../assets/court-processes.pdf" download class="download-btn" data-translate="download-full-guide">Dhaunirodha Nhungamiro Yakazara</a>
+                                </div>
+                            `;
+                        } else if (currentLang === 'nd') {
+                            content = `
+                                <h2 data-translate="court-processes-title">Ukuqonda Izinqubo Zenkantolo eZimbabwe</h2>
+                                <p data-translate="court-processes-desc">Uhlelo lomthetho waseZimbabwe lulandela izinqubo ezihlelekile zenkantolo kuzo zombili izindaba zobulungiswa nobubi. Ukuqonda lezi zinqubo kungakusiza ukuthi uzulazule ohlelweni kangcono.</p>
+                                
+                                <h3 data-translate="court-stages-title">Izigaba Ezibalulekile Ezinqubweni Zenkantolo</h3>
+                                <ol>
+                                    <li data-translate="filing-case"><strong>Ukufaka Icala:</strong> Ukunikezela kwamaphepha (summons, declaration, plea) ehofisini lefanele lenkantolo.</li>
+                                    <li data-translate="service-process"><strong>Service of Process:</strong> Ukulethwa okusemthethweni kwamadokhumenti enkantolo kwiqembu elimeleneyo.</li>
+                                    <li data-translate="pretrial-conference"><strong>Pre-Trial Conference:</strong> Umhlangano wokuphatha icala ukuze kutholwe izindaba futhi kubekwe izikhathi.</li>
+                                    <li data-translate="trial-stage"><strong>Trial:</strong> Ukwethulwa kobufakazi, ubufakazi bofakazi, nezimpikiswano zomthetho.</li>
+                                    <li data-translate="judgment-stage"><strong>Judgment:</strong> Isinqumo sokugcina senkantolo ngodaba.</li>
+                                    <li data-translate="execution-stage"><strong>Execution:</strong> Ukwenziwa kwesahlulelo senkantolo uma kunesidingo.</li>
+                                </ol>
+                                
+                                <h3 data-translate="important-considerations">Okubalulekile Okufanele Ukuqaphele</h3>
+                                <ul>
+                                    <li data-translate="court-jurisdiction">Amakhotho ahlukene anemikhawulo ehlukene (Small Claims, Magistrate, High Court)</li>
+                                    <li data-translate="time-limits">Izikhathi eziqinile zokufaka imibhalo nezikhalazo</li>
+                                    <li data-translate="legal-representation">Kunconywa ukuba nommeli ezindabeni eziyinkimbinkimbi</li>
+                                    <li data-translate="alternative-resolution">Kungaba nezinye izindlela zokuxazulula izingxabano</li>
+                                </ul>
+                                
+                                <div class="modal-footer">
+                                    <a href="../assets/court-processes.pdf" download class="download-btn" data-translate="download-full-guide">Landa Umhlahlandlela Ogcwele</a>
+                                </div>
+                            `;
+                        } else if (currentLang === 've') {
+                            content = `
+                                <h2 data-translate="court-processes-title">U Divhisa Maitele a Khethekanyo ya Vhathu Zimbabwe</h2>
+                                <p data-translate="court-processes-desc">Mushumo wa mulayo wa Zimbabwe u tevhela maitele o ralo a khethekanyo ya vhathu kha zwivhiwa zwoṱhe zwa vhukati ha vhathu na zwa vhurereli. U divhisa maitele aya zwi nga u thusa u tsireledza na u shumisa ha mushumo.</p>
+                                
+                                <h3 data-translate="court-stages-title">Zwithu zwa Nndeme kha Maitele a Khethekanyo</h3>
+                                <ol>
+                                    <li data-translate="filing-case"><strong>U Ranga Muvhiwa:</strong> U nekedza zwivhiwa (zwivhiwa, u sumbedza, u humbela) kha ofisi ya khethekanyo.</li>
+                                    <li data-translate="service-process"><strong>Mushumo wa Maitele:</strong> U nekedzwa ha zwidodombedzwa zwa khethekanyo kha muṅwe mutakadzi.</li>
+                                    <li data-translate="pretrial-conference"><strong>Musangano wa Phanḓa ha Muvhiwa:</strong> Musangano wa u laula muvhiwa u wana zwithu na u bea tshifhinga.</li>
+                                    <li data-translate="trial-stage"><strong>Muvhiwa:</strong> U sumbedza mbekanyamaitele, mbekanyamaitele ya vhathu, na u anana ha mulayo.</li>
+                                    <li data-translate="judgment-stage"><strong>Khetho:</strong> Khetho ya muthu wa khethekanyo nga ha muvhiwa.</li>
+                                    <li data-translate="execution-stage"><strong>U Itwa:</strong> U itwa ha khetho ya khethekanyo arali zwo lugiswa.</li>
+                                </ol>
+                                
+                                <h3 data-translate="important-considerations">Zwithu zwa Nndeme zwa u Ṱhogomela</h3>
+                                <ul>
+                                    <li data-translate="court-jurisdiction">Makhethekanyo o fhambanaho ane miganḓa yo fhambanaho (Small Claims, Magistrate, High Court)</li>
+                                    <li data-translate="time-limits">Tshifhinga tshi re na u luga ha u nekedza zwidodombedzwa na u humbela</li>
+                                    <li data-translate="legal-representation">U sumbedzwa ha mulayo u khou ṱoḓiswa kha zwithu zwi re na u konḓa</li>
+                                    <li data-translate="alternative-resolution">Zwinwe ndila dza u lugisa muvhiwa zwi nga vha hone</li>
+                                </ul>
+                                
+                                <div class="modal-footer">
+                                    <a href="../assets/court-processes.pdf" download class="download-btn" data-translate="download-full-guide">Downlodza Thalutshedzo Yoṱhe</a>
+                                </div>
+                            `;
+                        } else {
+                            // English (default)
+                            content = `
+                                <h2 data-translate="court-processes-title">Understanding Court Processes in Zimbabwe</h2>
+                                <p data-translate="court-processes-desc">The Zimbabwean legal system follows a structured court process for both civil and criminal cases. Understanding these procedures can help you navigate the system more effectively.</p>
+                                
+                                <h3 data-translate="court-stages-title">Key Stages in Court Proceedings</h3>
+                                <ol>
+                                    <li data-translate="filing-case"><strong>Filing a Case:</strong> Submission of pleadings (summons, declaration, plea) with the appropriate court registry.</li>
+                                    <li data-translate="service-process"><strong>Service of Process:</strong> Official delivery of court documents to the opposing party.</li>
+                                    <li data-translate="pretrial-conference"><strong>Pre-Trial Conference:</strong> Case management meeting to identify issues and set timelines.</li>
+                                    <li data-translate="trial-stage"><strong>Trial:</strong> Presentation of evidence, witness testimony, and legal arguments.</li>
+                                    <li data-translate="judgment-stage"><strong>Judgment:</strong> The court's final decision on the matter.</li>
+                                    <li data-translate="execution-stage"><strong>Execution:</strong> Enforcement of the court's judgment if necessary.</li>
+                                </ol>
+                                
+                                <h3 data-translate="important-considerations">Important Considerations</h3>
+                                <ul>
+                                    <li data-translate="court-jurisdiction">Different courts have varying jurisdiction limits (Small Claims, Magistrate, High Court)</li>
+                                    <li data-translate="time-limits">Strict time limits apply for filing documents and appeals</li>
+                                    <li data-translate="legal-representation">Legal representation is recommended for complex matters</li>
+                                    <li data-translate="alternative-resolution">Alternative dispute resolution options may be available</li>
+                                </ul>
+                                
+                                <div class="modal-footer">
+                                    <a href="../assets/court-processes.pdf" download class="download-btn" data-translate="download-full-guide">Download Full Guide</a>
+                                </div>
+                            `;
+                        }
+                        break;
+
+                    case 'police-rights':
+                        if (currentLang === 'sn') {
+                            content = `
+                                <h2 data-translate="police-rights-title">Kodzero Dzenyu Panguva Yekusungwa</h2>
+                                <p data-translate="police-rights-desc">Bumbiro remutemo reZimbabwe nemimwe mitemo inopa dziviriro yakati kune vanhu vanosangana nemapurisa. Kuziva kodzero idzi kwakakosha kune wese mugari.</p>
+                                
+                                <h3 data-translate="arrest-rights-title">Kodzero Dzakakosha Panguva Yekusungwa</h3>
+                                <ul>
+                                    <li data-translate="right-silent"><strong>Kodzero yekunyarara:</strong> Hauramanikidzwe kuita chirevo chekureurura.</li>
+                                    <li data-translate="right-lawyer"><strong>Kodzero yekuwana gweta:</strong> Unogona kutaura negweta rawakasarudza.</li>
+                                    <li data-translate="protection-detention"><strong>Kodzero yekubatwa zvinehunhu:</strong> Kudzivirirwa kubva mukurohwa, kubatwa zvisina kunaka.</li>
+                                    <li data-translate="right-informed"><strong>Kodzero yekuziviswa nezvekupomerwa:</strong> Mapurisa anofanira kukuzivisa nezvechikonzero chekusungwa nemutauro waunonzwisisa.</li>
+                                    <li data-translate="access-medical"><strong>Kodzero yekurapwa:</strong> Kuwanikwa kwekurapwa panguva yaunenge wakasungwa.</li>
+                                </ul>
+                                
+                                <h3 data-translate="if-arrested-title">Zvekuita Kana Wasungwa</h3>
+                                <ol>
+                                    <li data-translate="stay-calm">Ramba wakadzikama uye uchishandira pamwe asi usabvume chero chinhu</li>
+                                    <li data-translate="contact-lawyer">Kumbira kubata gweta kana hama yako nekukurumidza</li>
+                                    <li data-translate="ask-warrant">Kumbira kuona gwaro rekusunga kana richipo</li>
+                                    <li data-translate="note-officers">Nyora mazita nenhamba dzemapurisa anosunga</li>
+                                    <li data-translate="dont-sign">Usasaine chero magwaro usina kurairwa negweta</li>
+                                </ol>
+                                
+                                <div class="modal-footer">
+                                    <a href="../assets/police-rights.pdf" download class="download-btn" data-translate="download-rights-card">Dhaunirodha Kadhi Rekodzero</a>
+                                </div>
+                            `;
+                        } else if (currentLang === 'nd') {
+                            content = `
+                                <h2 data-translate="police-rights-title">Amalungelo Akho Ekuboshweni Kwamaphoyisa</h2>
+                                <p data-translate="police-rights-desc">UMthethosisekelo waseZimbabwe nemithetho ehlukahlukene inikeza ukuvikeleka okukhethekile kubantu abahlanganyela nabomthetho. Ukwazi le malungelo kubalulekile kummi ngamunye.</p>
+                                
+                                <h3 data-translate="arrest-rights-title">Amalungelo Asemqoka Ngesikhathi Sokuboshwa</h3>
+                                <ul>
+                                    <li data-translate="right-silent"><strong>Ilungelo lokuthula:</strong> Awuphoqeleki ukuthi uyavuma noma uvuma icala.</li>
+                                    <li data-translate="right-lawyer"><strong>Ilungelo lokuthola ummeli:</strong> Ungaxhumana nommeli wakho.</li>
+                                    <li data-translate="protection-detention"><strong>Ilungelo lokubhekwa ngobuntu:</strong> Ukuvikeleka ekuhlukunyezweni, ekubulawayen nasekubhekweni kabi.</li>
+                                    <li data-translate="right-informed"><strong>Ilungelo lokwaziswa ngezinsolo:</strong> Amaphoyisa kufanele akwazise ngesizathu sokuboshwa kwakho ngolimi oluqondakalayo.</li>
+                                    <li data-translate="access-medical"><strong>Ilungelo lokwelashwa:</strong> Ukufinyelela ekunakekelweni kwezempilo ngesikhathi usuboshiwe.</li>
+                                </ul>
+                                
+                                <h3 data-translate="if-arrested-title">Okufanele Ukwenze Uma Uboshiwe</h3>
+                                <ol>
+                                    <li data-translate="stay-calm">Hlala uzolile futhi uyasebenzisana kodwa ungavumi lutho</li>
+                                    <li data-translate="contact-lawyer">Cela ukuxhumana nommeli noma umndeni wakho ngokushesha</li>
+                                    <li data-translate="ask-warrant">Cela ukubona igunya lokubopha uma likhona</li>
+                                    <li data-translate="note-officers">Bhala amagama nenombolo yamaphoyisa akubophayo</li>
+                                    <li data-translate="dont-sign">Ungasayini noma yimaphi amadokhumenti ngaphandle kokweluleka kommeli</li>
+                                </ol>
+                                
+                                <div class="modal-footer">
+                                    <a href="../assets/police-rights.pdf" download class="download-btn" data-translate="download-rights-card">Landa Ikhadi Lamalungelo</a>
+                                </div>
+                            `;
+                        } else if (currentLang === 've') {
+                            content = `
+                                <h2 data-translate="police-rights-title">Pfanelo Dzaṋu kha u Bviselwa kha Mapholisa</h2>
+                                <p data-translate="police-rights-desc">Mulayo wa Zimbabwe na mitheo yo fhambanaho i ṋea u sireletsela kha vhathu vhane vha shumisana na vhathu vha mulayo. U divha pfanelo idzi zwi khou itea uri muthu ngamuthu a zwi divhe.</p>
+                                
+                                <h3 data-translate="arrest-rights-title">Pfanelo dza Nndeme Nga tshifhinga tsha u Bviselwa</h3>
+                                <ul>
+                                    <li data-translate="right-silent"><strong>Pfanelo ya u Thula:</strong> A u songo tendelwa u amba kana u tenda muvhiwa.</li>
+                                    <li data-translate="right-lawyer"><strong>Pfanelo ya u Wana Muṱodzisi wa Mulayo:</strong> U nga khou tou humbela muṱodzisi wa mulayo waṋu.</li>
+                                    <li data-translate="protection-detention"><strong>Pfanelo ya u Vhoniwa nga Vhuthu:</strong> U sireletsela kha u shaywa, u vhoniwa tshithu, kana u vhoniwa tshithu tsha vhuthu.</li>
+                                    <li data-translate="right-informed"><strong>Pfanelo ya u Divhisiwa nga Muvhiwa:</strong> Mapholisa a tea u ṋivhedza uri ndi ngani na muvhiwa nga luambo lune wa zwi pfesesa.</li>
+                                    <li data-translate="access-medical"><strong>Pfanelo ya u Lashwa:</strong> U wana thuso ya vhulapfu nga tshifhinga tsha u bviselwa.</li>
+                                </ul>
+                                
+                                <h3 data-translate="if-arrested-title">Zwiṋe zwa U Tea U Ita Arali na Bviselwa</h3>
+                                <ol>
+                                    <li data-translate="stay-calm">Dzula u khou thula na u shumisana fhedzi u songo tenda na tshithu</li>
+                                    <li data-translate="contact-lawyer">Humbela u tou khou khou humbela muṱodzisi wa mulayo kana muthu wa muvhigo waṋu</li>
+                                    <li data-translate="ask-warrant">Humbela u vhona waranta ya u bviselwa arali i hone</li>
+                                    <li data-translate="note-officers">Nwalela dzina na nomoro ya mapholisa ane a khou u bvisela</li>
+                                    <li data-translate="dont-sign">U songo sayina na ipfi ḽa zwidodombedzwa nga nnḓa ha u humbela thuso ya mulayo</li>
+                                </ol>
+                                
+                                <div class="modal-footer">
+                                    <a href="../assets/police-rights.pdf" download class="download-btn" data-translate="download-rights-card">Downlodza Khadi ḽa Pfanelo</a>
+                                </div>
+                            `;
+                        } else {
+                            // English (default)
+                            content = `
+                                <h2 data-translate="police-rights-title">Your Rights in Police Custody</h2>
+                                <p data-translate="police-rights-desc">The Constitution of Zimbabwe and various laws provide specific protections for individuals interacting with law enforcement. Knowing these rights is crucial for every citizen.</p>
+                                
+                                <h3 data-translate="arrest-rights-title">Fundamental Rights During Arrest</h3>
+                                <ul>
+                                    <li data-translate="right-silent"><strong>Right to remain silent:</strong> You cannot be compelled to make any confession or admission.</li>
+                                    <li data-translate="right-lawyer"><strong>Right to legal representation:</strong> You may consult with a legal practitioner of your choice.</li>
+                                    <li data-translate="protection-detention"><strong>Right to humane treatment:</strong> Protection from torture, cruel, inhuman or degrading treatment.</li>
+                                    <li data-translate="right-informed"><strong>Right to be informed of charges:</strong> Police must inform you of the reason for arrest in a language you understand.</li>
+                                    <li data-translate="access-medical"><strong>Right to medical treatment:</strong> Access to necessary healthcare while in custody.</li>
+                                </ul>
+                                
+                                <h3 data-translate="if-arrested-title">What to Do If Arrested</h3>
+                                <ol>
+                                    <li data-translate="stay-calm">Remain calm and cooperative but do not admit to anything</li>
+                                    <li data-translate="contact-lawyer">Ask to contact a lawyer or family member immediately</li>
+                                    <li data-translate="ask-warrant">Request to see the arrest warrant if applicable</li>
+                                    <li data-translate="note-officers">Note the names and badge numbers of arresting officers</li>
+                                    <li data-translate="dont-sign">Do not sign any documents without legal advice</li>
+                                </ol>
+                                
+                                <div class="modal-footer">
+                                    <a href="../assets/police-rights.pdf" download class="download-btn" data-translate="download-rights-card">Download Rights Card</a>
+                                </div>
+                            `;
+                        }
+                        break;
+
+                    case 'family-rights':
+                        if (currentLang === 'sn') {
+                            content = `
+                                <h2 data-translate="family-law-title">Nyaya Dzemutemo Wemhuri muZimbabwe</h2>
+                                <p data-translate="family-law-desc">Mutemo wemhuri weZimbabwe unotonga hukama, muchato, kurambana, nenyaya dzine chekuita nevana. Mutemo unobvuma michato yepamutemo neyechinyakare.</p>
+                                
+                                <h3 data-translate="marriage-divorce-title">Muchato neKurambana</h3>
+                                <ul>
+                                    <li data-translate="marriage-types"><strong>Mhando dzeMuchato:</strong> Michato yepamutemo (yakanyoreswa) neyechinyakare (isina kunyorwa asi inobvumwa)</li>
+                                    <li data-translate="divorce-grounds"><strong>Zvikonzero zveKurambana:</strong> Kusawirirana zvachose ndicho chikonzero chega chekurambana</li>
+                                    <li data-translate="property-division"><strong>Kugovaniswa kwePfuma:</strong> Kugovaniswa kwepfuma kunoshanda kunze kwekunge paine kondirakiti yepamberi pemuchato</li>
+                                    <li data-translate="maintenance-obligation"><strong>Kuchengetedza:</strong> Kuchengetedza kwemurume nemukadzi nevana zvinogona kurairwa nedare</li>
+                                </ul>
+                                
+                                <h3 data-translate="child-matters-title">Nyaya Dzevana</h3>
+                                <ol>
+                                    <li data-translate="child-custody"><strong>Kuchengetwa kwevana:</strong> Kunotarisirwa zvichibva pane zvakanakira mwana</li>
+                                    <li data-translate="child-guardianship"><strong>Kuchengetedzwa kwevana:</strong> Vabereki vese vanowanzogovana basa rekuchengeta mwana</li>
+                                    <li data-translate="child-maintenance"><strong>Kuchengetedza mwana:</strong> Vabereki vese vane basa rekuchengeta vana vavo</li>
+                                    <li data-translate="adoption-process"><strong>Kurera mwana:</strong> Maitiro akasimba emutemo anotarisirwa neDare Repamusoro</li>
+                                </ol>
+                                
+                                <h3 data-translate="inheritance-laws-title">Mitemo Yenhaka</h3>
+                                <p data-translate="inheritance-desc">Mutemo weAdministration of Estates Act nemutemo wechinyakare unotonga nhaka. Shanduko dzichangoburwa dzakavandudza kodzero dzevakadzi pakugara nhaka.</p>
+                                
+                                <div class="modal-footer">
+                                    <a href="../assets/family-rights.zip" download class="download-btn" data-translate="download-family-guide">Dhaunirodha Nhungamiro Yemutemo Wemhuri</a>
+                                </div>
+                            `;
+                        } else if (currentLang === 'nd') {
+                            content = `
+                                <h2 data-translate="family-law-title">Izindaba Zomthetho Womndeni eZimbabwe</h2>
+                                <p data-translate="family-law-desc">Umthetho womndeni waseZimbabwe ulawula ubudlelwano, umshado, ukwahlukanisa, nezindaba eziphathelene nabantwana. Umthetho uyavuma imishado yomthetho kanye neyendabuko.</p>
+                                
+                                <h3 data-translate="marriage-divorce-title">Umshado Nokwahlukanisa</h3>
+                                <ul>
+                                    <li data-translate="marriage-types"><strong>Izinhlobo Zomshado:</strong> Imishado yomthetho (ebhalisiwe) kanye neyendabuko (engabhalisiwe kodwa eyavunywa)</li>
+                                    <li data-translate="divorce-grounds"><strong>Izizathu Zokwahlukanisa:</strong> Ukungavumelani okungenakulungiswa yisizathu esisodwa sokwahlukanisa</li>
+                                    <li data-translate="property-division"><strong>Ukuhlukaniswa Kwempahla:</strong> Ukuhlukaniswa kwempahla kusebenza ngaphandle uma kunesivumelwano sangaphambi komshado</li>
+                                    <li data-translate="maintenance-obligation"><strong>Inhlalakahle:</strong> Inhlalakahle yomshado kanye neyabantwana ingatshiswa yinkantolo</li>
+                                </ul>
+                                
+                                <h3 data-translate="child-matters-title">Izindaba Eziphathelene Nabantwana</h3>
+                                <ol>
+                                    <li data-translate="child-custody"><strong>Ukunakekelwa Kwabantwana:</strong> Kunqunywa ngokusekelwe ezintandweni zomntwana</li>
+                                    <li data-translate="child-guardianship"><strong>Ukugcinwa Komntwana:</strong> Bobabili abazali bavame ukwabelana ngomthwalo wokugcina umntwana</li>
+                                    <li data-translate="child-maintenance"><strong>Inhlalakahle Yomntwana:</strong> Bobabili abazali banesibopho sokondla izingane zabo</li>
+                                    <li data-translate="adoption-process"><strong>Ukutholwa Kwabantwana:</strong> Inqubo yomthetho eqondiswa yiNkantolo Ephakeme</li>
+                                </ol>
+                                
+                                <h3 data-translate="inheritance-laws-title">Imithetho Yefa</h3>
+                                <p data-translate="inheritance-desc">UMthetho we-Administration of Estates Act kanye nomthetho wendabuko ulawula ukuzuza ifa. Izinguquko zakamuva zithuthukise amalungelo abesifazane ekuzuzeni ifa.</p>
+                                
+                                <div class="modal-footer">
+                                    <a href="../assets/family-rights.zip" download class="download-btn" data-translate="download-family-guide">Landa Umhlahlandlela Womthetho Womndeni</a>
+                                </div>
+                            `;
+                        } else if (currentLang === 've') {
+                            content = `
+                                <h2 data-translate="family-law-title">Zwithu zwa Mulayo wa Muvhigo Zimbabwe</h2>
+                                <p data-translate="family-law-desc">Mulayo wa muvhigo wa Zimbabwe u laula vhukati ha vhathu, vhushaka, u khethana, na zwithu zwi re na vhana. Mulayo u tenda vhushaka ha mulayo na ha tshikhethwa.</p>
+                                
+                                <h3 data-translate="marriage-divorce-title">Vhushaka na U Khethana</h3>
+                                <ul>
+                                    <li data-translate="marriage-types"><strong>Mihumbulo ya Vhushaka:</strong> Vhushaka ha mulayo (zwo rejistara) na ha tshikhethwa (tshisa rejistariwa fhedzi zwi tendwa)</li>
+                                    <li data-translate="divorce-grounds"><strong>Zwithu zwa U Khethana:</strong> U sa pfani kana u sa vhoni zwone ndi tshithu tshine tsha ita uri vhushaka vhu khethane</li>
+                                    <li data-translate="property-division"><strong>U Khethana ha Mveledzo:</strong> U khethana ha mveledzo zwi shuma nga nnḓa ha arali hu na kontraka ya phanḓa ha vhushaka</li>
+                                    <li data-translate="maintenance-obligation"><strong>U Ṱhonifhadza:</strong> U Ṱhonifhadza ha muvhigo na vhana zwi nga tou tendelwa nga khethekanyo</li>
+                                </ul>
+                                
+                                <h3 data-translate="child-matters-title">Zwithu zwi re na Vhana</h3>
+                                <ol>
+                                    <li data-translate="child-custody"><strong>U Neta Vhana:</strong> Khethwa nga u sedza zwithu zwavhudi zwa mwana</li>
+                                    <li data-translate="child-guardianship"><strong>U Gidza Vhana:</strong> Vhabebi vhukuma vha tea u kovhelana nga maanḓa a u gidza vhana</li>
+                                    <li data-translate="child-maintenance"><strong>U Ṱhonifhadza Vhana:</strong> Vhabebi vhoṱhe vha na mushumo wa u Ṱhonifhadza vhana vhavho</li>
+                                    <li data-translate="adoption-process"><strong>U Takula Vhana:</strong> Maitele a mulayo ane a laulwa nga Khethekanyo ya Mudededzi</li>
+                                </ol>
+                                
+                                <h3 data-translate="inheritance-laws-title">Milaedza ya Fha</h3>
+                                <p data-translate="inheritance-desc">Mulayo wa Administration of Estates Act na mulayo wa tshikhethwa zwi laula u wana fha. Zwiṱaluli zwatshifhinga zwi khou thoma u itela uri vhafumakadzi vha wane fha.</p>
+                                
+                                <div class="modal-footer">
+                                    <a href="../assets/family-rights.zip" download class="download-btn" data-translate="download-family-guide">Downlodza Thalutshedzo ya Mulayo wa Muvhigo</a>
+                                </div>
+                            `;
+                        } else {
+                            // English (default)
+                            content = `
+                                <h2 data-translate="family-law-title">Family Law Matters in Zimbabwe</h2>
+                                <p data-translate="family-law-desc">Zimbabwean family law governs relationships, marriage, divorce, and child-related matters. The law recognizes both civil and customary marriages.</p>
+                                
+                                <h3 data-translate="marriage-divorce-title">Marriage and Divorce</h3>
+                                <ul>
+                                    <li data-translate="marriage-types"><strong>Marriage Types:</strong> Civil marriages (registered) and customary marriages (unregistered but recognized)</li>
+                                    <li data-translate="divorce-grounds"><strong>Divorce Grounds:</strong> Irretrievable breakdown is the sole ground for divorce</li>
+                                    <li data-translate="property-division"><strong>Property Division:</strong> Community of property applies unless an ante-nuptial contract exists</li>
+                                    <li data-translate="maintenance-obligation"><strong>Maintenance:</strong> Spousal and child support may be ordered by the court</li>
+                                </ul>
+                                
+                                <h3 data-translate="child-matters-title">Child-Related Matters</h3>
+                                <ol>
+                                    <li data-translate="child-custody"><strong>Custody:</strong> Determined based on the best interests of the child</li>
+                                    <li data-translate="child-guardianship"><strong>Guardianship:</strong> Both parents typically share guardianship</li>
+                                    <li data-translate="child-maintenance"><strong>Maintenance:</strong> Both parents have an obligation to support their children</li>
+                                    <li data-translate="adoption-process"><strong>Adoption:</strong> Strict legal process overseen by the High Court</li>
+                                </ol>
+                                
+                                <h3 data-translate="inheritance-laws-title">Inheritance Laws</h3>
+                                <p data-translate="inheritance-desc">The Administration of Estates Act and customary law govern inheritance. Recent reforms have improved women's inheritance rights.</p>
+                                
+                                <div class="modal-footer">
+                                    <a href="../assets/family-rights.zip" download class="download-btn" data-translate="download-family-guide">Download Family Law Guide</a>
+                                </div>
+                            `;
+                        }
+                        break;
+
+                    default:
+                        content = `<p data-translate="error-loading">Error loading content. Please try again later.</p>`;
+                }
+                
+                modalContent.innerHTML = content;
+            
+            };
+
+             // Notification system
+            document.addEventListener('DOMContentLoaded', function() {
+                // Close button functionality for all notifications
+                document.querySelectorAll('.notification-close').forEach(closeBtn => {
+                    closeBtn.addEventListener('click', function() {
+                        this.parentElement.style.opacity = '0';
+                        setTimeout(() => {
+                            this.parentElement.style.display = 'none';
+                        }, 300);
+                    });
+                });
+
+        // Auto-hide notifications with data-duration attribute
+        document.querySelectorAll('.notification[data-duration]').forEach(notification => {
+            const duration = parseInt(notification.getAttribute('data-duration'));
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 300);
+            }, duration);
+        });
+
+        // Handle rate-limited messages specifically
+        const rateLimitMessage = document.querySelector('.notification-message:contains("Too many attempts")');
+        if (rateLimitMessage) {
+            const notification = rateLimitMessage.closest('.notification');
+            const countdownElement = notification.querySelector('#countdown');
+            
+            if (countdownElement) {
+                let timeLeft = parseInt(countdownElement.textContent);
+                const countdownInterval = setInterval(() => {
+                    timeLeft--;
+                    countdownElement.textContent = timeLeft;
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(countdownInterval);
+                        notification.style.opacity = '0';
+                        setTimeout(() => {
+                            notification.style.display = 'none';
+                            // Re-enable any disabled form elements
+                            document.querySelectorAll('input, button').forEach(el => {
+                                el.disabled = false;
+                            });
+                        }, 300);
+                    }
+                }, 1000);
+            }
+        }
+
+        // Splash screen control (existing code)
+        if (!sessionStorage.getItem('splashShown')) {
+            document.querySelector('.splash-screen').style.display = 'flex';
+            sessionStorage.setItem('splashShown', 'true');
+            
+            setTimeout(() => {
+                document.querySelector('.splash-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.querySelector('.splash-screen').style.display = 'none';
+                }, 500);
+            }, 3000);
+        } else {
+            document.querySelector('.splash-screen').style.display = 'none';
+        }
+
+        // Modal functionality (existing code)
+        const modal = document.getElementById('educationalModal');
+        if (modal) {
+            const modalContent = document.getElementById('modalContent');
+            const modalClose = document.querySelector('.modal-close');
+            
+            modalClose.addEventListener('click', () => {
+                modal.style.display = 'none';
+                modal.setAttribute('aria-hidden', 'true');
+            });
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    modal.setAttribute('aria-hidden', 'true');
+                }
+            });
+            
+            document.querySelectorAll('.learn-more-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const contentId = this.getAttribute('data-content');
+                    loadModalContent(contentId);
+                    modal.style.display = 'flex';
+                    modal.setAttribute('aria-hidden', 'false');
+                    modal.focus();
+
+                });
+            });
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'flex') {
+                    modal.style.display = 'none';
+                    modal.setAttribute('aria-hidden', 'true');
+                }
+            });
+        }
+
+        function applyTranslations(lang) {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        // Helper function for :contains selector
+        (function() {
+            const matches = function(el, selector) {
+                return (el.matches || el.matchesSelector || el.msMatchesSelector || el.mozMatchesSelector || 
+                        el.webkitMatchesSelector || el.oMatchesSelector).call(el, selector);
+            };
+            
+            document.querySelectorAll(':contains("Too many attempts")').forEach(el => {
+                if (matches(el, '.notification-message')) {
+                    // This element matches our needs
+                }
+            });
+        })();
+    });
+
+    
+        </script>
+{% endblock %}

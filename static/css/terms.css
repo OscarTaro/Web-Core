@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&family=Noto+Sans+Shona&family=Noto+Sans+Ndebele&display=swap');
+
+:root {
+  --bg: #f7f9fc;
+  --text: #1f1f1f;
+  --accent: #00b4d8;
+  --border: #e1e5eb;
+  --font-main: 'Noto Serif', serif;
+  --font-shona: 'Noto Sans Shona', sans-serif;
+  --font-ndebele: 'Noto Sans Ndebele', sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg);
+  color: var(--text);
+  padding: 2rem;
+  line-height: 1.7;
+}
+
+section {
+  margin-bottom: 2rem;
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+}
+
+h1, h2, h3 {
+  color: var(--accent);
+}
+
+/* Mobile collapsible sections */
+@media (max-width: 768px) {
+  details {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  summary {
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--accent);
+  }
+}
+
+/* Print-friendly */
+@media print {
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+  }
+  nav, .no-print {
+    display: none !important;
+  }
+  section {
+    border: none;
+    padding: 0;
+  }
+}

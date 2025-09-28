@@ -1,0 +1,359 @@
+{% extends 'base.html' %}
+{% block title %} Know Your Rights | ConnectAid {% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/rights.css')}}" type="text/css">
+<style>
+    .language-selector {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 8px 12px;
+        border-radius: 4px;
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+    }
+    .language-selector select {
+        padding: 5px;
+        border: none;
+        background: transparent;
+        font-size: 14px;
+    }
+</style>
+{% endblock %}
+{% block content %}
+    <header>
+        <div class="org-branding">
+            <img src="{{url_for('static', filename='images/favicons/favicon.png')}}" alt="Connect Aid" width="120">
+            <span class="org-tagline" data-translate="org-tagline">Legal Empowerment Initiative</span>
+        </div>
+        <h1 data-translate="page-title">Know Your Rights <span class="subtitle" data-translate="page-subtitle">Zimbabwean Constitutional Protections</span></h1>
+        <p class="document-meta" data-translate="page-meta">Prepared by Connect Aid's Legal Team | Last Updated: June 2025</p>
+    </header>
+
+    <a href="{{url_for('home')}}" class="back-home-link" data-translate="back-link">← Back</a>
+
+    <nav class="toc">
+        <h3 data-translate="toc-title">Table of Contents</h3>
+        <ul>
+            <li><a href="#freedom-of-association" data-translate="toc-association"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12,3C10.73,3 9.6,3.8 9.18,5H3V7H4.95L2,14C1.53,16 3,17 5.5,17C8,17 9.56,16 9,14L6.05,7H9.17C9.5,7.85 10.15,8.5 11,8.83V20H2V22H22V20H13V8.82C13.85,8.5 14.5,7.85 14.82,7H17.95L15,14C14.53,16 16,17 18.5,17C21,17 22.56,16 22,14L19.05,7H21V5H14.83C14.4,3.8 13.27,3 12,3M12,5A1,1 0 0,1 13,6A1,1 0 0,1 12,7A1,1 0 0,1 11,6A1,1 0 0,1 12,5Z"/>
+                </svg> Freedom of Association</a></li>
+            <li><a href="#personal-liberty" data-translate="toc-liberty"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12,3C10.73,3 9.6,3.8 9.18,5H3V7H4.95L2,14C1.53,16 3,17 5.5,17C8,17 9.56,16 9,14L6.05,7H9.17C9.5,7.85 10.15,8.5 11,8.83V20H2V22H22V20H13V8.82C13.85,8.5 14.5,7.85 14.82,7H17.95L15,14C14.53,16 16,17 18.5,17C21,17 22.56,16 22,14L19.05,7H21V5H14.83C14.4,3.8 13.27,3 12,3M12,5A1,1 0 0,1 13,6A1,1 0 0,1 12,7A1,1 0 0,1 11,6A1,1 0 0,1 12,5Z"/>
+                </svg> Right to Personal Liberty</a></li>
+            <li><a href="#freedom-of-conscience" data-translate="toc-conscience"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12,3C10.73,3 9.6,3.8 9.18,5H3V7H4.95L2,14C1.53,16 3,17 5.5,17C8,17 9.56,16 9,14L6.05,7H9.17C9.5,7.85 10.15,8.5 11,8.83V20H2V22H22V20H13V8.82C13.85,8.5 14.5,7.85 14.82,7H17.95L15,14C14.53,16 16,17 18.5,17C21,17 22.56,16 22,14L19.05,7H21V5H14.83C14.4,3.8 13.27,3 12,3M12,5A1,1 0 0,1 13,6A1,1 0 0,1 12,7A1,1 0 0,1 11,6A1,1 0 0,1 12,5Z"/>
+                </svg> Freedom of Conscience</a></li>
+            <li><a href="#freedom-of-expression" data-translate="toc-expression"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12,3C10.73,3 9.6,3.8 9.18,5H3V7H4.95L2,14C1.53,16 3,17 5.5,17C8,17 9.56,16 9,14L6.05,7H9.17C9.5,7.85 10.15,8.5 11,8.83V20H2V22H22V20H13V8.82C13.85,8.5 14.5,7.85 14.82,7H17.95L15,14C14.53,16 16,17 18.5,17C21,17 22.56,16 22,14L19.05,7H21V5H14.83C14.4,3.8 13.27,3 12,3M12,5A1,1 0 0,1 13,6A1,1 0 0,1 12,7A1,1 0 0,1 11,6A1,1 0 0,1 12,5Z"/>
+                </svg> Freedom of Expression</a></li>
+            <li><a href="#right-to-life" data-translate="toc-life"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12,3C10.73,3 9.6,3.8 9.18,5H3V7H4.95L2,14C1.53,16 3,17 5.5,17C8,17 9.56,16 9,14L6.05,7H9.17C9.5,7.85 10.15,8.5 11,8.83V20H2V22H22V20H13V8.82C13.85,8.5 14.5,7.85 14.82,7H17.95L15,14C14.53,16 16,17 18.5,17C21,17 22.56,16 22,14L19.05,7H21V5H14.83C14.4,3.8 13.27,3 12,3M12,5A1,1 0 0,1 13,6A1,1 0 0,1 12,7A1,1 0 0,1 11,6A1,1 0 0,1 12,5Z"/>
+                </svg> Right to Life</a></li>
+            <li><a href="#human-dignity" data-translate="toc-dignity"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12,3C10.73,3 9.6,3.8 9.18,5H3V7H4.95L2,14C1.53,16 3,17 5.5,17C8,17 9.56,16 9,14L6.05,7H9.17C9.5,7.85 10.15,8.5 11,8.83V20H2V22H22V20H13V8.82C13.85,8.5 14.5,7.85 14.82,7H17.95L15,14C14.53,16 16,17 18.5,17C21,17 22.56,16 22,14L19.05,7H21V5H14.83C14.4,3.8 13.27,3 12,3M12,5A1,1 0 0,1 13,6A1,1 0 0,1 12,7A1,1 0 0,1 11,6A1,1 0 0,1 12,5Z"/>
+                </svg> Right to Human Dignity</a></li>
+            <li><a href="#right-to-privacy" data-translate="toc-privacy"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12,3C10.73,3 9.6,3.8 9.18,5H3V7H4.95L2,14C1.53,16 3,17 5.5,17C8,17 9.56,16 9,14L6.05,7H9.17C9.5,7.85 10.15,8.5 11,8.83V20H2V22H22V20H13V8.82C13.85,8.5 14.5,7.85 14.82,7H17.95L15,14C14.53,16 16,17 18.5,17C21,17 22.56,16 22,14L19.05,7H21V5H14.83C14.4,3.8 13.27,3 12,3M12,5A1,1 0 0,1 13,6A1,1 0 0,1 12,7A1,1 0 0,1 11,6A1,1 0 0,1 12,5Z"/>
+                </svg> Right to Privacy</a></li>
+            <li><a href="#freedom-from-torture" data-translate="toc-torture"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12,3C10.73,3 9.6,3.8 9.18,5H3V7H4.95L2,14C1.53,16 3,17 5.5,17C8,17 9.56,16 9,14L6.05,7H9.17C9.5,7.85 10.15,8.5 11,8.83V20H2V22H22V20H13V8.82C13.85,8.5 14.5,7.85 14.82,7H17.95L15,14C14.53,16 16,17 18.5,17C21,17 22.56,16 22,14L19.05,7H21V5H14.83C14.4,3.8 13.27,3 12,3M12,5A1,1 0 0,1 13,6A1,1 0 0,1 12,7A1,1 0 0,1 11,6A1,1 0 0,1 12,5Z"/>
+                </svg> Freedom from Torture</a></li>
+            <li><a href="#right-to-fair-hearing" data-translate="toc-hearing"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12,3C10.73,3 9.6,3.8 9.18,5H3V7H4.95L2,14C1.53,16 3,17 5.5,17C8,17 9.56,16 9,14L6.05,7H9.17C9.5,7.85 10.15,8.5 11,8.83V20H2V22H22V20H13V8.82C13.85,8.5 14.5,7.85 14.82,7H17.95L15,14C14.53,16 16,17 18.5,17C21,17 22.56,16 22,14L19.05,7H21V5H14.83C14.4,3.8 13.27,3 12,3M12,5A1,1 0 0,1 13,6A1,1 0 0,1 12,7A1,1 0 0,1 11,6A1,1 0 0,1 12,5Z"/>
+                </svg> Right to Fair Hearing</a></li>
+            <li><a href="#administrative-justice" data-translate="toc-justice"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12,3C10.73,3 9.6,3.8 9.18,5H3V7H4.95L2,14C1.53,16 3,17 5.5,17C8,17 9.56,16 9,14L6.05,7H9.17C9.5,7.85 10.15,8.5 11,8.83V20H2V22H22V20H13V8.82C13.85,8.5 14.5,7.85 14.82,7H17.95L15,14C14.53,16 16,17 18.5,17C21,17 22.56,16 22,14L19.05,7H21V5H14.83C14.4,3.8 13.27,3 12,3M12,5A1,1 0 0,1 13,6A1,1 0 0,1 12,7A1,1 0 0,1 11,6A1,1 0 0,1 12,5Z"/>
+                </svg> Right to Administrative Justice</a></li>
+            <li><a href="#freedom-from-eviction" data-translate="toc-eviction"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12,3C10.73,3 9.6,3.8 9.18,5H3V7H4.95L2,14C1.53,16 3,17 5.5,17C8,17 9.56,16 9,14L6.05,7H9.17C9.5,7.85 10.15,8.5 11,8.83V20H2V22H22V20H13V8.82C13.85,8.5 14.5,7.85 14.82,7H17.95L15,14C14.53,16 16,17 18.5,17C21,17 22.56,16 22,14L19.05,7H21V5H14.83C14.4,3.8 13.27,3 12,3M12,5A1,1 0 0,1 13,6A1,1 0 0,1 12,7A1,1 0 0,1 11,6A1,1 0 0,1 12,5Z"/>
+                </svg> Freedom from Eviction</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <button id="print-button" title="Print this page" data-translate="print-button">🖨️ Print Rights</button>
+        
+        <!-- Freedom of Association Section -->
+        <section id="freedom-of-association">
+            <h2 data-translate="association-title">Freedom of Association, Assembly, Demonstration and Petition</h2>
+            <p data-translate="association-intro"> This right allows individuals to form groups, meet in public, demonstrate peacefully, and submit petitions to authorities without fear of repression.</p>
+            
+            <details>
+                <summary data-translate="association-summary">More details about this right</summary>
+                <div class="constitutional-text">
+                    <p data-translate="association-law">According to Section 58 of the Zimbabwean Constitution:</p>
+                    <p>"Every person has the right to freedom of assembly and association, and the right not to assemble or associate with others."</p>
+                </div>
+                <p data-translate="association-means">This means you can:</p>
+                <ul>
+                    <li data-translate="association-point1">Form or join any political party, trade union, or organization</li>
+                    <li data-translate="association-point2">Gather peacefully with others in public or private spaces</li>
+                    <li data-translate="association-point3">Organize or participate in peaceful demonstrations</li>
+                    <li data-translate="association-point4">Present petitions to public authorities</li>
+                </ul>
+                <p data-translate="association-limitations"><strong>Limitations:</strong> These rights may be restricted for public safety, public order, public health or morality, but any restrictions must be reasonable and justifiable in a democratic society.</p>
+                <p class="legal-reference" data-translate="association-reference">Constitutional reference: Section 58, Zimbabwe Constitution (2013)</p>
+            </details>
+        </section>
+
+        <!-- Personal Liberty Section -->
+        <section id="personal-liberty">
+            <h2 data-translate="liberty-title">Right to Personal Liberty</h2>
+            <p data-translate="liberty-intro"> Protection from arbitrary arrest or detention. Everyone has the right to move freely unless lawfully restricted.</p>
+            
+            <details>
+                <summary data-translate="liberty-summary">More details about this right</summary>
+                <div class="constitutional-text">
+                    <p data-translate="liberty-law">Section 49 of the Constitution states:</p>
+                    <p>"Every person has the right to personal liberty, which includes the right not to be detained without trial."</p>
+                </div>
+                <p data-translate="liberty-means">Key protections include:</p>
+                <ul>
+                    <li data-translate="liberty-point1">You cannot be arrested without reasonable suspicion of committing a crime</li>
+                    <li data-translate="liberty-point2">If arrested, you must be brought before a court within 48 hours</li>
+                    <li data-translate="liberty-point3">You have the right to remain silent and not incriminate yourself</li>
+                    <li data-translate="liberty-point4">You have the right to legal representation</li>
+                    <li data-translate="liberty-point5">You cannot be detained longer than the maximum period for the alleged offense</li>
+                </ul>
+                <p data-translate="liberty-exception"><strong>Exception:</strong> These rights may be suspended during a state of emergency declared by Parliament.</p>
+                <p class="legal-reference" data-translate="liberty-reference">Constitutional reference: Section 49, Zimbabwe Constitution (2013)</p>
+            </details>
+        </section>
+
+        <!-- Freedom of Conscience Section -->
+        <section id="freedom-of-conscience">
+            <h2 data-translate="conscience-title">Freedom of Conscience</h2>
+            <p data-translate="conscience-intro"> The freedom to think independently, hold personal beliefs, and practice religion freely.</p>
+            
+            <details>
+                <summary data-translate="conscience-summary">More details about this right</summary>
+                <div class="constitutional-text">
+                    <p data-translate="conscience-law">Section 60 of the Constitution guarantees:</p>
+                    <p>"Every person has the right to freedom of conscience, which includes freedom of thought, opinion, religion or belief."</p>
+                </div>
+                <p data-translate="conscience-means">This right protects:</p>
+                <ul>
+                    <li data-translate="conscience-point1">Freedom to change your religion or beliefs</li>
+                    <li data-translate="conscience-point2">Freedom to manifest your religion through worship, practice, teaching</li>
+                    <li data-translate="conscience-point3">Freedom from being compelled to take an oath contrary to your beliefs</li>
+                    <li data-translate="conscience-point4">Parents' rights to provide moral and religious education for their children</li>
+                </ul>
+                <p data-translate="conscience-note"><strong>Note:</strong> Religious practices must not infringe on others' rights or endanger public health/safety.</p>
+                <p class="legal-reference" data-translate="conscience-reference">Constitutional reference: Section 60, Zimbabwe Constitution (2013)</p>
+            </details>
+        </section>
+
+        <!-- Freedom of Expression Section -->
+        <section id="freedom-of-expression">
+            <h2 data-translate="expression-title">Freedom of Expression, Media Freedom and Access to Information</h2>
+            <p data-translate="expression-intro"> Guarantees the right to speak freely, access media and information without interference.</p>
+            
+            <details>
+                <summary data-translate="expression-summary">More details about this right</summary>
+                <div class="constitutional-text">
+                    <p data-translate="expression-law">Section 61 states:</p>
+                    <p>"Every person has the right to freedom of expression, which includes freedom to seek, receive and communicate ideas and information."</p>
+                </div>
+                <p data-translate="expression-means">This includes:</p>
+                <ul>
+                    <li data-translate="expression-point1">Freedom of the press and other media</li>
+                    <li data-translate="expression-point2">Academic freedom in institutions of higher education</li>
+                    <li data-translate="expression-point3">Freedom to access information held by the state or public institutions</li>
+                    <li data-translate="expression-point4">Right to communicate in any language of your choice</li>
+                </ul>
+                <p data-translate="expression-limitations"><strong>Limitations:</strong> These rights may be limited to protect national security, public order, public health or morals, or the rights of others.</p>
+                <p class="legal-reference" data-translate="expression-reference">Constitutional reference: Sections 61 & 62, Zimbabwe Constitution (2013)</p>
+            </details>
+        </section>
+
+        <!-- Right to Life Section -->
+        <section id="right-to-life">
+            <h2 data-translate="life-title">Right to Life</h2>
+            <p data-translate="life-intro"> Every person has the inherent right to life, which must be protected by law.</p>
+           
+            <details>
+                <summary data-translate="life-summary">More details about this right</summary>
+                <div class="constitutional-text">
+                    <p data-translate="life-law">Section 48 declares:</p>
+                    <p>"Every person has the right to life. No person may be deprived of life intentionally except in execution of a sentence of a court after conviction for an offense."</p>
+                </div>
+                <p data-translate="life-means">Important aspects:</p>
+                <ul>
+                    <li data-translate="life-point1">Death penalty is permitted only for murder committed in aggravating circumstances</li>
+                    <li data-translate="life-point2">Cannot be imposed on women, persons under 21 or over 70</li>
+                    <li data-translate="life-point3">State must protect lives through reasonable legislative measures</li>
+                    <li data-translate="life-point4">Includes right to access healthcare, clean water, and adequate food</li>
+                </ul>
+                <p class="legal-reference" data-translate="life-reference">Constitutional reference: Section 48, Zimbabwe Constitution (2013)</p>
+            </details>
+        </section>
+
+        <!-- Right to Human Dignity Section -->
+        <section id="human-dignity">
+            <h2 data-translate="dignity-title">Right to Human Dignity</h2>
+            <p data-translate="dignity-intro"> Everyone deserves to be treated with respect, worth, and without humiliation.</p>
+            
+            <details>
+                <summary data-translate="dignity-summary">More details about this right</summary>
+                <div class="constitutional-text">
+                    <p data-translate="dignity-law">Section 51 states:</p>
+                    <p>"Every person has inherent dignity in their private and public life, and the right to have that dignity respected and protected."</p>
+                </div>
+                <p data-translate="dignity-means">This right protects against:</p>
+                <ul>
+                    <li data-translate="dignity-point1">Degrading treatment or punishment</li>
+                    <li data-translate="dignity-point2">Unfair discrimination</li>
+                    <li data-translate="dignity-point3">Violation of bodily integrity</li>
+                    <li data-translate="dignity-point4">Forced labor or servitude</li>
+                </ul>
+                <p data-translate="dignity-guarantees">It also guarantees:</p>
+                <ul>
+                    <li data-translate="dignity-point5">Right to reasonable accommodation for persons with disabilities</li>
+                    <li data-translate="dignity-point6">Right to fair labor practices</li>
+                    <li data-translate="dignity-point7">Protection from slavery and human trafficking</li>
+                </ul>
+                <p class="legal-reference" data-translate="dignity-reference">Constitutional reference: Section 51, Zimbabwe Constitution (2013)</p>
+            </details>
+        </section>
+
+        <!-- Right to Privacy Section -->
+        <section id="right-to-privacy">
+            <h2 data-translate="privacy-title">Right to Privacy</h2>
+            <p data-translate="privacy-intro"> This right protects private life, personal data, and communications.</p>
+            
+            <details>
+                <summary data-translate="privacy-summary">More details about this right</summary>
+                <div class="constitutional-text">
+                    <p data-translate="privacy-law">Section 57 provides:</p>
+                    <p>"Every person has the right to privacy, which includes the right not to have their home, premises or property entered without their permission."</p>
+                </div>
+                <p data-translate="privacy-means">This includes:</p>
+                <ul>
+                    <li data-translate="privacy-point1">Privacy of personal communications (mail, phone, email)</li>
+                    <li data-translate="privacy-point2">Protection of personal data and information</li>
+                    <li data-translate="privacy-point3">Freedom from unlawful searches of person or property</li>
+                    <li data-translate="privacy-point4">Right to confidentiality of health information</li>
+                </ul>
+                <p data-translate="privacy-exceptions"><strong>Exceptions:</strong> Law enforcement may conduct searches with a valid warrant or in urgent circumstances.</p>
+                <p class="legal-reference" data-translate="privacy-reference">Constitutional reference: Section 57, Zimbabwe Constitution (2013)</p>
+            </details>
+        </section>
+
+        <!-- Freedom from Torture Section -->
+        <section id="freedom-from-torture">
+            <h2 data-translate="torture-title">Freedom from Torture or Cruel, Inhuman or Degrading Treatment or Punishment</h2>
+            <p data-translate="torture-intro"> No one shall be subjected to torture or to cruel, inhuman or degrading punishment or treatment.</p>
+            
+            <details>
+                <summary data-translate="torture-summary">More details about this right</summary>
+                <div class="constitutional-text">
+                    <p data-translate="torture-law">Section 53 states:</p>
+                    <p>"No person may be subjected to physical or psychological torture or to cruel, inhuman or degrading treatment or punishment."</p>
+                </div>
+                <p data-translate="torture-means">This absolute right prohibits:</p>
+                <ul>
+                    <li data-translate="torture-point1">Any form of physical abuse by authorities</li>
+                    <li data-translate="torture-point2">Psychological torment or coercion</li>
+                    <li data-translate="torture-point3">Harsh prison conditions that violate human dignity</li>
+                    <li data-translate="torture-point4">Medical or scientific experimentation without consent</li>
+                </ul>
+                <p data-translate="torture-important"><strong>Important:</strong> This right has no exceptions and cannot be limited under any circumstances, including states of emergency.</p>
+                <p class="legal-reference" data-translate="torture-reference">Constitutional reference: Section 53, Zimbabwe Constitution (2013)</p>
+            </details>
+        </section>
+
+        <!-- Right to Fair Hearing Section -->
+        <section id="right-to-fair-hearing">
+            <h2 data-translate="hearing-title">Right to Fair Hearing</h2>
+            <p data-translate="hearing-intro"> Everyone has the right to a fair and public hearing by an impartial body.</p>
+
+            <details>
+                <summary data-translate="hearing-summary">More details about this right</summary>
+                <div class="constitutional-text">
+                    <p data-translate="hearing-law">Section 69 provides:</p>
+                    <p>"Every person accused of an offense has the right to a fair and public trial within a reasonable time before an independent and impartial court."</p>
+                </div>
+                <p data-translate="hearing-means">Key elements include:</p>
+                <ul>
+                    <li data-translate="hearing-point1">Presumption of innocence until proven guilty</li>
+                    <li data-translate="hearing-point2">Right to be informed of charges in a language you understand</li>
+                    <li data-translate="hearing-point3">Right to adequate time and facilities to prepare defense</li>
+                    <li data-translate="hearing-point4">Right to legal representation (state-funded if necessary)</li>
+                    <li data-translate="hearing-point5">Right to examine witnesses and present evidence</li>
+                    <li data-translate="hearing-point6">Right to appeal or review of conviction/sentence</li>
+                </ul>
+                <p class="legal-reference" data-translate="hearing-reference">Constitutional reference: Section 69, Zimbabwe Constitution (2013)</p>
+            </details>
+        </section>
+
+        <!-- Right to Administrative Justice Section -->
+        <section id="administrative-justice">
+            <h2 data-translate="justice-title">Right to Administrative Justice</h2>
+            <p data-translate="justice-intro"> Protection from unfair decisions by authorities; ensures lawful and timely actions.</p>
+
+            <details class="details-style">
+                <summary data-translate="justice-summary">More details about this right</summary>
+                <div class="constitutional-text">
+                    <p data-translate="justice-law">Section 68 states:</p>
+                    <p>"Every person has a right to administrative conduct that is lawful, prompt, efficient, reasonable, proportionate, impartial and both substantively and procedurally fair."</p>
+                </div>
+                <p data-translate="justice-means">This means you have the right to:</p>
+                <ul>
+                    <li data-translate="justice-point1">Be given written reasons for administrative decisions affecting you</li>
+                    <li data-translate="justice-point2">Request review of adverse administrative decisions</li>
+                    <li data-translate="justice-point3">Access information relevant to administrative decisions about you</li>
+                    <li data-translate="justice-point4">Expect government officials to act within their legal authority</li>
+                </ul>
+                <p data-translate="justice-application"><strong>Application:</strong> Covers all government departments, local authorities, and public institutions.</p>
+                <p class="legal-reference" data-translate="justice-reference">Constitutional reference: Section 68, Zimbabwe Constitution (2013)</p>
+            </details>
+        </section>
+
+        <!-- Freedom from Eviction Section -->
+        <section id="freedom-from-eviction">
+            <h2 data-translate="eviction-title">Freedom from Arbitrary Eviction</h2>
+            <p data-translate="eviction-intro"> You cannot be removed from your home or land without due legal process.</p>
+            
+            <details>
+                <summary data-translate="eviction-summary">More details about this right</summary>
+                <div class="constitutional-text">
+                    <p data-translate="eviction-law">Section 74 provides:</p>
+                    <p>"No person may be evicted from their home, or have their home demolished, without an order of court made after considering all relevant circumstances."</p>
+                </div>
+                <p data-translate="eviction-means">Protections include:</p>
+                <ul>
+                    <li data-translate="eviction-point1">Requirement for court order before eviction</li>
+                    <li data-translate="eviction-point2">Right to be heard before eviction order is granted</li>
+                    <li data-translate="eviction-point3">Prohibition on destruction of crops or property during eviction</li>
+                    <li data-translate="eviction-point4">Right to alternative accommodation if evicted from public land</li>
+                </ul>
+                <p data-translate="eviction-exception"><strong>Exception:</strong> Emergency situations may allow temporary relocation for public safety, but with right to return when safe.</p>
+                <p class="legal-reference" data-translate="eviction-reference">Constitutional reference: Section 74, Zimbabwe Constitution (2013)</p>
+            </details>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-brand">
+            <img src="{{url_for('static', filename='images/favicons/favicon.png')}}" alt="Connect Aid" width="100">
+            <p data-translate="footer-text">Connect Aid Legal Empowerment Program<br>
+            <small data-translate="footer-copyright">© 2025 | All Rights Reserved</small></p>
+        </div>
+    </footer>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Print functionality
+    const printButton = document.getElementById('print-button');
+    if (printButton) {
+        printButton.addEventListener('click', function() {
+            window.print();
+        });
+    }
+});
+</script>
+{% endblock %}

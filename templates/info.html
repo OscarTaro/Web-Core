@@ -1,0 +1,302 @@
+{% extends 'base.html' %}
+{%block title %} Connect With Us | ConnectAid {% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}" type="text/css">{% endblock %}
+{% block content %}
+{% if current_user.is_authenticated %}
+        <header>
+            <div class="notification-container">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="notification notification-{{ category }}" data-duration="5000">
+                                <span class="notification-message">{{ message }}</span>
+                                <button class="notification-close">&times;</button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="splash-screen">
+                <div class="splash-content">
+                    <img src="{{url_for('static', filename='images/logos/connect_logo.png')}}" alt="Connect Aid Logo" class="splash-logo">
+                    <p class="powered-by">Justice Through Community Support</p>
+                </div>
+            </div>
+            <section class="hero">
+                <img src="{{url_for('static', filename='images/hero/connect.jpeg')}}" alt="Connect Aid Hero"/>
+                <article class="hero-messages">
+                    <p>Supporting Your Right to Justice</p>
+                    <p>We're Here to Help — Anytime</p>
+                </article>
+            </section>
+            <section class="flex">
+                <a href="{{url_for('home')}}" class="home-link">← Back to Home</a>
+                <p>&#128222;&nbsp;<a href="tel:0779148269">Call Us</a></p>
+                <p>&#128172;&nbsp;<a href="#contact-form">Message Support</a></p>
+            </section>
+        </header>
+
+        <main>
+            <h1>Connect With Connect Aid</h1>
+            
+            <section class="connect-section">
+
+                <article class="connect-box">
+                    <h2>Help & Support</h2>
+                    <ul>
+                        <li><a href="{{url_for('faq')}}">Frequently Asked Questions</a> - Quick answers to common queries</li>
+                        <li><a href="mailto:support@connectaid.org">Email Support</a> - Contact our support team directly</li>
+                        <li><a href="{{url_for('emergency')}}">Emergency Contacts</a> - Immediate assistance resources</li>
+                    </ul>
+                </article>
+
+                <article class="connect-box">
+                    <h2>Privacy & Legal</h2>
+                    <ul>
+                        <li><a href="{{url_for('privacy')}}">Privacy Policy</a> - How we protect your information</li>
+                        <li><a href="{{url_for('terms')}}">Terms of Service</a> - Our terms and conditions</li>
+                        <li><a href="{{url_for('security')}}">Security Features</a> - Our commitment to your safety</li>
+                    </ul>
+                </article>
+            </section>
+
+            <fieldset id="contact-form">
+                <legend>Contact Us Directly</legend>
+                <form class="contact-form" action="{{url_for('info')}}" method="POST">
+                    <input type="hidden" name="form_type" value="info_query">
+                    <div class="form-group">
+                        <label for="name" class="required">Your Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="required">Email Address:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" class="required">Subject:</label>
+                        <select id="subject" name="subject" required>
+                            <option value="general">General Inquiry</option>
+                            <option value="support">Support Request</option>
+                            <option value="legal">Legal Assistance</option>
+                            <option value="privacy">Privacy Concern</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="required">Your Message:</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message &#128231;</button>
+                </form>
+            </fieldset>
+
+            <section class="social-connect">
+                <h2>Connect With Us On Social Media</h2>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook"><img src = "{{url_for('static', filename='images/logos/facebook.png')}}" width = "50" heigth = "50" alt = "fb_logo">Facebook</a>
+                    <a href="#" class="social-link" aria-label="Twitter"><img src = "{{url_for('static', filename='images/logos/twitter.png')}}" width = "50" heigth = "50" alt = "tw_logo" class = "tw_logo">Twitter</a>
+                    <a href="#" class="social-link" aria-label="Instagram"><img src = "{{url_for('static', filename='images/logos/instagram.png')}}" width = "50" heigth = "50" alt = "in_logo">Instagram</a>
+                    <a href="#" class="social-link" aria-label="WhatsApp"><img src = "{{url_for('static', filename='images/logos/whatsapp-2.png')}}" width = "50" heigth = "50" alt = "wh_logo">WhatsApp</a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+           <section>
+                <article class="flex2">
+                    <p>&#128737; <a href="{{url_for('privacy')}}">Your Privacy Rights</a></p>
+                    <p>&#128279; <a href="{{url_for('info')}}">Contact Legal Support</a></p>
+                    <p>&#128218; <a href="{{url_for('lawyers')}}">Pro Bono Lawyers</a></p>
+                </article>
+                <article class="flex3">
+                    <p class="align">&copy; 2025 Connect Aid. All Rights Reserved.</p>
+                    <p class="align">Confidentiality guaranteed under Zimbabwean law</p>
+                    <p class="align"><a href="{{url_for('privacy')}}">Privacy</a> &#124; <a href="{{url_for('terms')}}">Terms</a> &#124; <a href="{{url_for('bod')}}">Board of Directors</a></p>
+                </article>
+            </section>
+        </footer>
+{% else %}
+<div class="notification-container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="notification notification-{{ category }}" data-duration="5000">
+                    <span class="notification-message">{{ message }}</span>
+                    <button class="notification-close">&times;</button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+<fieldset>
+    <legend>Create Account</legend>
+    <form action="{{ url_for('info') }}" method="POST" id="signup-form">
+        <input type="hidden" name="form_type" value="signup">
+        
+        <div class="form-group">
+            <label for="username" class="required">Username:</label>
+            <input type="text" name="username" id="username" placeholder="Enter Username" required
+                   aria-describedby="username-help">
+            <small id="username-help" class="form-help">4-20 characters, letters and numbers only</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="email" class="required">Email:</label>
+            <input type="email" name="email" id="email" placeholder="Enter Email" required
+                   aria-describedby="email-help">
+            <small id="email-help" class="form-help">We'll never share your email</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="password" class="required">Password:</label>
+            <div class="password-input-wrapper">
+                <input type="password" name="password" id="password" placeholder="Enter Password" required
+                       aria-describedby="password-help password-requirements"
+                       minlength="8" maxlength="64"
+                       pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$">
+                <button type="button" class="toggle-password" aria-label="Show password"
+                        aria-controls="password" data-toggle="password">
+                    <svg class="eye-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.82 9.82 0 0 0 17.64 0 9.82 9.82 0 0 0-17.64 0z"/>
+                    </svg>
+                </button>
+            </div>
+            <small id="password-help" class="form-help">Minimum 8 characters</small>
+            <div id="password-requirements" class="requirements">
+                <span data-requirement="length">✓ 8+ characters</span>
+                <span data-requirement="uppercase">✓ Uppercase letter</span>
+                <span data-requirement="number">✓ Number</span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="confirm_password" class="required">Confirm Password:</label>
+            <div class="password-input-wrapper">
+                <input type="password" name="confirm_password" id="confirm_password" 
+                       placeholder="Repeat Password" required
+                       aria-describedby="confirm-help">
+                <button type="button" class="toggle-password" aria-label="Show password"
+                        aria-controls="confirm_password" data-toggle="password">
+                    <svg class="eye-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.82 9.82 0 0 0 17.64 0 9.82 9.82 0 0 0-17.64 0z"/>
+                    </svg>
+                </button>
+            </div>
+            <small id="confirm-help" class="form-help">Must match password</small>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Register</button>
+            <button type="reset" class="btn-secondary">Clear</button>
+        </div>
+        
+        <p class="auth-redirect">
+            Already have an account? <a href="{{ url_for('login') }}">Log In</a>
+        </p>
+    </form>
+</fieldset>
+
+<style>
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+}
+
+.password-input-wrapper input {
+    padding-right: 40px;
+    width: 100%;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    color: #666;
+}
+
+.toggle-password:hover, .toggle-password:focus {
+    color: #333;
+    outline: none;
+}
+
+.eye-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.requirements {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+}
+
+.requirements span {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.requirements span::before {
+    content: "✓";
+    color: green;
+}
+
+.form-help {
+    display: block;
+    margin-top: 0.25rem;
+    color: #666;
+    font-size: 0.85rem;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Password visibility toggle
+    document.querySelectorAll('[data-toggle="password"]').forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const inputId = this.getAttribute('aria-controls');
+            const input = document.getElementById(inputId);
+            const isHidden = input.type === 'password';
+            
+            input.type = isHidden ? 'text' : 'password';
+            this.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+            this.querySelector('.eye-icon').style.opacity = isHidden ? 0.7 : 1;
+        });
+    });
+
+    // Password strength validation
+    const passwordInput = document.getElementById('password');
+    if (passwordInput) {
+        passwordInput.addEventListener('input', function() {
+            const value = this.value;
+            const requirements = {
+                length: value.length >= 8,
+                uppercase: /[A-Z]/.test(value),
+                number: /\d/.test(value)
+            };
+            
+            Object.keys(requirements).forEach(key => {
+                const element = document.querySelector(`[data-requirement="${key}"]`);
+                if (element) {
+                    element.style.color = requirements[key] ? 'green' : 'gray';
+                    element.querySelector('span').textContent = requirements[key] ? '✓' : '✗';
+                }
+            });
+        });
+    }
+});
+</script>
+{% endif %}
+{% endblock %}

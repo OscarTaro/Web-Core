@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% block title %} Legal Assistant Chatbot - ConnectAid {% endblock %}
+{% block content %}
+<section class="chatbot-section">
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <h2 data-translate="chatbot-title">Legal Education Assistant</h2>
+            <p data-translate="chatbot-desc">Ask questions about Zimbabwean law, your rights, court processes, legal procedures, and our partner organizations.</p>
+        </div>
+        
+        <div class="chatbot-interface">
+            <div class="chat-messages" id="chatMessages">
+                <div class="bot-message">
+                    <p><strong>Legal Assistant:</strong> Hello! I can help you with information about:</p>
+                    
+                    <div class="quick-categories">
+                        <div class="category-group">
+                            <h4>Legal Rights & Procedures</h4>
+                            <div class="suggestion-buttons">
+                                <button class="suggestion-btn" data-question="What are my rights if arrested?">Arrest Rights</button>
+                                <button class="suggestion-btn" data-question="How do I get a protection order?">Protection Orders</button>
+                                <button class="suggestion-btn" data-question="What is the court process for small claims?">Small Claims Court</button>
+                                <button class="suggestion-btn" data-question="How do I file a maintenance claim?">Maintenance Claims</button>
+                                <button class="suggestion-btn" data-question="What are my employment rights?">Employment Rights</button>
+                            </div>
+                        </div>
+                        
+                        <div class="category-group">
+                            <h4>Partner Organizations</h4>
+                            <div class="suggestion-buttons">
+                                <button class="suggestion-btn" data-question="What is Angel of Hope Foundation?">Angel of Hope</button>
+                                <button class="suggestion-btn" data-question="What does Legal Resources Foundation do?">LRF Services</button>
+                                <button class="suggestion-btn" data-question="How can Childline Zimbabwe help?">Childline Zimbabwe</button>
+                                <button class="suggestion-btn" data-question="What is the Human Rights NGO Forum?">HR NGO Forum</button>
+                                <button class="suggestion-btn" data-question="Tell me about the Adult Rape Clinic">Adult Rape Clinic</button>
+                            </div>
+                        </div>
+                        
+                        <div class="category-group">
+                            <h4>Legal Resources & Support</h4>
+                            <div class="suggestion-buttons">
+                                <button class="suggestion-btn" data-question="Where can I get free legal aid?">Free Legal Aid</button>
+                                <button class="suggestion-btn" data-question="What is an affidavit and how do I make one?">Affidavit Help</button>
+                                <button class="suggestion-btn" data-question="What are the emergency contacts for legal help?">Emergency Contacts</button>
+                                <button class="suggestion-btn" data-question="How can I get GBV support?">GBV Support</button>
+                                <button class="suggestion-btn" data-question="Where can I download legal forms?">Legal Forms</button>
+                            </div>
+                        </div>
+                        
+                        <div class="category-group">
+                            <h4>About ConnectAid</h4>
+                            <div class="suggestion-buttons">
+                                <button class="suggestion-btn" data-question="What is ConnectAid and what do you do?">About ConnectAid</button>
+                                <button class="suggestion-btn" data-question="What languages does ConnectAid support?">Language Support</button>
+                                <button class="suggestion-btn" data-question="Who founded ConnectAid?">Our Foundation</button>
+                                <button class="suggestion-btn" data-question="What services does ConnectAid provide?">Our Services</button>
+                                <button class="suggestion-btn" data-question="How does ConnectAid protect my privacy?">Privacy Protection</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p>Or type your own question below!</p>
+                </div>
+            </div>
+            
+            <div class="chat-input-container">
+                <input type="text" id="userInput" placeholder="Ask about legal rights, court processes, or our services..." data-translate="chat-placeholder">
+                <button id="sendButton">Send</button>
+            </div>
+            
+            <div class="suggested-questions">
+                <h4 data-translate="quick-questions">Quick Questions:</h4>
+                <button class="suggestion-btn quick" data-question="What are my rights if arrested?">Arrest Rights</button>
+                <button class="suggestion-btn quick" data-question="How do I file a small claims case?">Small Claims</button>
+                <button class="suggestion-btn quick" data-question="What is Angel of Hope Foundation?">Angel of Hope</button>
+                <button class="suggestion-btn quick" data-question="Where can I get free legal aid?">Legal Aid</button>
+                <button class="suggestion-btn quick" data-question="What is ConnectAid?">About Us</button>
+            </div>
+        </div>
+        
+       <div class="chatbot-resources">
+            <h4>Need Immediate Help?</h4>
+            <div class="emergency-buttons">
+                <a href="{{ url_for('emergency') }}" class="emergency-btn police">
+                    <span class="emergency-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11.5C15.4,11.5 16,12.1 16,12.7V16.5C16,17.1 15.4,17.7 14.8,17.7H9.2C8.6,17.7 8,17.1 8,16.5V12.6C8,12 8.6,11.4 9.2,11.4V10C9.2,8.6 10.6,7 12,7M12,5A1,1 0 0,1 13,6A1,1 0 0,1 12,7A1,1 0 0,1 11,6A1,1 0 0,1 12,5Z" fill="currentColor"/>
+                        </svg>
+                    </span>
+                    <span class="emergency-text">
+                        <strong>Police Emergency</strong>
+                        <small>Victim Friendly Unit: 0242 744 785</small>
+                    </span>
+                </a>
+                
+                <a href="{{ url_for('gbvResources') }}" class="emergency-btn gbv">
+                    <span class="emergency-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,5.7L16.9,10.5H15.5V12.5H13.5V10.5H12.5V12.5H10.5V10.5H8.5V12.5H6.5V10.5H5.1L12,5.7M11,14H13V16H11V14M15,14H17V16H15V14M7,14H9V16H7V14M11,17H13V19H11V17M15,17H17V19H15V17M7,17H9V19H7V17Z" fill="currentColor"/>
+                        </svg>
+                    </span>
+                    <span class="emergency-text">
+                        <strong>GBV Support</strong>
+                        <small>Gender-Based Violence Help</small>
+                    </span>
+                </a>
+                
+                <a href="{{ url_for('lawyers') }}" class="emergency-btn lawyer">
+                    <span class="emergency-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M19,3A2,2 0 0,1 21,5V7A2,2 0 0,1 19,9H5A2,2 0 0,1 3,7V5A2,2 0 0,1 5,3H19M5,11A2,2 0 0,0 3,13V15A2,2 0 0,0 5,17H7V21H9V17H11V21H13V17H15V21H17V17H19A2,2 0 0,0 21,15V13A2,2 0 0,0 19,11H5Z" fill="currentColor"/>
+                        </svg>
+                    </span>
+                    <span class="emergency-text">
+                        <strong>Legal Representation</strong>
+                        <small>Find Pro Bono Lawyers</small>
+                    </span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="chatbot-disclaimer">
+            <p><strong>Disclaimer:</strong> This chatbot provides general legal information, not legal advice. For specific legal problems, consult a qualified lawyer. In emergencies, contact the appropriate authorities immediately.</p>
+        </div>
+    </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Oscar T. Mhlanga">
+        <meta name="description" content="Connect Aid Zimbabwe">
+        <meta name="viewport" content="width=device-width, initial-scale= 1.0">
+        <title>{% block title %} ConnectAid {% endblock %}</title>
+        <link rel="icon" href="{{url_for('static', filename='images/favicons/favicon.png')}}" type="image/png">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
+        {% block extra_css %}{% endblock %}
+    </head>
+    <body>
+        {% block content %}{% endblock %}
+    </body>
+    <script src="{{url_for('static', filename='js/languages.js')}}"></script>
+</html>

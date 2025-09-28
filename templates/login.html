@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block title %}Login | ConnectAid{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}" type="text/css">
+<style>
+    .rate-limit-alert {
+        background-color: #fff3f3;
+        border-left: 4px solid #ff6b6b;
+        padding: 8px 12px;
+        margin-top: 10px;
+        color: #d32f2f;
+        font-size: 0.9rem;
+    }
+    #countdown {
+        font-weight: bold;
+    }
+    .disabled-form {
+        opacity: 0.7;
+        pointer-events: none;
+    }
+    .password-reset-link {
+        text-align: center;
+        margin-top: 1rem;
+    }
+    .password-reset-link a {
+        color: #1a73e8;
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+    .password-reset-link a:hover {
+        text-decoration: underline;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="notification-container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="notification notification-{{ category }}">
+                    <span class="notification-message">{{ message }}</span>
+                    {% if category == 'error' and 'too many' in message|lower %}
+                    <div class="rate-limit-alert">
+                        <span id="countdown">60</span> seconds until you can try again
+                    </div>
+                    {% endif %}
+                    <button class="notification-close">&times;</button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+
+<fieldset id="login-form" {% if rate_limited %} class="disabled-form"{% endif %}>
+    <legend>Login</legend>
+    <form action="{{ url_for('login') }}" method="POST">
+        {{ form.hidden_tag() }}
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" placeholder="Enter Email" required
+                   {% if rate_limited %}disabled{% endif %}>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" placeholder="Enter Password" required
+                   {% if rate_limited %}disabled{% endif %}>
+        </div>
+        <div class="form-actions">
+            <button type="submit" {% if rate_limited %}disabled{% endif %}>Submit</button>
+            <button type="reset">Reset</button>
+        </div>
+        <div class="password-reset-link">
+            <a href="{{ url_for('request_password_reset') }}">Forgot your password?</a>
+        </div>
+    </form>
+</fieldset>
+
+{% if rate_limited %}
+<script>
+    // Countdown timer for rate limiting
+    let timeLeft = 60;
+    const countdownElement = document.getElementById('countdown');
+    const countdownInterval = setInterval(() => {
+        timeLeft--;
+        countdownElement.textContent = timeLeft;
+        if (timeLeft <= 0) {
+            clearInterval(countdownInterval);
+            document.getElementById('login-form').classList.remove('disabled-form');
+            document.querySelectorAll('#login-form input, #login-form button[type="submit"]')
+                .forEach(el => el.disabled = false);
+        }
+    }, 1000);
+</script>
+{% endif %}
+{% endblock %}

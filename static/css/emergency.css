@@ -1,0 +1,205 @@
+:root {
+            --primary-color: #00b4d8;
+            --primary-dark: #0196ba;
+            --text-color: #1f2d3d;
+            --light-bg: #f7f9fc;
+            --border-color: #ddd;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: var(--text-color);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary-dark);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 1.5rem 0 0.5rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .province-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .province-card {
+            background-color: var(--card-bg);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .province-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .province-link {
+            display: block;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .province-link::after {
+            content: "→";
+            margin-left: 0.5rem;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .province-link:hover {
+            color: var(--primary-dark);
+        }
+
+        .province-link:hover::after {
+            transform: translateX(3px);
+        }
+
+        .district-card {
+            background-color: var(--card-bg);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-item {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border-left: 2px solid var(--primary-color);
+            background-color: rgba(0, 180, 216, 0.05);
+        }
+
+        .contact-item strong {
+            display: inline-block;
+            min-width: 200px;
+        }
+
+        .whatsapp-badge {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.3rem;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+            font-weight: bold;
+        }
+
+        .map-link {
+            display: inline-block;
+            margin-top: 0.3rem;
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .map-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .map-icon {
+            margin-right: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .back-home-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-home-link:hover {
+            color: var(--primary-color);
+            transform: translateX(-3px);
+        }
+
+        .back-link{
+            color: var(--primary-dark);
+        }
+
+        .back-link:hover{
+            opacity:70%;
+            transition: all 0.2s ease-in 0.3s;
+        }
+
+        .map-link {
+            display: inline-block;
+            margin-top: 0.3rem;
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .map-link:hover {
+            color: var(--primary-color);
+            text-decoration: none;
+            transform:scale(1.1,1.1);
+            transition: all 0.2 ease-in-out 0.3;
+            
+        }
+
+        .map-icon {
+            margin-right: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .province-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .contact-item strong {
+                min-width: 150px;
+                display: block;
+                margin-bottom: 0.3rem;
+            }
+        }

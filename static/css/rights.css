@@ -1,0 +1,446 @@
+:root {
+    --primary-color: #00b4d8;
+    --primary-dark: #0196ba;
+    --text-color: #1f2d3d;
+    --light-bg: #f7f9fc;
+    --border-color: #ddd;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: #1f1f1f;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+    font-size: 2rem;
+}
+
+h2 {
+    color: var(--primary-dark);
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
+.toc {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: white;
+    border-left: 5px solid var(--primary-color);
+    border-radius: 0.5rem;
+}
+
+.toc h3 {
+    margin-top: 0;
+    color: var(--primary-dark);
+}
+
+.toc ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.toc li {
+    margin: 0.5rem 0;
+}
+
+.toc a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.toc a:hover {
+    color: var(--primary-dark);
+}
+
+.back-home-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--primary-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.back-home-link:hover {
+    color: var(--primary-color);
+    transform: translateX(-3px);
+}
+
+section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+footer {
+    margin-top: 4rem;
+}
+
+.flex2, .flex3 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    background: linear-gradient(90deg, var(--primary-color) 0%, #08d9d6 100%);
+    color: white;
+    text-align: center;
+}
+
+.flex2 a, .flex3 a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.flex2 a:hover, .flex3 a:hover {
+    color: #1f2d3d;
+}
+
+.align {
+    padding: 0.5rem 0;
+}
+
+/* Fixed details element styling */
+details {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e1e5eb;
+}
+
+details:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-color: #00b4d8;
+}
+
+details[open] {
+    border-left: 4px solid var(--primary-color);
+    padding: 1.5rem;
+}
+
+summary {
+    font-weight: 600;
+    color: var(--primary-dark);
+    cursor: pointer;
+    padding: 0.75rem;
+    margin: -0.75rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+summary:hover {
+    color: var(--primary-color);
+    background-color: #f8f9fa;
+}
+
+details > div:not(.constitutional-text) {
+    margin-top: 1rem;
+}
+
+details p:first-of-type {
+    margin-top: 1.5rem;
+}
+
+details ul, details ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+details li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.legal-reference {
+    font-style: italic;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    border-top: 1px dashed #ddd;
+    padding-top: 1rem;
+    text-align: right;
+}
+
+.constitutional-text {
+    background-color: #f8f9fa;
+    padding: 1.25rem;
+    border-radius: 6px;
+    border-left: 3px solid var(--primary-dark);
+    margin: 1rem 0;
+    font-style: italic;
+}
+
+#freedom-of-association, #personal-liberty, 
+#freedom-of-conscience, #freedom-of-expression,
+#right-to-life, #human-dignity,
+#legal-reference,#right-to-privacy,
+#freedom-from-torture, #right-to-fair-hearing,
+#administrative-justice, #freedom-from-eviction{
+    border-left:5px solid var(--primary-color);
+    border-radius: 1rem;
+    padding:1rem;
+    background:white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+#print-button {
+    display: block;
+    margin: 1rem auto 2rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#print-button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+#print-button:active {
+    transform: translateY(0);
+}
+
+/* Print-specific styles */
+@media print {
+    #print-button {
+        display: none;
+    }
+}
+
+.org-branding {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.org-tagline {
+    font-size: 0.9rem;
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
+h1 .subtitle {
+    display: block;
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 0.5rem;
+}
+
+.document-meta {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: -1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Footer Styles */
+footer {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    background-color: #f8f9fa;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-brand img {
+    height: auto;
+    filter: grayscale(30%) brightness(0.8);
+    transition: filter 0.3s ease;
+}
+
+.footer-brand p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+.footer-brand small {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.footer-brand img:hover {
+    filter: grayscale(0%) brightness(1);
+}
+
+/* Fixed Language Selector */
+.language-selector {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 20px 0;
+    padding: 12px 15px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    border: 1px solid #e1e5eb;
+    text-align: center;
+}
+
+.language-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.language-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.language-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    min-width: 70px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .language-selector {
+        margin: 15px 0;
+        padding: 10px;
+    }
+    
+    .language-container {
+        gap: 8px;
+    }
+    
+    .language-options {
+        gap: 5px;
+    }
+    
+    .language-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+        min-width: 60px;
+    }
+    
+    /* Mobile details fixes */
+    details {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+    
+    details[open] {
+        padding: 1rem;
+    }
+    
+    summary {
+        padding: 0.75rem;
+        margin: -0.75rem;
+        font-size: 0.95rem;
+    }
+    
+    .constitutional-text {
+        padding: 1rem;
+        margin: 0.75rem 0;
+    }
+    
+    details ul, details ol {
+        padding-left: 1.25rem;
+    }
+    
+    .flex2, .flex3 {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-options {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .language-btn {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    /* Mobile details fixes */
+    details {
+        padding: 0.75rem;
+        margin: 0.75rem 0;
+    }
+    
+    details[open] {
+        padding: 0.75rem;
+    }
+    
+    summary {
+        padding: 0.5rem;
+        margin: -0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .constitutional-text {
+        padding: 0.75rem;
+    }
+    
+    details ul, details ol {
+        padding-left: 1rem;
+    }
+}
+
+/* Print optimization */
+@media print {
+    footer {
+        border-top: none;
+        background: none;
+        padding: 0;
+        margin-top: 2rem;
+    }
+    
+    .footer-brand {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .footer-brand p {
+        text-align: left;
+    }
+}

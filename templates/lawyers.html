@@ -1,0 +1,371 @@
+{% extends 'base.html' %}
+{%block title %} Find A Lawyer in Zimbabwe | ConnectAid {% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/lawyers.css')}}" type="text/css">
+{% endblock %}
+{% block content %}
+<body>
+    <header>
+        <h1 data-translate="find-lawyer-title">Find A Lawyer in Zimbabwe</h1>
+        <p class="subtitle" data-translate="law-society-subtitle">Law Society of Zimbabwe Registered Practitioners</p>
+        <a href="{{url_for('home')}}" class="back-home-link" data-translate="back-home">← Back to Home</a>
+    </header>
+    
+    <div class="search-container">
+        <input type="text" id="search-input" data-translate="search-placeholder" placeholder="Search for lawyers or specialties...">
+        <button id="search-button" data-translate="search-button">Search</button>
+    </div>
+    
+    <div class="province-container">
+        <!-- Bulawayo Province -->
+        <div class="province">
+            <h2 data-translate="bulawayo-province">Bulawayo Province</h2>
+            
+            <div class="lawyer">
+                <h3>Coghlan, Welsh & Guest</h3>
+                <div class="contact">
+                    <p><span data-translate="address-label">Address:</span> 8th Floor, Charter House, L. Takawira Ave</p>
+                    <p><span data-translate="phone-label">Phone:</span> +263 9 880 479-82</p>
+                    <p><span data-translate="email-label">Email:</span> cwg@cwg.co.zw</p>
+                    <a href="https://www.google.com/maps/search/Coghlan+Welsh+Guest+Charter+House+Bulawayo" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span><span data-translate="view-map">View on Google Maps</span>
+                    </a>
+                </div>
+                <div class="specialties">
+                    <span class="specialty" data-translate="commercial-law">Commercial Law</span>
+                    <span class="specialty" data-translate="litigation">Litigation</span>
+                    <span class="specialty" data-translate="property">Property</span>
+                </div>
+            </div>
+            
+            <div class="lawyer">
+                <h3>Calderwood, Bryce Hendrie & Partners</h3>
+                <div class="contact">
+                    <p><span data-translate="address-label">Address:</span> 6th Floor, Charter House, L. Takawira Ave</p>
+                    <p><span data-translate="phone-label">Phone:</span> +263 9 880 441-3</p>
+                    <p><span data-translate="email-label">Email:</span> info@cbhlegal.com</p>
+                    <a href="https://www.google.com/maps/search/Calderwood+Bryce+Hendrie+Charter+House+Bulawayo" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span><span data-translate="view-map">View on Google Maps</span>
+                    </a>
+                </div>
+                <div class="specialties">
+                    <span class="specialty" data-translate="corporate">Corporate</span>
+                    <span class="specialty" data-translate="tax">Tax</span>
+                    <span class="specialty" data-translate="mining">Mining</span>
+                </div>
+            </div>
+            
+            <div class="lawyer">
+                <h3>Dube, Manikai & Hwacha</h3>
+                <div class="contact">
+                    <p><span data-translate="address-label">Address:</span> 9th Floor, Charter House, L. Takawira Ave</p>
+                    <p><span data-translate="phone-label">Phone:</span> +263 9 880 479-82</p>
+                    <p><span data-translate="email-label">Email:</span> dmh@dmhlegal.co.zw</p>
+                    <a href="https://www.google.com/maps/search/Dube+Manikai+Hwacha+Charter+House+Bulawayo" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span><span data-translate="view-map">View on Google Maps</span>
+                    </a>
+                    <span class="whatsapp-badge" data-translate="whatsapp-available">WhatsApp Available</span>
+                </div>
+                <div class="specialties">
+                    <span class="specialty" data-translate="commercial">Commercial</span>
+                    <span class="specialty" data-translate="banking">Banking</span>
+                    <span class="specialty" data-translate="ip">IP</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Harare Province -->
+        <div class="province">
+            <h2 data-translate="harare-province">Harare Province</h2>
+            
+            <div class="lawyer">
+                <h3>Gill, Godlonton & Gerrans</h3>
+                <div class="contact">
+                    <p><span data-translate="address-label">Address:</span> 1st Floor, ZB Centre, Corner First St/K. Nkrumah Ave</p>
+                    <p><span data-translate="phone-label">Phone:</span> +263 24 270 1701-19</p>
+                    <p><span data-translate="email-label">Email:</span> legal@ggg.co.zw</p>
+                    <a href="https://www.google.com/maps/search/Gill+Godlonton+Gerrans+ZB+Centre+Harare" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span><span data-translate="view-map">View on Google Maps</span>
+                    </a>
+                </div>
+                <div class="specialties">
+                    <span class="specialty" data-translate="commercial">Commercial</span>
+                    <span class="specialty" data-translate="banking">Banking</span>
+                    <span class="specialty" data-translate="ip">IP</span>
+                </div>
+            </div>
+            
+            <div class="lawyer">
+                <h3>Honey & Blanckenberg</h3>
+                <div class="contact">
+                    <p><span data-translate="address-label">Address:</span> 4th Floor, Livingstone House, Samora Machel Ave</p>
+                    <p><span data-translate="phone-label">Phone:</span> +263 24 270 0231-9</p>
+                    <p><span data-translate="email-label">Email:</span> lawyers@honeyblanckenberg.co.zw</p>
+                    <a href="https://www.google.com/maps/search/Honey+Blanckenberg+Livingstone+House+Harare" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span><span data-translate="view-map">View on Google Maps</span>
+                    </a>
+                </div>
+                <div class="specialties">
+                    <span class="specialty" data-translate="litigation">Litigation</span>
+                    <span class="specialty" data-translate="employment">Employment</span>
+                    <span class="specialty" data-translate="family">Family</span>
+                </div>
+            </div>
+            
+            <div class="lawyer">
+                <h3>Kantor & Immerman</h3>
+                <div class="contact">
+                    <p><span data-translate="address-label">Address:</span> 6th Floor, Karigamombe Centre, Union Ave</p>
+                    <p><span data-translate="phone-label">Phone:</span> +263 24 270 4711-20</p>
+                    <p><span data-translate="email-label">Email:</span> info@kantorimmerman.com</p>
+                    <a href="https://www.google.com/maps/search/Kantor+Immerman+Karigamombe+Centre+Harare" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span><span data-translate="view-map">View on Google Maps</span>
+                    </a>
+                </div>
+                <div class="specialties">
+                    <span class="specialty" data-translate="tax">Tax</span>
+                    <span class="specialty" data-translate="corporate">Corporate</span>
+                    <span class="specialty" data-translate="commercial">Commercial</span>
+                </div>
+            </div>
+            
+            <div class="lawyer">
+                <h3>Mtetwa & Nyambirai</h3>
+                <div class="contact">
+                    <p><span data-translate="address-label">Address:</span> 3rd Floor, Century Towers, Harare</p>
+                    <p><span data-translate="phone-label">Phone:</span> +263 24 270 4711-20</p>
+                    <p><span data-translate="email-label">Email:</span> info@mtetwanyambirai.co.zw</p>
+                    <a href="https://www.google.com/maps/search/Mtetwa+Nyambirai+Century+Towers+Harare" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span><span data-translate="view-map">View on Google Maps</span>
+                    </a>
+                </div>
+                <div class="specialties">
+                    <span class="specialty" data-translate="corporate">Corporate</span>
+                    <span class="specialty" data-translate="commercial">Commercial</span>
+                    <span class="specialty" data-translate="tax">Tax</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Manicaland Province -->
+        <div class="province">
+            <h2 data-translate="manicaland-province">Manicaland Province</h2>
+            
+            <div class="lawyer">
+                <h3>Mutare Legal Practitioners</h3>
+                <div class="contact">
+                    <p><span data-translate="address-label">Address:</span> 34 Herbert Chitepo Street, Mutare</p>
+                    <p><span data-translate="phone-label">Phone:</span> +263 20 62046</p>
+                    <p><span data-translate="email-label">Email:</span> mutarelegal@zol.co.zw</p>
+                    <a href="https://www.google.com/maps/search/Mutare+Legal+Practitioners+Herbert+Chitepo+Mutare" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span><span data-translate="view-map">View on Google Maps</span>
+                    </a>
+                </div>
+                <div class="specialties">
+                    <span class="specialty" data-translate="family">Family</span>
+                    <span class="specialty" data-translate="property">Property</span>
+                </div>
+            </div>
+            
+            <div class="lawyer">
+                <h3>Rusape Legal Associates</h3>
+                <div class="contact">
+                    <p><span data-translate="address-label">Address:</span> 25 Mugabe Street, Rusape</p>
+                    <p><span data-translate="phone-label">Phone:</span> +263 25 2696</p>
+                    <p><span data-translate="email-label">Email:</span> rusapelegal@zol.co.zw</p>
+                    <a href="https://www.google.com/maps/search/Rusape+Legal+Associates+Mugabe+Street+Rusape" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span><span data-translate="view-map">View on Google Maps</span>
+                    </a>
+                </div>
+                <div class="specialties">
+                    <span class="specialty" data-translate="civil">Civil</span>
+                    <span class="specialty" data-translate="criminal">Criminal</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mashonaland Central Province -->
+        <div class="province">
+            <h2 data-translate="mash-central-province">Mashonaland Central Province</h2>
+            
+            <div class="lawyer">
+                <h3>Bindura Legal Associates</h3>
+                <div class="contact">
+                    <p><span data-translate="address-label">Address:</span> 15 Robert Mugabe Road, Bindura</p>
+                    <p><span data-translate="phone-label">Phone:</span> +263 71 2884</p>
+                    <p><span data-translate="email-label">Email:</span> binduralegal@zol.co.zw</p>
+                    <a href="https://www.google.com/maps/search/Bindura+Legal+Associates+Robert+Mugabe+Road+Bindura" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span><span data-translate="view-map">View on Google Maps</span>
+                    </a>
+                </div>
+                <div class="specialties">
+                    <span class="specialty" data-translate="mining">Mining</span>
+                    <span class="specialty" data-translate="agricultural">Agricultural</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mashonaland East Province -->
+        <div class="province">
+            <h2 data-translate="mash-east-province">Mashonaland East Province</h2>
+            
+            <div class="lawyer">
+                <h3>Marondera Law Chambers</h3>
+                <div class="contact">
+                    <p><span data-translate="address-label">Address:</span> 78 Harare Road, Marondera</p>
+                    <p><span data-translate="phone-label">Phone:</span> +263 79 23224</p>
+                    <p><span data-translate="email-label">Email:</span> maronderalaw@zol.co.zw</p>
+                    <a href="https://www.google.com/maps/search/Marondera+Law+Chambers+Harare+Road+Marondera" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span><span data-translate="view-map">View on Google Maps</span>
+                    </a>
+                </div>
+                <div class="specialties">
+                    <span class="specialty" data-translate="property">Property</span>
+                    <span class="specialty" data-translate="wills">Wills</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mashonaland West Province -->
+        <div class="province">
+            <h2 data-translate="mash-west-province">Mashonaland West Province</h2>
+            
+            <div class="lawyer">
+                <h3>Chinhoyi Legal Associates</h3>
+                <div class="contact">
+                    <p><span data-translate="address-label">Address:</span> 22 Liberation Legacy Way, Chinhoyi</p>
+                    <p><span data-translate="phone-label">Phone:</span> +263 67 21234</p>
+                    <p><span data-translate="email-label">Email:</span> chinhoyilegal@zol.co.zw</p>
+                    <a href="https://www.google.com/maps/search/Chinhoyi+Legal+Associates+Liberation+Legacy+Way+Chinhoyi" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span><span data-translate="view-map">View on Google Maps</span>
+                    </a>
+                </div>
+                <div class="specialties">
+                    <span class="specialty" data-translate="mining">Mining</span>
+                    <span class="specialty" data-translate="agricultural">Agricultural</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Masvingo Province -->
+        <div class="province">
+            <h2 data-translate="masvingo-province">Masvingo Province</h2>
+            
+            <div class="lawyer">
+                <h3>Masvingo Legal Practitioners</h3>
+                <div class="contact">
+                    <p><span data-translate="address-label">Address:</span> 56 Robert Mugabe Road, Masvingo</p>
+                    <p><span data-translate="phone-label">Phone:</span> +263 39 264576</p>
+                    <p><span data-translate="email-label">Email:</span> masvingolegal@zol.co.zw</p>
+                    <a href="https://www.google.com/maps/search/Masvingo+Legal+Practitioners+Robert+Mugabe+Road+Masvingo" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span><span data-translate="view-map">View on Google Maps</span>
+                    </a>
+                </div>
+                <div class="specialties">
+                    <span class="specialty" data-translate="civil">Civil</span>
+                    <span class="specialty" data-translate="criminal">Criminal</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Matabeleland North Province -->
+        <div class="province">
+            <h2 data-translate="mat-north-province">Matabeleland North Province</h2>
+            
+            <div class="lawyer">
+                <h3>Hwange Legal Consultants</h3>
+                <div class="contact">
+                    <p><span data-translate="address-label">Address:</span> 12 Independence Avenue, Hwange</p>
+                    <p><span data-translate="phone-label">Phone:</span> +263 81 33456</p>
+                    <p><span data-translate="email-label">Email:</span> hwangelegal@zol.co.zw</p>
+                    <a href="https://www.google.com/maps/search/Hwange+Legal+Consultants+Independence+Avenue+Hwange" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span><span data-translate="view-map">View on Google Maps</span>
+                    </a>
+                </div>
+                <div class="specialties">
+                    <span class="specialty" data-translate="environmental">Environmental</span>
+                    <span class="specialty" data-translate="labor">Labor</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Matabeleland South Province -->
+        <div class="province">
+            <h2 data-translate="mat-south-province">Matabeleland South Province</h2>
+            
+            <div class="lawyer">
+                <h3>Gwanda Law Firm</h3>
+                <div class="contact">
+                    <p><span data-translate="address-label">Address:</span> 8 Joshua Nkomo Street, Gwanda</p>
+                    <p><span data-translate="phone-label">Phone:</span> +263 84 22345</p>
+                    <p><span data-translate="email-label">Email:</span> gwandalaw@zol.co.zw</p>
+                    <a href="https://www.google.com/maps/search/Gwanda+Law+Firm+Joshua+Nkomo+Street+Gwanda" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span><span data-translate="view-map">View on Google Maps</span>
+                    </a>
+                </div>
+                <div class="specialties">
+                    <span class="specialty" data-translate="customary">Customary</span>
+                    <span class="specialty" data-translate="land">Land</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Midlands Province -->
+        <div class="province">
+            <h2 data-translate="midlands-province">Midlands Province</h2>
+            
+            <div class="lawyer">
+                <h3>Gweru Legal Solutions</h3>
+                <div class="contact">
+                    <p><span data-translate="address-label">Address:</span> 30 Lobengula Street, Gweru</p>
+                    <p><span data-translate="phone-label">Phone:</span> +263 54 223344</p>
+                    <p><span data-translate="email-label">Email:</span> gwerulegal@zol.co.zw</p>
+                    <a href="https://www.google.com/maps/search/Gweru+Legal+Solutions+Lobengula+Street+Gweru" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span><span data-translate="view-map">View on Google Maps</span>
+                    </a>
+                </div>
+                <div class="specialties">
+                    <span class="specialty" data-translate="commercial">Commercial</span>
+                    <span class="specialty" data-translate="contracts">Contracts</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p data-translate="copyright">© 2023 Zimbabwe Legal Practitioners Directory. All rights reserved.</p>
+        <p data-translate="data-source">Data sourced from the Law Society of Zimbabwe</p>
+    </footer>
+
+    <script>
+        // Simple search functionality
+        document.getElementById('search-button').addEventListener('click', function() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const provinces = document.querySelectorAll('.province');
+            
+            provinces.forEach(province => {
+                const lawyerElements = province.querySelectorAll('.lawyer');
+                let hasMatches = false;
+                
+                lawyerElements.forEach(lawyer => {
+                    const textContent = lawyer.textContent.toLowerCase();
+                    if (textContent.includes(searchTerm)) {
+                        lawyer.style.display = 'block';
+                        hasMatches = true;
+                    } else {
+                        lawyer.style.display = 'none';
+                    }
+                });
+                
+                province.style.display = hasMatches ? 'block' : 'none';
+            });
+        });
+        
+        // Allow search on Enter key
+        document.getElementById('search-input').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('search-button').click();
+            }
+        });
+    </script>
+{% endblock %}

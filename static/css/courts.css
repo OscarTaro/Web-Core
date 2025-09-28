@@ -1,0 +1,134 @@
+ :root {
+            --primary-color: #00b4d8;
+            --primary-dark: #0196ba;
+            --text-color: #1f2d3d;
+            --light-bg: #f7f9fc;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .court-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .court-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .court-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .court-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .court-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .court-link::after {
+            content: "→";
+            margin-left: 0.5rem;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .court-link:hover {
+            color: var(--primary-dark);
+        }
+
+        .court-link:hover::after {
+            transform: translateX(3px);
+        }
+
+        .location-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .location-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .location-card p {
+            margin: 0.5rem 0;
+            line-height: 1.5;
+        }
+
+        .location-card .contact {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--border-color);
+        }
+
+        .back-home-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-home-link:hover {
+            color: var(--primary-color);
+            transform: translateX(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .court-list {
+                grid-template-columns: 1fr;
+            }
+        }

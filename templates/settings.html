@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Settings | ConnectAid{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/settings.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="settings-header">
+        <h1 class="settings-title" data-translate="settings-title">Account Settings</h1>
+        <p class="settings-subtitle" data-translate="settings-subtitle">Manage your account preferences and security</p>
+    </div>
+
+    <div class="settings-card">
+        <h2 class="card-title" data-translate="profile-settings-title">Profile Settings</h2>
+        <form method="POST" action="{{ url_for('settings') }}">
+            <div class="form-group">
+                <label for="name" class="form-label" data-translate="full-name-label">Full Name</label>
+                <input type="text" id="name" name="full_name" class="form-control"
+                       value="{{ current_user.full_name or current_user.username }}">
+            </div>
+            <div class="form-group">
+                <label for="email" class="form-label" data-translate="email-label">Email Address</label>
+                <input type="email" id="email" name="email" class="form-control"
+                       value="{{ current_user.email }}">
+            </div>
+            <div class="form-group">
+                <label for="phone" class="form-label" data-translate="phone-label">Phone Number</label>
+                <input type="tel" id="phone" name="phone" class="form-control"
+                       value="{{ current_user.phone or '' }}">
+            </div>
+            <button type="submit" class="btn" data-translate="update-profile-btn">Update Profile</button>
+        </form>
+    </div>
+
+    <div class="settings-card">
+        <h2 class="card-title" data-translate="notifications-title">Notification Preferences</h2>
+        <div class="form-group">
+            <div class="switch-container">
+                <label for="email-notifications" class="form-label" data-translate="email-notifications-label">Email Notifications</label>
+                <label class="switch">
+                    <input type="checkbox" id="email-notifications" {% if current_user.notify_email %}checked{% endif %}>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="switch-container">
+                <label for="sms-notifications" class="form-label" data-translate="sms-notifications-label">SMS Notifications</label>
+                <label class="switch">
+                    <input type="checkbox" id="sms-notifications" {% if current_user.notify_sms %}checked{% endif %}>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="settings-card">
+        <h2 class="card-title" data-translate="security-title">Security</h2>
+        <div class="form-group">
+            <label class="form-label" data-translate="change-password-label">Change Password</label>
+            <a href="{{ url_for('request_password_reset') }}" class="btn" data-translate="update-password-btn">Update Password</a>
+        </div>
+        <div class="form-group">
+            <label class="form-label" data-translate="2fa-label">Two-Factor Authentication</label>
+            <a href="#" class="btn" data-translate="enable-2fa-btn">Enable 2FA</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

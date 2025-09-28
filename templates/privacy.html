@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{%block title %} Privacy Policy | ConnectAid {% endblock %}
+{% block content %}
+        <header>
+            <div class="splash-screen">
+                <div class="splash-content">
+                    <img src="{{url_for('static', filename='images/logos/connect_logo.png')}}" alt="Connect Aid Logo" class="splash-logo">
+                    <p class="powered-by" data-translate="legal-protection">Legal Protection Through Community</p>
+                </div>
+            </div>
+            <section class="hero">
+                <img src="{{url_for('static', filename='images/hero/connect.jpeg')}}" alt="Legal rights education session"/>
+                <article class="hero-messages">
+                    <p data-translate="privacy-matters">Your Privacy Matters</p>
+                    <p data-translate="secure-documentation">Secure Case Documentation</p>
+                    <p data-translate="confidential-support">Confidential Legal Support</p>
+                    <p data-translate="protected-law">Protected Under Zimbabwean Law</p>
+                </article>
+            </section>
+            <section class="flex">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                        <title>security</title>
+                        <path d="M12,12H19C18.47,16.11 15.72,19.78 12,20.92V12H5V6.3L12,3.19M12,1L3,5V11C3,16.55 6.84,21.73 12,23C17.16,21.73 21,16.55 21,11V5L12,1Z"/>
+                    </svg>
+                    <a href="#data-protection" data-translate="security-measures">Our Security Measures</a>
+                </p>
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                        <title>rights</title>
+                        <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"/>
+                    </svg>
+                    <a href="#your-rights" data-translate="your-legal-rights">Your Legal Rights</a>
+                </p>
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                        <title>contact</title>
+                        <path d="M20,4H4C2.9,4 2,4.9 2,6V18C2,19.1 2.9,20 4,20H20C21.1,20 22,19.1 22,18V6C22,4.9 21.1,4 20,4M20,8L12,13L4,8V6L12,11L20,6V8Z"/>
+                    </svg>
+                    <a href="#contact" data-translate="privacy-officer">Privacy Officer</a>
+                </p>
+                <a href="{{url_for('home')}}" class="back-home-link" data-translate="back-home">← Back to Home</a>
+            </section>
+        </header>
+
+        <main>
+            <div class="privacy-container">
+                <div class="privacy-header">
+                    <h1 data-translate="privacy-policy">Connect Aid Privacy Policy</h1>
+                    <p data-translate="last-updated">Last Updated: June 2025</p>
+                </div>
+                
+                <section class="privacy-section" id="overview">
+                    <h2 data-translate="privacy-commitment">1. Our Commitment to Your Privacy</h2>
+                    <p data-translate="privacy-intro">Connect Aid provides this Privacy Policy to explain how we collect, use, protect, and disclose information when you use our legal support services in Zimbabwe. We are committed to maintaining the confidentiality of your personal information and case details in accordance with:</p>
+                    <ul>
+                        <li data-translate="constitution-ref">The Constitution of Zimbabwe (Section 57 - Right to Privacy)</li>
+                        <li data-translate="data-protection-act">Data Protection Act [Chapter 11:12]</li>
+                        <li data-translate="legal-practitioners-act">Legal Practitioners Act</li>
+                    </ul>
+                    <div class="confidential-notice" data-translate="attorney-privilege">
+                        All legal case information is protected by attorney-client privilege where applicable.
+                    </div>
+                </section>
+                
+                <section class="privacy-section" id="information-collected">
+                    <h2 data-translate="info-collected">2. Information We Collect</h2>
+                    <h3 data-translate="personal-info">Personal Identification Information</h3>
+                    <p data-translate="personal-info-desc">When accessing our legal support services, we may collect:</p>
+                    <ul>
+                        <li data-translate="contact-details">Contact details (phone, encrypted email)</li>
+                        <li data-translate="demographic-info">Demographic information needed for legal aid qualification</li>
+                        <li data-translate="case-details">Case details you choose to disclose</li>
+                        <li data-translate="government-id">Government-issued ID (only when required for court proceedings)</li>
+                    </ul>
+                    
+                    <h3 data-translate="non-personal-info">Non-Personal Information</h3>
+                    <p data-translate="non-personal-desc">For service improvement, we may collect:</p>
+                    <ul>
+                        <li data-translate="browser-info">Browser type and device information</li>
+                        <li data-translate="usage-stats">Anonymous usage statistics</li>
+                        <li data-translate="case-categories">De-identified case categories for reporting</li>
+                    </ul>
+                </section>
+                
+                <section class="privacy-section" id="data-protection">
+                    <h2 data-translate="data-protection-title">3. How We Protect Your Information</h2>
+                    <p data-translate="protection-measures">We implement security measures appropriate for legal service providers:</p>
+                    <ul>
+                        <li><strong data-translate="encryption">Encryption:</strong> <span data-translate="encryption-desc">All case communications use end-to-end encryption</span></li>
+                        <li><strong data-translate="access-controls">Access Controls:</strong> <span data-translate="access-desc">Strict staff access limitations to case files</span></li>
+                        <li><strong data-translate="secure-storage">Secure Storage:</strong> <span data-translate="storage-desc">On-premise servers with biometric access</span></li>
+                        <li><strong data-translate="redaction">Redaction:</strong> <span data-translate="redaction-desc">Automatic removal of identifying details in public reports</span></li>
+                    </ul>
+                    <div class="confidential-notice" data-translate="anonymous-reporting">
+                        In high-risk cases, we offer anonymous reporting options through our secure portal.
+                    </div>
+                </section>
+                
+                <section class="privacy-section" id="information-use">
+                    <h2 data-translate="info-use">4. How We Use Your Information</h2>
+                    <p data-translate="info-use-desc">Your information helps us provide effective legal support:</p>
+                    <ul>
+                        <li data-translate="connect-resources">To connect you with appropriate legal resources</li>
+                        <li data-translate="document-violations">To document human rights violations (with consent)</li>
+                        <li data-translate="qualify-services">To qualify you for pro bono legal services</li>
+                        <li data-translate="generate-reports">To generate aggregate reports for advocacy (never identifying individuals)</li>
+                        <li data-translate="improve-services">To improve our services</li>
+                    </ul>
+                    <p class="legal-reference" data-translate="disclosure-law">
+                        Zimbabwean law prohibits disclosure of client information without consent except where required by court order (Legal Practitioners Act Section 56).
+                    </p>
+                </section>
+                
+                <section class="privacy-section" id="your-rights">
+                    <h2 data-translate="privacy-rights-title">5. Your Privacy Rights</h2>
+                    <p data-translate="rights-intro">Under Zimbabwean law, you have the right to:</p>
+                    <ul>
+                        <li data-translate="access-right">Access your personal information we hold</li>
+                        <li data-translate="correction-right">Request correction of inaccurate information</li>
+                        <li data-translate="withdraw-right">Withdraw consent for data processing (where applicable)</li>
+                        <li data-translate="deletion-right">Request deletion of non-essential personal data</li>
+                        <li data-translate="complaint-right">File a complaint with the Zimbabwe Human Rights Commission</li>
+                    </ul>
+                    <div class="confidential-notice" data-translate="retention-note">
+                        Note: Certain legal case records must be retained for statutory periods even upon request for deletion.
+                    </div>
+                </section>
+                
+                <section class="privacy-section" id="contact">
+                    <h2 data-translate="contact-privacy">6. Contact Our Privacy Officer</h2>
+                    <p data-translate="contact-desc">For privacy concerns or to exercise your rights:</p>
+                    <p>
+                        <strong data-translate="data-officer">Data Protection Officer</strong><br>
+                        <span data-translate="company-name">Connect Aid Zimbabwe</span><br>
+                        <span data-translate="email">Email:</span> <a href="mailto:privacy@connectaid.org">privacy@connectaid.org</a><br>
+                        <span data-translate="secure-portal">Secure Portal:</span> <a href="{{url_for('report')}}" data-translate="privacy-form">Privacy Request Form</a>
+                    </p>
+                    <p data-translate="response-time">We respond to all legitimate requests within 14 working days as required by law.</p>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <section>
+                <article class="flex2">
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <title>privacy</title>
+                            <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11.5C15.4,11.5 16,12.1 16,12.7V16.5C16,17.1 15.4,17.7 14.8,17.7H9.2C8.6,17.7 8,17.1 8,16.5V12.6C8,12 8.6,11.4 9.2,11.4V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,9.5V11.5H13.5V9.5C13.5,8.7 12.8,8.2 12,8.2Z"/>
+                        </svg>
+                        <a href="{{url_for('privacy')}}" data-translate="privacy-rights">Full Privacy Policy</a>
+                    </p>
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <title>lawyers</title>
+                            <path d="M12,3L2,12H5V20H19V12H22L12,3M12,5.7L16.9,10.5H15.5V12.5H13.5V10.5H12.5V12.5H10.5V10.5H8.5V12.5H6.5V10.5H5.1L12,5.7M11,14H13V16H11V14M15,14H17V16H15V14M7,14H9V16H7V14M11,17H13V19H11V17M15,17H17V19H15V17M7,17H9V19H7V17Z"/>
+                        </svg>
+                        <a href="{{url_for('lawyers')}}" data-translate="find-legal-aid">Find Legal Aid</a>
+                    </p>
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <title>security</title>
+                            <path d="M12,12H19C18.47,16.11 15.72,19.78 12,20.92V12H5V6.3L12,3.19M12,1L3,5V11C3,16.55 6.84,21.73 12,23C17.16,21.73 21,16.55 21,11V5L12,1Z"/>
+                        </svg>
+                        <a href="{{url_for('report')}}" data-translate="secure-reporting">Secure Reporting</a>
+                    </p>
+                </article>
+                <article class="flex3">
+                    <p class="align">&copy; 2025 Connect Aid Zimbabwe. <span data-translate="all-rights">All Rights Reserved.</span></p>
+                    <p class="align" data-translate="registered-legal">Registered Legal Practitioners Number: LP 145/2025</p>
+                    <p class="align"><a href="{{url_for('terms')}}" data-translate="terms-service">Terms of Service</a> | <a href="{{url_for('bod')}}" data-translate="board-directors">Board of Directors</a></p>
+                </article>
+            </section>
+        </footer>
+{% endblock %}

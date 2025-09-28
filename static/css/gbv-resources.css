@@ -1,0 +1,75 @@
+:root{
+            --primary-color: #00b4d8;
+        }
+        .language-tabs {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        .language-tab {
+            padding: 0.5rem 1rem;
+            background: #f0f8ff;
+            border: none;
+            cursor: pointer;
+            margin: 0.2rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        .language-tab.active {
+            background:var(--primary-color);
+            color: white;
+        }
+        .violence-content {
+            display: none;
+        }
+        .violence-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .violence-section {
+            background: white;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid var(--primary-color);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .quote {
+            font-style: italic;
+            color: #555;
+            margin-top: 1rem;
+            border-left:4px solid var(--primary-color);
+            border-right:4px solid var(--primary-color);
+            border-radius: 1rem;
+            padding:0.5rem;
+        }
+        .back-home-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-decoration: none;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            will-change: transform, opacity;
+        }
+        .back-home-link svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--primary-color);
+            margin-right: 0.5rem;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .back-home-link:hover,
+        .back-home-link:focus {
+            transform: translateX(6px);
+            opacity: 0.8;
+            outline: none;
+        }

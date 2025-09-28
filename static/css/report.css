@@ -1,0 +1,188 @@
+:root {
+            --primary-color: #00b4d8;
+            --primary-dark: #0196ba;
+            --text-color: #1f2d3d;
+            --light-bg: #f7f9fc;
+            --border-color: #ddd;
+            --error-color: #e63946;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        main {
+            padding: 2rem 1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .back-home-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-home-link:hover {
+            color: var(--primary-color);
+            transform: translateX(-3px);
+        }
+
+
+        h1 {
+            text-align: center;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        fieldset {
+            border: none;
+            padding: 1rem;
+        }
+
+        legend {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            width: 100%;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .required::after {
+            content: " *";
+            color: var(--error-color);
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border-color);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.2);
+        }
+
+        select {
+            background-image: url("data:image/svg+xml,%3Csvg fill='gray' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 16px 16px;
+            padding-right: 2.5rem;
+            background-color: #fff;
+        }
+
+        .form-group input[type="checkbox"] {
+            margin-right: 0.4rem;
+            margin-left:1rem;
+            vertical-align: middle;
+            
+        }
+
+        .form-group label > input[type="checkbox"] {
+            display: inline-block;
+            width: auto;
+        }
+
+        .form-group label {
+            display: flex;
+            align-items:center;
+            gap: 0.5rem;
+        }
+
+
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            cursor: pointer;
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .input-error {
+            border-color: var(--error-color);
+        }
+
+        @media (max-width: 600px) {
+            main {
+                padding: 1rem 0.5rem;
+            }
+            
+            .form-container {
+                padding: 1.5rem;
+            }
+            
+            legend {
+                font-size: 1.3rem;
+            }
+        }

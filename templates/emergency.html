@@ -1,0 +1,993 @@
+{% extends 'base.html' %}
+{%block title %} ZRP Contacts | ConnectAid {% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/emergency.css')}}" type="text/css">{% endblock %}
+{% block content %}
+    <!-- Main Provincial Listing Page -->
+    <header>
+        <a href="{{url_for('home')}}" class="back-home-link" data-translate="back-home">← Back to Home</a>
+        <h1 data-translate="police-contacts-title">Zimbabwe Republic Police Contacts</h1>
+    </header>
+    
+    <main id="main-page">
+        <section>
+            <h2 data-translate="stations-by-province">Police Stations by Province</h2>
+            
+            <div class="province-grid">
+                <div class="province-card">
+                    <h3 data-translate="harare-province">Harare Province</h3>
+                    <p data-translate="harare-desc">Central and suburban police stations in the capital city</p>
+                    <a href="#harare-province" class="province-link" data-translate="view-stations">View Stations</a>
+                </div>
+                
+                <div class="province-card">
+                    <h3 data-translate="bulawayo-province">Bulawayo Province</h3>
+                    <p data-translate="bulawayo-desc">Police stations in Zimbabwe's second largest city</p>
+                    <a href="#bulawayo-province" class="province-link" data-translate="view-stations">View Stations</a>
+                </div>
+                
+                <div class="province-card">
+                    <h3 data-translate="manicaland-province">Manicaland Province</h3>
+                    <p data-translate="manicaland-desc">Eastern region police contacts including Mutare</p>
+                    <a href="#manicaland-province" class="province-link" data-translate="view-stations">View Stations</a>
+                </div>
+                
+                <div class="province-card">
+                    <h3 data-translate="midlands-province">Midlands Province</h3>
+                    <p data-translate="midlands-desc">Central Zimbabwe police stations</p>
+                    <a href="#midlands-province" class="province-link" data-translate="view-stations">View Stations</a>
+                </div>
+                
+                <div class="province-card">
+                    <h3 data-translate="mash-west-province">Mashonaland West</h3>
+                    <p data-translate="mash-west-desc">Northern and western region contacts</p>
+                    <a href="#mash-west-province" class="province-link" data-translate="view-stations">View Stations</a>
+                </div>
+                
+                <div class="province-card">
+                    <h3 data-translate="mat-north-province">Matabeleland North</h3>
+                    <p data-translate="mat-north-desc">Northwestern police stations</p>
+                    <a href="#mat-north-province" class="province-link" data-translate="view-stations">View Stations</a>
+                </div>
+                
+                <div class="province-card">
+                    <h3 data-translate="mat-south-province">Matabeleland South</h3>
+                    <p data-translate="mat-south-desc">Southern region police contacts</p>
+                    <a href="#mat-south-province" class="province-link" data-translate="view-stations">View Stations</a>
+                </div>
+                
+                <div class="province-card">
+                    <h3 data-translate="mash-east-province">Mashonaland East</h3>
+                    <p data-translate="mash-east-desc">Northeastern police stations</p>
+                    <a href="#mash-east-province" class="province-link" data-translate="view-stations">View Stations</a>
+                </div>
+                
+                <div class="province-card">
+                    <h3 data-translate="mash-central-province">Mashonaland Central</h3>
+                    <p data-translate="mash-central-desc">Northern police contacts</p>
+                    <a href="#mash-central-province" class="province-link" data-translate="view-stations">View Stations</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Harare Province Section -->
+    <main id="harare-province" class="province-section" style="display: none;">
+        <a href="#main-page" class="back-link" data-translate="back-to-provinces">Back to All Provinces</a>
+        <h1><span data-translate="harare-province">Harare Province</span> <span data-translate="police-contacts">Police Contacts</span></h1>
+        
+        <section>
+            <h2 data-translate="central-districts">Central Districts</h2>
+            
+            <div class="district-card">
+                <h3 data-translate="harare-central-district">Harare Central District</h3>
+                <div class="contact-item">
+                    <strong data-translate="harare-central">Harare Central:</strong> (0242) 336361-2
+                    <a href="https://www.google.com/maps/search/Harare+Central+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="milton-park">Milton Park:</strong> (0242) 708113
+                    <a href="https://www.google.com/maps/search/Milton+Park+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="harare-south-district">Harare South District</h3>
+                <div class="contact-item">
+                    <strong data-translate="glen-view">Glen View:</strong> (0242) 691744
+                    <a href="https://www.google.com/maps/search/Glen+View+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="budiriro">Budiriro:</strong> (0242) 690007
+                    <a href="https://www.google.com/maps/search/Budiriro+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="kuwadzana">Kuwadzana:</strong> (0242) 211556
+                    <a href="https://www.google.com/maps/search/Kuwadzana+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="dziwarasekwa">Dziwarasekwa:</strong> (0242) 216555
+                    <a href="https://www.google.com/maps/search/Dziwarasekwa+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="warren-park">Warren Park:</strong> (0242) 223921
+                    <a href="https://www.google.com/maps/search/Warren+Park+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="marimba">Marimba:</strong> (0242) 698080
+                    <a href="https://www.google.com/maps/search/Marimba+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="chitungwiza-district">Chitungwiza District</h3>
+                <div class="contact-item">
+                    <strong data-translate="chitungwiza">Chitungwiza:</strong> (0270) 22006
+                    <a href="https://www.google.com/maps/search/Chitungwiza+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="zengeza">Zengeza:</strong> (0270) 30399
+                    <a href="https://www.google.com/maps/search/Zengeza+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="st-marys">St Mary's:</strong> (0270) 21928
+                    <a href="https://www.google.com/maps/search/St+Mary's+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="mbare-district">Mbare District</h3>
+                <div class="contact-item">
+                    <strong data-translate="mbare">Mbare:</strong> (0242) 774770
+                    <a href="https://www.google.com/maps/search/Mbare+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="matapi">Matapi:</strong> (0242) 756115
+                    <a href="https://www.google.com/maps/search/Matapi+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="stodart">Stodart:</strong> (0242) 665568
+                    <a href="https://www.google.com/maps/search/Stodart+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="harare-suburban-district">Harare Suburban District</h3>
+                <div class="contact-item">
+                    <strong data-translate="avondale">Avondale:</strong> (0242) 336361-2
+                    <a href="https://www.google.com/maps/search/Avondale+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="borrowdale">Borrowdale:</strong> (0242) 860148
+                    <a href="https://www.google.com/maps/search/Borrowdale+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="highlands">Highlands:</strong> (0242) 496767
+                    <a href="https://www.google.com/maps/search/Highlands+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="mabvuku">Mabvuku:</strong> (0242) 491069
+                    <a href="https://www.google.com/maps/search/Mabvuku+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2 data-translate="special-units">Special Units</h2>
+            <div class="district-card">
+                <div class="contact-item">
+                    <strong data-translate="police-protection-unit">Police Protection Unit:</strong> (0242) 735751-6
+                    <span class="whatsapp-badge">WhatsApp: 0785 004 917</span>
+                    <a href="https://www.google.com/maps/search/Zimbabwe+Police+Protection+Unit" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="criminal-investigations">Criminal Investigations:</strong> (0242) 700171-6
+                    <a href="https://www.google.com/maps/search/CID+Harare" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="national-traffic">National Traffic:</strong> (0242) 754333
+                    <a href="https://www.google.com/maps/search/Zimbabwe+Traffic+Police" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="community-relations">Community Relations:</strong> (0242) 665517
+                    <a href="https://www.google.com/maps/search/ZRP+Community+Relations" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bulawayo Province Section -->
+    <main id="bulawayo-province" class="province-section" style="display: none;">
+        <a href="#main-page" class="back-link" data-translate="back-to-provinces">Back to All Provinces</a>
+        <h1><span data-translate="bulawayo-province">Bulawayo Province</span> <span data-translate="police-contacts">Police Contacts</span></h1>
+        
+        <section>
+            <h2 data-translate="central-districts">Central Districts</h2>
+            
+            <div class="district-card">
+                <h3 data-translate="bulawayo-central-district">Bulawayo Central District</h3>
+                <div class="contact-item">
+                    <strong data-translate="bulawayo-central">Bulawayo Central:</strong> (09) 71515
+                    <a href="https://www.google.com/maps/search/Bulawayo+Central+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="license-inspectorate">License Inspectorate:</strong> (09) 74318
+                    <a href="https://www.google.com/maps/search/Bulawayo+License+Inspectorate" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="community-relations">Community Relations:</strong> (09) 60358
+                    <a href="https://www.google.com/maps/search/Bulawayo+Police+Community+Relations" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="bulawayo-west-district">Bulawayo West District</h3>
+                <div class="contact-item">
+                    <strong data-translate="mzilikazi">Mzilikazi:</strong> (09) 77619
+                    <a href="https://www.google.com/maps/search/Mzilikazi+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="njube">Njube:</strong> (09) 412096
+                    <a href="https://www.google.com/maps/search/Njube+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="entumbane">Entumbane:</strong> (09) 418243
+                    <a href="https://www.google.com/maps/search/Entumbane+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="nkulumane-district">Nkulumane District</h3>
+                <div class="contact-item">
+                    <strong data-translate="nkulumane">Nkulumane:</strong> (09) 48145
+                    <a href="https://www.google.com/maps/search/Nkulumane+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="luveve">Luveve:</strong> (09) 520803
+                    <a href="https://www.google.com/maps/search/Luveve+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="pumula">Pumula:</strong> (09) 422907
+                    <a href="https://www.google.com/maps/search/Pumula+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="bulawayo-suburban-district">Bulawayo Suburban District</h3>
+                <div class="contact-item">
+                    <strong data-translate="hillside">Hillside:</strong> (09) 242426
+                    <a href="https://www.google.com/maps/search/Hillside+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="donnington">Donnington:</strong> (09) 468520
+                    <a href="https://www.google.com/maps/search/Donnington+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="sauerstown">Sauerstown:</strong> (09) 200960
+                    <a href="https://www.google.com/maps/search/Sauerstown+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Manicaland Province Section -->
+    <main id="manicaland-province" class="province-section" style="display: none;">
+        <a href="#main-page" class="back-link" data-translate="back-to-provinces">Back to All Provinces</a>
+        <h1><span data-translate="manicaland-province">Manicaland Province</span> <span data-translate="police-contacts">Police Contacts</span></h1>
+        
+        <section>
+            <h2 data-translate="districts">Districts</h2>
+            
+            <div class="district-card">
+                <h3 data-translate="mutare-central-district">Mutare Central District</h3>
+                <div class="contact-item">
+                    <strong data-translate="mutare-central">Mutare Central:</strong> (020) 69157
+                    <a href="https://www.google.com/maps/search/Mutare+Central+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="chikanga">Chikanga:</strong> (020) 64717
+                    <a href="https://www.google.com/maps/search/Chikanga+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="dangamvura">Dangamvura:</strong> (020) 30240
+                    <a href="https://www.google.com/maps/search/Dangamvura+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="mutare-rural-district">Mutare Rural District</h3>
+                <div class="contact-item">
+                    <strong data-translate="mutare-rural">Mutare Rural:</strong> (020) 66354
+                    <a href="https://www.google.com/maps/search/Mutare+Rural+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="penhalonga">Penhalonga:</strong> (020) 22212
+                    <a href="https://www.google.com/maps/search/Penhalonga+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="odzi">Odzi:</strong> (0204) 2223
+                    <a href="https://www.google.com/maps/search/Odzi+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="rusape-district">Rusape District</h3>
+                <div class="contact-item">
+                    <strong data-translate="rusape">Rusape:</strong> (025) 2696
+                    <a href="https://www.google.com/maps/search/Rusape+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="headlands">Headlands:</strong> (02582) 2360
+                    <a href="https://www.google.com/maps/search/Headlands+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="nyazura">Nyazura:</strong> (02583) 246
+                    <a href="https://www.google.com/maps/search/Nyazura+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="buhera-district">Buhera District</h3>
+                <div class="contact-item">
+                    <strong data-translate="buhera">Buhera:</strong> (021) 2177
+                    <a href="https://www.google.com/maps/search/Buhera+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="murambinda">Murambinda:</strong> (021) 2314/2116
+                    <a href="https://www.google.com/maps/search/Murambinda+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="chipinge-district">Chipinge District</h3>
+                <div class="contact-item">
+                    <strong data-translate="chipinge">Chipinge:</strong> (0227) 3368
+                    <a href="https://www.google.com/maps/search/Chipinge+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="chimanimani">Chimanimani:</strong> (026) 2535
+                    <a href="https://www.google.com/maps/search/Chimanimani+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="chisumbanje">Chisumbanje:</strong> (0317) 223
+                    <a href="https://www.google.com/maps/search/Chisumbanje+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="nyanga-district">Nyanga District</h3>
+                <div class="contact-item">
+                    <strong data-translate="nyanga">Nyanga:</strong> (0298) 851
+                    <a href="https://www.google.com/maps/search/Nyanga+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="ruda">Ruda:</strong> (0228) 2524
+                    <a href="https://www.google.com/maps/search/Ruda+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2 data-translate="provincial-contacts">Provincial Contacts</h2>
+            <div class="district-card">
+                <div class="contact-item">
+                    <strong data-translate="manicaland-hq">Manicaland Province HQ:</strong> (020) 68733
+                    <a href="https://www.google.com/maps/search/Manicaland+Police+Headquarters" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="community-relations">Community Relations:</strong> (020) 66637
+                    <span class="whatsapp-badge">WhatsApp: 0783 410 710</span>
+                    <a href="https://www.google.com/maps/search/Manicaland+Police+Community+Relations" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Midlands Province Section -->
+    <main id="midlands-province" class="province-section" style="display: none;">
+        <a href="#main-page" class="back-link" data-translate="back-to-provinces">Back to All Provinces</a>
+        <h1><span data-translate="midlands-province">Midlands Province</span> <span data-translate="police-contacts">Police Contacts</span></h1>
+        
+        <section>
+            <h2 data-translate="districts">Districts</h2>
+            
+            <div class="district-card">
+                <h3 data-translate="kwekwe-district">Kwekwe District</h3>
+                <div class="contact-item">
+                    <strong data-translate="kwekwe-district">Kwekwe District:</strong> (055) 24547
+                    <a href="https://www.google.com/maps/search/Kwekwe+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="amaveni">Amaveni:</strong> (055) 22808
+                    <a href="https://www.google.com/maps/search/Amaveni+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="redcliff">Redcliff:</strong> (059) 68601
+                    <a href="https://www.google.com/maps/search/Redcliff+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="zhombe">Zhombe:</strong> (059) 20070/20069
+                    <a href="https://www.google.com/maps/search/Zhombe+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="gokwe-district">Gokwe District</h3>
+                <div class="contact-item">
+                    <strong data-translate="gokwe-district">Gokwe District:</strong> (059) 2281/2221
+                    <a href="https://www.google.com/maps/search/Gokwe+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="nembudziya">Nembudziya:</strong> (059) 2412
+                    <a href="https://www.google.com/maps/search/Nembudziya+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="zvishavane-district">Zvishavane District</h3>
+                <div class="contact-item">
+                    <strong data-translate="zvishavane">Zvishavane:</strong> (051) 2121-4
+                    <a href="https://www.google.com/maps/search/Zvishavane+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="mberengwa">Mberengwa:</strong> (051) 221
+                    <a href="https://www.google.com/maps/search/Mberengwa+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="mataga">Mataga:</strong> (051) 237/655
+                    <a href="https://www.google.com/maps/search/Mataga+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2 data-translate="provincial-contacts">Provincial Contacts</h2>
+            <div class="district-card">
+                <div class="contact-item">
+                    <strong data-translate="community-relations">Community Relations:</strong> (054) 221073
+                    <a href="https://www.google.com/maps/search/Midlands+Police+Community+Relations" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="criminal-investigations">Criminal Investigations:</strong> (0242) 700171-6
+                    <a href="https://www.google.com/maps/search/Midlands+CID" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="support-unit">Support Unit:</strong> (0242) 497334-6
+                    <span class="whatsapp-badge">WhatsApp: 0783 822 619</span>
+                    <a href="https://www.google.com/maps/search/Midlands+Police+Support+Unit" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Mashonaland West Province Section -->
+    <main id="mash-west-province" class="province-section" style="display: none;">
+        <a href="#main-page" class="back-link" data-translate="back-to-provinces">Back to All Provinces</a>
+        <h1><span data-translate="mash-west-province">Mashonaland West</span> <span data-translate="police-contacts">Police Contacts</span></h1>
+        
+        <section>
+            <h2 data-translate="districts">Districts</h2>
+            
+            <div class="district-card">
+                <h3 data-translate="makonde-district">Makonde District</h3>
+                <div class="contact-item">
+                    <strong data-translate="makonde-district">Makonde District:</strong> (067) 23711
+                    <a href="https://www.google.com/maps/search/Makonde+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="chinhoyi-central">Chinhoyi Central:</strong> (067) 23200
+                    <a href="https://www.google.com/maps/search/Chinhoyi+Central+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="banket">Banket:</strong> (066) 2608
+                    <a href="https://www.google.com/maps/search/Banket+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="mhangura">Mhangura:</strong> (067) 5520
+                    <a href="https://www.google.com/maps/search/Mhangura+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="hurungwe-district">Hurungwe District</h3>
+                <div class="contact-item">
+                    <strong data-translate="hurungwe-district">Hurungwe District:</strong> (064) 8015
+                    <a href="https://www.google.com/maps/search/Hurungwe+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="karoi-urban">Karoi Urban:</strong> (064) 6456
+                    <a href="https://www.google.com/maps/search/Karoi+Urban+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="karoi-rural">Karoi Rural:</strong> (064) 7166
+                    <a href="https://www.google.com/maps/search/Karoi+Rural+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="manyame-district">Manyame District</h3>
+                <div class="contact-item">
+                    <strong data-translate="manyame-district">Manyame District:</strong> (062) 3059
+                    <a href="https://www.google.com/maps/search/Manyame+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="norton-urban">Norton Urban:</strong> (062) 2120
+                    <a href="https://www.google.com/maps/search/Norton+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="nyabira">Nyabira:</strong> (069) 259
+                    <a href="https://www.google.com/maps/search/Nyabira+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Matabeleland North Province Section -->
+    <main id="mat-north-province" class="province-section" style="display: none;">
+        <a href="#main-page" class="back-link" data-translate="back-to-provinces">Back to All Provinces</a>
+        <h1><span data-translate="mat-north-province">Matabeleland North</span> <span data-translate="police-contacts">Police Contacts</span></h1>
+        
+        <section>
+            <h2 data-translate="districts">Districts</h2>
+            
+            <div class="district-card">
+                <h3 data-translate="hwange-district">Hwange District</h3>
+                <div class="contact-item">
+                    <strong data-translate="hwange">Hwange:</strong> (0281) 32750
+                    <a href="https://www.google.com/maps/search/Hwange+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="dete">Dete:</strong> (018) 212
+                    <a href="https://www.google.com/maps/search/Dete+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="binga">Binga:</strong> (015) 301
+                    <a href="https://www.google.com/maps/search/Binga+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="lusulu">Lusulu:</strong> 0775 580 868
+                    <a href="https://www.google.com/maps/search/Lusulu+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="lupane-district">Lupane District</h3>
+                <div class="contact-item">
+                    <strong data-translate="lupane-district">Lupane District:</strong> (09) 60132
+                    <a href="https://www.google.com/maps/search/Lupane+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="tsholotsho">Tsholotsho:</strong> (0878) 267
+                    <a href="https://www.google.com/maps/search/Tsholotsho+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="jotsholo">Jotsholo:</strong> (0289) 284
+                    <a href="https://www.google.com/maps/search/Jotsholo+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="binga-district">Binga District</h3>
+                <div class="contact-item">
+                    <strong data-translate="binga">Binga:</strong> (015) 301
+                    <a href="https://www.google.com/maps/search/Binga+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="siabuwa">Siabuwa:</strong> (015) 354
+                    <a href="https://www.google.com/maps/search/Siabuwa+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2 data-translate="provincial-contacts">Provincial Contacts</h2>
+            <div class="district-card">
+                <div class="contact-item">
+                    <strong data-translate="community-relations">Community Relations:</strong> (0281) 32739
+                    <a href="https://www.google.com/maps/search/Matabeleland+North+Police+Community+Relations" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Matabeleland South Province Section -->
+    <main id="mat-south-province" class="province-section" style="display: none;">
+        <a href="#main-page" class="back-link" data-translate="back-to-provinces">Back to All Provinces</a>
+        <h1><span data-translate="mat-south-province">Matabeleland South</span> <span data-translate="police-contacts">Police Contacts</span></h1>
+        
+        <section>
+            <h2 data-translate="districts">Districts</h2>
+            
+            <div class="district-card">
+                <h3 data-translate="gwanda-district">Gwanda District</h3>
+                <div class="contact-item">
+                    <strong data-translate="gwanda-district">Gwanda District:</strong> (0284) 21432
+                    <a href="https://www.google.com/maps/search/Gwanda+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="gwanda-urban">Gwanda Urban:</strong> (0284) 22860
+                    <a href="https://www.google.com/maps/search/Gwanda+Urban+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="esigodini">Esigodini:</strong> (0288) 357
+                    <a href="https://www.google.com/maps/search/Esigodini+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="colleenbawn">Colleenbawn:</strong> (0284) 20454
+                    <a href="https://www.google.com/maps/search/Colleenbawn+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="beitbridge-district">Beitbridge District</h3>
+                <div class="contact-item">
+                    <strong data-translate="beitbridge-district">Beitbridge District:</strong> (0286) 23060
+                    <a href="https://www.google.com/maps/search/Beitbridge+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="beitbridge-urban">Beitbridge Urban:</strong> (0286) 22554
+                    <a href="https://www.google.com/maps/search/Beitbridge+Urban+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="tuli">Tuli:</strong> (0286) 3358
+                    <a href="https://www.google.com/maps/search/Tuli+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="plumtree-district">Plumtree District</h3>
+                <div class="contact-item">
+                    <strong data-translate="plumtree">Plumtree:</strong> (019) 2670
+                    <a href="https://www.google.com/maps/search/Plumtree+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Mashonaland East Province Section -->
+    <main id="mash-east-province" class="province-section" style="display: none;">
+        <a href="#main-page" class="back-link" data-translate="back-to-provinces">Back to All Provinces</a>
+        <h1><span data-translate="mash-east-province">Mashonaland East</span> <span data-translate="police-contacts">Police Contacts</span></h1>
+        
+        <section>
+            <h2 data-translate="districts">Districts</h2>
+            
+            <div class="district-card">
+                <h3 data-translate="marondera-district">Marondera District</h3>
+                <div class="contact-item">
+                    <strong data-translate="marondera">Marondera:</strong> (0279) 22321
+                    <a href="https://www.google.com/maps/search/Marondera+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="macheke">Macheke:</strong> (0279) 22322
+                    <a href="https://www.google.com/maps/search/Macheke+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="chikomba-district">Chikomba District</h3>
+                <div class="contact-item">
+                    <strong data-translate="chivhu">Chivhu:</strong> (053) 2234
+                    <a href="https://www.google.com/maps/search/Chivhu+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="mutoko-district">Mutoko District</h3>
+                <div class="contact-item">
+                    <strong data-translate="mutoko">Mutoko:</strong> (0225) 223
+                    <a href="https://www.google.com/maps/search/Mutoko+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Mashonaland Central Province Section -->
+    <main id="mash-central-province" class="province-section" style="display: none;">
+        <a href="#main-page" class="back-link" data-translate="back-to-provinces">Back to All Provinces</a>
+        <h1><span data-translate="mash-central-province">Mashonaland Central</span> <span data-translate="police-contacts">Police Contacts</span></h1>
+        
+        <section>
+            <h2 data-translate="districts">Districts</h2>
+            
+            <div class="district-card">
+                <h3 data-translate="bindura-district">Bindura District</h3>
+                <div class="contact-item">
+                    <strong data-translate="bindura">Bindura:</strong> (0271) 7531
+                    <a href="https://www.google.com/maps/search/Bindura+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <strong data-translate="guruve">Guruve:</strong> (0274) 223
+                    <a href="https://www.google.com/maps/search/Guruve+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="shamva-district">Shamva District</h3>
+                <div class="contact-item">
+                    <strong data-translate="shamva">Shamva:</strong> (0275) 223
+                    <a href="https://www.google.com/maps/search/Shamva+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="district-card">
+                <h3 data-translate="mt-darwin-district">Mt Darwin District</h3>
+                <div class="contact-item">
+                    <strong data-translate="mt-darwin">Mt Darwin:</strong> (0276) 223
+                    <a href="https://www.google.com/maps/search/Mt+Darwin+Police+Station" target="_blank" class="map-link">
+                        <span class="map-icon">📍</span> <span data-translate="view-map">View on Map</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section>
+                <article class="flex2">
+                    <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <title>privacy</title>
+                            <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11.5C15.4,11.5 16,12.1 16,12.7V16.5C16,17.1 15.4,17.7 14.8,17.7H9.2C8.6,17.7 8,17.1 8,16.5V12.6C8,12 8.6,11.4 9.2,11.4V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,9.5V11.5H13.5V9.5C13.5,8.7 12.8,8.2 12,8.2Z"/>
+                        </svg><a href="{{url_for('privacy')}}" data-translate="privacy-rights">Your Privacy Rights</a></p>
+                    <p>&<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <title>contact</title>
+                            <path d="M20,4H4C2.9,4 2,4.9 2,6V18C2,19.1 2.9,20 4,20H20C21.1,20 22,19.1 22,18V6C22,4.9 21.1,4 20,4M20,8L12,13L4,8V6L12,11L20,6V8Z"/>
+                        </svg> <a href="{{url_for('info')}}" data-translate="contact-support">Contact Legal Support</a></p>
+                    <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <title>lawyers</title>
+                            <path d="M12,3L2,12H5V20H19V12H22L12,3M12,5.7L16.9,10.5H15.5V12.5H13.5V10.5H12.5V12.5H10.5V10.5H8.5V12.5H6.5V10.5H5.1L12,5.7M11,14H13V16H11V14M15,14H17V16H15V14M7,14H9V16H7V14M11,17H13V19H11V17M15,17H17V19H15V17M7,17H9V19H7V17Z"/>
+                        </svg> <a href="{{url_for('lawyers')}}" data-translate="probono-lawyers">Pro Bono Lawyers</a></p>
+                </article>
+                <article class="flex3">
+                    <p class="align" data-translate="copyright">&copy; 2025 Connect Aid. All Rights Reserved.</p>
+                    <p class="align" data-translate="confidentiality">Confidentiality guaranteed under Zimbabwean law</p>
+                    <p class="align">
+                        <a href="{{url_for('privacy')}}" data-translate="privacy">Privacy</a> &#124; 
+                        <a href="{{url_for('terms')}}" data-translate="terms">Terms</a> &#124; 
+                        <a href="{{url_for('bod')}}" data-translate="board-directors">Board of Directors</a>
+                    </p>
+                </article>
+            </section>
+    </footer>
+
+    <script>
+        // Simple navigation between province sections
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show section based on URL hash
+            const hash = window.location.hash;
+            if (hash && document.querySelector(hash)) {
+                document.querySelectorAll('.province-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.querySelector(hash).style.display = 'block';
+                document.getElementById('main-page').style.display = 'none';
+            }
+
+            // Handle navigation clicks
+            document.querySelectorAll('.province-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    document.querySelectorAll('.province-section').forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    document.getElementById('main-page').style.display = 'none';
+                    document.querySelector(targetId).style.display = 'block';
+                    window.location.hash = targetId;
+                    window.scrollTo(0, 0);
+                });
+            });
+
+            // Handle back link clicks
+            document.querySelectorAll('.back-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelectorAll('.province-section').forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    document.getElementById('main-page').style.display = 'block';
+                    window.location.hash = '';
+                    window.scrollTo(0, 0);
+                });
+            });
+        });
+    </script>
+{% endblock %}

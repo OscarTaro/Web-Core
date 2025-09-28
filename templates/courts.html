@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{%block title %} Courts Of Law | ConnectAid {% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/courts.css')}}" type="text/css">
+{% endblock %}
+{% block content %}
+    <a href="{{url_for('home')}}" class="back-home-link" data-translate="back-home">← Back to Home</a>
+    <header>
+        <h1 data-translate="courts-title">Zimbabwe Courts of Law</h1>
+    </header>
+    
+    <main>
+        <section>
+            <h2 data-translate="constitutional-court">Constitutional Court</h2>
+            
+            <div class="court-list">
+                <div class="court-card">
+                    <h3 data-translate="supreme-court">Supreme Court of Zimbabwe</h3>
+                    <p data-translate="supreme-court-desc">The highest appellate court dealing with constitutional matters and appeals from lower courts.</p>
+                    <a href="#supreme-court-location" class="court-link" data-translate="view-details">View details</a>
+                </div>
+                
+                <div class="court-card">
+                    <h3 data-translate="high-court">High Court of Zimbabwe</h3>
+                    <p data-translate="high-court-desc">Handles serious civil cases and criminal matters, plus appeals from magistrate courts.</p>
+                    <a href="#high-court-location" class="court-link" data-translate="view-details">View details</a>
+                </div>
+                
+                <div class="court-card">
+                    <h3 data-translate="labour-court">Labour Court</h3>
+                    <p data-translate="labour-court-desc">Specialized court for employment disputes and labor relations matters.</p>
+                    <a href="#labour-court-location" class="court-link" data-translate="view-details">View details</a>
+                </div>
+                
+                <div class="court-card">
+                    <h3 data-translate="administrative-court">Administrative Court</h3>
+                    <p data-translate="administrative-court-desc">Hears appeals against decisions by government departments and local authorities.</p>
+                    <a href="#administrative-court-location" class="court-link" data-translate="view-details">View details</a>
+                </div>
+                
+                <div class="court-card">
+                    <h3 data-translate="magistrate-courts">Magistrate Courts</h3>
+                    <p data-translate="magistrate-courts-desc">Handles less serious criminal cases and civil matters below set thresholds.</p>
+                    <a href="#magistrate-court-location" class="court-link" data-translate="view-details">View details</a>
+                </div>
+                
+                <div class="court-card">
+                    <h3 data-translate="masters-office">Master's Office</h3>
+                    <p data-translate="masters-office-desc">Administers deceased estates, guardianship, and probate matters.</p>
+                    <a href="#masters-office-location" class="court-link" data-translate="view-details">View details</a>
+                </div>
+                
+                <div class="court-card">
+                    <h3 data-translate="sheriffs-office">Sheriff's Office</h3>
+                    <p data-translate="sheriffs-office-desc">Executes court orders including evictions and property seizures.</p>
+                    <a href="#sheriffs-office-location" class="court-link" data-translate="view-details">View details</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Supreme Court Location -->
+        <section id="supreme-court-location">
+            <div class="location-card">
+                <h3 data-translate="supreme-court">Supreme Court of Zimbabwe</h3>
+                <p><strong data-translate="address">Address:</strong> Corner Samora Machel Avenue and 3rd Street, Harare</p>
+                <p><strong data-translate="postal-address">Postal Address:</strong> P.O. Box CY 107, Causeway, Harare</p>
+                <div class="contact">
+                    <p><strong data-translate="telephone">Telephone:</strong> +263 (242) 790 771</p>
+                    <p><strong data-translate="hours">Hours:</strong> Mon-Fri 8:00 AM - 4:00 PM</p>
+                    <a href="https://www.google.com/maps/place/Supreme+Court+of+Zimbabwe/@-17.8292734,31.0498563,17z" target="_blank" rel="noopener noreferrer" class="map-link" data-translate="view-map">View on Google Maps</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- High Court Location -->
+        <section id="high-court-location">
+            <div class="location-card">
+                <h3 data-translate="high-court">High Court of Zimbabwe</h3>
+                <p><strong data-translate="address">Address:</strong> Corner Samora Machel Avenue and 3rd Street, Harare</p>
+                <p><strong data-translate="postal-address">Postal Address:</strong> P.O. Box CY 107, Causeway, Harare</p>
+                <div class="contact">
+                    <p><strong data-translate="telephone">Telephone:</strong> +263 (242) 790 441</p>
+                    <p><strong data-translate="hours">Hours:</strong> Mon-Fri 8:00 AM - 4:00 PM</p>
+                    <a href="https://www.google.com/maps/place/High+Court+of+Zimbabwe/@-17.8292683,31.0501113,17z" target="_blank" rel="noopener noreferrer" class="map-link" data-translate="view-map">View on Google Maps</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Administrative Court Location -->
+        <section id="administrative-court-location">
+            <div class="location-card">
+                <h3 data-translate="administrative-court">Administrative Court - Mapondera Building</h3>
+                <p><strong data-translate="address">Address:</strong> Corner 3rd Street and Samora Machel Avenue, Harare</p>
+                <p><strong data-translate="postal-address">Postal Address:</strong> Box 870 Causeway, Harare</p>
+                <div class="contact">
+                    <p><strong data-translate="telephone">Telephone:</strong> +263 (242) 250 784/5</p>
+                    <p><strong data-translate="telephone">Alternative:</strong> +263 (242) 250 805</p>
+                    <p><strong data-translate="hours">Hours:</strong> Mon-Fri 8:00 AM - 4:00 PM</p>
+                    <a href="https://www.google.com/maps/place/Mapondera+Building,+Harare/@-17.8291319,31.0503565,17z" target="_blank" rel="noopener noreferrer" class="map-link" data-translate="view-map">View on Google Maps</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Labour Court Location -->
+        <section id="labour-court-location">
+            <div class="location-card">
+                <h3 data-translate="labour-court">Labour Court</h3>
+                <p><strong data-translate="address">Address:</strong> 7th Floor, Century House, 44-46 Baker Avenue, Harare</p>
+                <p><strong data-translate="postal-address">Postal Address:</strong> P.O. Box CY 3404, Causeway, Harare</p>
+                <div class="contact">
+                    <p><strong data-translate="telephone">Telephone:</strong> +263 (242) 793 691</p>
+                    <p><strong data-translate="hours">Hours:</strong> Mon-Fri 8:00 AM - 4:00 PM</p>
+                    <a href="https://www.google.com/maps/place/Century+House,+Baker+Ave,+Harare" target="_blank" rel="noopener noreferrer" class="map-link" data-translate="view-map">View on Google Maps</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Magistrate Court Location -->
+        <section id="magistrate-court-location">
+            <div class="location-card">
+                <h3>Harare Magistrate Court</h3>
+                <p><strong data-translate="address">Address:</strong> Rotten Row, between 4th and 5th Street, Harare</p>
+                <p><strong data-translate="postal-address">Postal Address:</strong> P.O. Box CY 7706, Causeway, Harare</p>
+                <div class="contact">
+                    <p><strong data-translate="telephone">Telephone:</strong> +263 (242) 793 691</p>
+                    <p><strong data-translate="hours">Hours:</strong> Mon-Fri 8:00 AM - 4:00 PM</p>
+                    <a href="https://www.google.com/maps/place/Harare+Magistrates+Court/@-17.829812,31.0405797,17z" target="_blank" rel="noopener noreferrer" class="map-link" data-translate="view-map">View on Google Maps</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Master's Office Location -->
+        <section id="masters-office-location">
+            <div class="location-card">
+                <h3 data-translate="masters-office">Master's Office</h3>
+                <p><strong data-translate="address">Address:</strong> 3rd Floor, Zimre Centre, Cnr L.Takawira St/K. Nkrumah Ave, Harare</p>
+                <p><strong data-translate="postal-address">Postal Address:</strong> P.O. Box CY 7706, Causeway, Harare</p>
+                <div class="contact">
+                    <p><strong data-translate="telephone">Telephone:</strong> +263 (242) 793 691</p>
+                    <p><strong data-translate="hours">Hours:</strong> Mon-Fri 8:00 AM - 4:00 PM</p>
+                    <a href="https://www.google.com/maps/place/Zimre+Centre,+Harare/@-17.8294506,31.0444506,17z" target="_blank" rel="noopener noreferrer" class="map-link" data-translate="view-map">View on Google Maps</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sheriff's Office Location -->
+        <section id="sheriffs-office-location">
+            <div class="location-card">
+                <h3 data-translate="sheriffs-office">Sheriff's Office</h3>
+                <p><strong data-translate="address">Address:</strong> 3rd Floor, Zimre Centre, Cnr L.Takawira St/K. Nkrumah Ave, Harare</p>
+                <p><strong data-translate="postal-address">Postal Address:</strong> P.O. Box CY 7706, Causeway, Harare</p>
+                <div class="contact">
+                    <p><strong data-translate="telephone">Telephone:</strong> +263 (242) 793 691</p>
+                    <p><strong data-translate="hours">Hours:</strong> Mon-Fri 8:00 AM - 4:00 PM</p>
+                    <a href="https://www.google.com/maps/place/Zimre+Centre,+Harare/@-17.8294506,31.0444506,17z" target="_blank" rel="noopener noreferrer" class="map-link" data-translate="view-map">View on Google Maps</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer>
+        <section>
+                <article class="flex2">
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <title>privacy</title>
+                            <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11.5C15.4,11.5 16,12.1 16,12.7V16.5C16,17.1 15.4,17.7 14.8,17.7H9.2C8.6,17.7 8,17.1 8,16.5V12.6C8,12 8.6,11.4 9.2,11.4V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,9.5V11.5H13.5V9.5C13.5,8.7 12.8,8.2 12,8.2Z"/>
+                        </svg>
+                        <a href="{{url_for('privacy')}}" data-translate="privacy-rights">Your Privacy Rights</a>
+                    </p>
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <title>contact</title>
+                            <path d="M20,4H4C2.9,4 2,4.9 2,6V18C2,19.1 2.9,20 4,20H20C21.1,20 22,19.1 22,18V6C22,4.9 21.1,4 20,4M20,8L12,13L4,8V6L12,11L20,6V8Z"/>
+                        </svg>
+                        <a href="{{url_for('connect_info')}}" data-translate="contact-support">Contact Legal Support</a>
+                    </p>
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <title>lawyers</title>
+                            <path d="M12,3L2,12H5V20H19V12H22L12,3M12,5.7L16.9,10.5H15.5V12.5H13.5V10.5H12.5V12.5H10.5V10.5H8.5V12.5H6.5V10.5H5.1L12,5.7M11,14H13V16H11V14M15,14H17V16H15V14M7,14H9V16H7V14M11,17H13V19H11V17M15,17H17V19H15V17M7,17H9V19H7V17Z"/>
+                        </svg>
+                        <a href="{{url_for('lawyers')}}" data-translate="probono-lawyers">Pro Bono Lawyers</a>
+                    </p>
+                </article>
+                <article class="flex3">
+                    <p class="align">&copy; 2025 Connect Aid. All Rights Reserved.</p>
+                    <p class="align">Confidentiality guaranteed under Zimbabwean law</p>
+                    <p class="align"><a href="{{url_for('privacy')}}">Privacy</a> &#124; <a href="{{url_for('terms')}}">Terms</a> &#124; <a href="{{url_for('bod')}}">Board of Directors</a></p>
+                </article>
+            </section>
+    </footer>
+{% endblock %}

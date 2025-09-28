@@ -1,0 +1,226 @@
+:root {
+            --primary-color: #00b4d8;
+            --primary-dark: #0196ba;
+            --text-color: #1f2d3d;
+            --light-bg: #f7f9fc;
+            --border-color: #ddd;
+            --card-bg: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        h1 {
+            color: var(--text-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        .home-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95em;
+            transition: color 0.3s;
+        }
+
+        .home-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        
+        .subtitle {
+            color: var(--text-color);
+            font-size: 1.1em;
+            opacity: 0.8;
+        }
+        
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        #search-input {
+            padding: 12px 20px;
+            width: 60%;
+            border: 1px solid var(--border-color);
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+        }
+        
+        #search-button {
+            padding: 12px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        #search-button:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .province-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .province {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .province:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .province h2 {
+            color: var(--primary-dark);
+            margin-top: 0;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 1.4em;
+        }
+        
+        .lawyer {
+            padding: 15px 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        
+        .lawyer:last-child {
+            border-bottom: none;
+        }
+        
+        .lawyer h3 {
+            margin: 0 0 8px 0;
+            color: var(--text-color);
+            font-size: 1.1em;
+        }
+        
+        .contact {
+            font-size: 0.9em;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+        
+        .contact p {
+            margin: 5px 0;
+        }
+        
+        .specialties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .specialty {
+            background-color: rgba(0, 180, 216, 0.1);
+            color: var(--primary-dark);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 500;
+            border: 1px solid rgba(0, 180, 216, 0.3);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-color);
+            opacity: 0.7;
+            font-size: 0.9em;
+        }
+        
+        .whatsapp-badge {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.3rem;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+            font-weight: bold;
+        }
+
+        .back-home-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            text-align:left;
+            margin:1rem;
+        }
+
+        .back-home-link:hover {
+            color: var(--primary-color);
+            transform: translateX(-3px);
+        }
+        
+        .map-link {
+            display: inline-block;
+            margin-top: 8px;
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-size: 0.85em;
+            transition: color 0.3s;
+        }
+            
+        .map-link:hover {
+            color: var(--primary-color);
+            text-decoration: none;
+            transform:scale(1.1,1.1);
+            transition: all 0.2 ease-in-out 0.3;
+        }
+            
+        .map-icon {
+            margin-right: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .province-container {
+                grid-template-columns: 1fr;
+            }
+            
+            #search-input {
+                width: 70%;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }

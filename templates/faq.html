@@ -1,0 +1,286 @@
+{% extends 'base.html' %}
+{% block title %} Frequently Asked Questions | ConnectAid {% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/faq.css')}}" type="text/css">
+{% endblock %}
+{% block content %}
+<div class="faq-container">
+    <div class="faq-header">
+        <a href="{{url_for('info')}}" class="back-button">&#8592; Go Back</a>
+        <h1>Frequently Asked Questions</h1>
+        <p>Find answers to common questions about legal rights, services, and support in Zimbabwe</p>
+    </div>
+    
+    <div class="faq-category">
+        <h2>General Legal Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">What are my basic constitutional rights in Zimbabwe?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>The Constitution of Zimbabwe guarantees several fundamental rights including:</p>
+                    <ul>
+                        <li>Right to life and human dignity</li>
+                        <li>Freedom from torture or cruel treatment</li>
+                        <li>Personal liberty and freedom from arbitrary arrest</li>
+                        <li>Freedom of expression, assembly and association</li>
+                        <li>Right to privacy</li>
+                        <li>Freedom of religion</li>
+                        <li>Right to equal protection before the law</li>
+                        <li>Property rights</li>
+                        <li>Right to education</li>
+                        <li>Right to healthcare</li>
+                    </ul>
+                    <p>These rights can only be limited under specific circumstances as provided by law.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">How do I know if I need legal assistance?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>You may need legal assistance if:</p>
+                    <ul>
+                        <li>You've been arrested or charged with a crime</li>
+                        <li>You're involved in a civil dispute (property, contracts, debts)</li>
+                        <li>You're going through divorce or child custody issues</li>
+                        <li>Your rights have been violated</li>
+                        <li>You're facing eviction or property disputes</li>
+                        <li>You're experiencing workplace discrimination or unfair dismissal</li>
+                        <li>You need to draft or review legal documents</li>
+                    </ul>
+                    <p>When in doubt, consult with a legal professional to assess your situation.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">What is the difference between civil and criminal cases?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p><strong>Criminal cases</strong> involve violations of laws that are considered offenses against the state/society. These are prosecuted by the state and can result in penalties like fines or imprisonment.</p>
+                    <p><strong>Civil cases</strong> involve disputes between individuals or organizations, typically concerning rights, obligations, or compensation. Outcomes usually involve monetary damages or specific performance.</p>
+                    <p>Key differences:</p>
+                    <ul>
+                        <li>Burden of proof: "Beyond reasonable doubt" (criminal) vs "Balance of probabilities" (civil)</li>
+                        <li>Parties: State vs Defendant (criminal) vs Plaintiff vs Defendant (civil)</li>
+                        <li>Possible outcomes: Jail/fines (criminal) vs Damages/orders (civil)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="faq-category">
+        <h2>Legal Aid & Support Services</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">How can I get free legal assistance in Zimbabwe?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>Several organizations provide free or low-cost legal services:</p>
+                    <ul>
+                        <li><strong>Legal Resources Foundation:</strong> Offers legal education and assistance programs</li>
+                        <li><strong>Zimbabwe Lawyers for Human Rights:</strong> Provides pro bono services for human rights cases</li>
+                        <li><strong>Justice for Children:</strong> Specializes in legal aid for minors</li>
+                        <li><strong>Women's Law Centre:</strong> Focuses on women's legal issues</li>
+                        <li><strong>University law clinics:</strong> Some universities offer free services through student clinics</li>
+                    </ul>
+                    <p>Eligibility for free services often depends on your income level and the nature of your case.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">What should I do if I can't afford a lawyer?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>If you cannot afford legal representation:</p>
+                    <ol>
+                        <li>Contact legal aid organizations listed on our website</li>
+                        <li>Visit your nearest magistrate court's pro bono desk</li>
+                        <li>Check if your case qualifies for representation by public interest organizations</li>
+                        <li>Some law firms take cases on contingency (payment only if you win)</li>
+                        <li>Consider self-representation with guidance from legal clinics</li>
+                    </ol>
+                    <div class="emergency-notice">
+                        For criminal cases, you have a constitutional right to legal representation at state expense if substantial injustice would otherwise result.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">How do I report human rights violations?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>To report human rights violations in Zimbabwe:</p>
+                    <ul>
+                        <li><strong>Zimbabwe Human Rights Commission:</strong> Call +263 242 703596 or visit www.zhrc.org.zw</li>
+                        <li><strong>Human Rights NGO Forum:</strong> Documentation of violations (www.hrforumzim.org)</li>
+                        <li><strong>Police Victim Friendly Unit:</strong> For gender-based violence cases (+263 242 744 785)</li>
+                        <li><strong>Legal Resources Foundation:</strong> For legal assistance with violations</li>
+                    </ul>
+                    <p>You can also use our <a href="{{url_for('report')}}">secure online reporting system</a> to document incidents.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="faq-category">
+        <h2>Criminal Justice System</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">What should I do if I'm arrested?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>If you are arrested in Zimbabwe:</p>
+                    <ol>
+                        <li>Remain calm and do not resist arrest</li>
+                        <li>Ask why you're being arrested (you have a right to know)</li>
+                        <li>Request to contact a lawyer immediately</li>
+                        <li>Exercise your right to remain silent until you have legal advice</li>
+                        <li>Do not sign any statements without legal counsel</li>
+                        <li>Request medical attention if needed</li>
+                        <li>Ask to be brought before a court within 48 hours</li>
+                        <li>Note the names and badge numbers of arresting officers</li>
+                    </ol>
+                    <div class="emergency-notice">
+                        Remember: You have the right to humane treatment and protection from torture under Zimbabwean law.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">How does bail work in Zimbabwe?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>Key aspects of bail in Zimbabwe:</p>
+                    <ul>
+                        <li>Bail is not automatic - it must be applied for and granted</li>
+                        <li>Bail can be requested at police station or in court</li>
+                        <li>Factors considered: nature of offense, strength of evidence, ties to community, likelihood of absconding</li>
+                        <li>Bail may involve cash deposit or surety (someone vouching for you)</li>
+                        <li>Some serious offenses have bail restrictions</li>
+                        <li>Bail conditions (like reporting to police) may be imposed</li>
+                    </ul>
+                    <p>Always consult a lawyer for bail applications as improper procedures can lead to denial.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">What are my rights if I'm stopped by police?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>When stopped by police in Zimbabwe, you have these rights:</p>
+                    <ul>
+                        <li>Ask to see the officer's identification</li>
+                        <li>Know why you're being stopped (they must have reasonable suspicion)</li>
+                        <li>Remain silent beyond providing basic identification</li>
+                        <li>Refuse consent to search unless they have a warrant</li>
+                        <li>Request to call a lawyer if detained</li>
+                        <li>Be treated with dignity and respect</li>
+                        <li>Document the interaction (names, badge numbers, time/location)</li>
+                    </ul>
+                    <p>Always remain calm and non-confrontational during police interactions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="faq-category">
+        <h2>Family & Personal Matters</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">What are the grounds for divorce in Zimbabwe?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>In Zimbabwe, the sole ground for divorce is "irretrievable breakdown of the marriage." This means the marriage has broken down to such an extent that it cannot be saved. The court considers factors like:</p>
+                    <ul>
+                        <li>Adultery with breakdown of trust</li>
+                        <li>Desertion for at least 2 years</li>
+                        <li>Unreasonable behavior making cohabitation intolerable</li>
+                        <li>Separation for at least 4 years (if both agree) or 5 years (if one party objects)</li>
+                        <li>Mental illness or continuous unconsciousness for at least 5 years</li>
+                    </ul>
+                    <p>Note: Zimbabwe recognizes both civil and customary marriages, but dissolution processes differ.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">How is child custody determined?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>Child custody in Zimbabwe is determined based on the "best interests of the child" principle. Courts consider:</p>
+                    <ul>
+                        <li>The child's age, sex and personal circumstances</li>
+                        <li>The child's physical, emotional and educational needs</li>
+                        <li>The parents' ability to provide care and stability</li>
+                        <li>The child's relationship with each parent</li>
+                        <li>The child's wishes (if old enough to express them)</li>
+                        <li>Any history of abuse or domestic violence</li>
+                    </ul>
+                    <p>Joint custody is possible if parents can cooperate. Maintenance is typically ordered for the non-custodial parent to contribute financially.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">What are women's inheritance rights in Zimbabwe?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>Inheritance rights in Zimbabwe have evolved significantly:</p>
+                    <ul>
+                        <li><strong>For civil marriages:</strong> Surviving spouses inherit the matrimonial home and 50% of remaining estate if there are children</li>
+                        <li><strong>For customary marriages:</strong> Recent reforms prevent disinheritance of widows and children</li>
+                        <li>Daughters now have equal inheritance rights to sons</li>
+                        <li>Wills can specify distribution, but courts may intervene if they unfairly disadvantage dependents</li>
+                        <li>The Deceased Estates Succession Act protects vulnerable family members</li>
+                    </ul>
+                    <p>Challenges remain in rural areas where customary practices sometimes override legal rights.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // FAQ accordion functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const questions = document.querySelectorAll('.faq-question');
+        
+        questions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = question.classList.contains('active');
+                
+                // Close all other open answers
+                questions.forEach(q => {
+                    if (q !== question) {
+                        q.classList.remove('active');
+                        q.nextElementSibling.style.maxHeight = null;
+                    }
+                });
+                
+                // Toggle current question
+                if (isActive) {
+                    question.classList.remove('active');
+                    answer.style.maxHeight = null;
+                } else {
+                    question.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+        
+        // Open first question by default
+        if (questions.length > 0) {
+            questions[0].click();
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Board of Directors | ConnectAid{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bod.css') }}" type="text/css">
+{% endblock %}
+
+{% block content %}
+<main class="privacy-container">
+    <div class="privacy-header">
+        <a href="{{url_for('home')}}" class="back-button" data-translate="back-home">← Back to Home</a>
+        <h1 data-translate="board-title">Board of Directors</h1>
+        <p data-translate="board-subtitle">Meet the dedicated leadership behind ConnectAid.</p>
+    </div>
+    
+    <section class="privacy-section">
+        <h2 data-translate="governance-team">Our Governance Team</h2>
+        <ul>
+            <li><strong>Justice M. Dube</strong> – Chairperson</li>
+            <li><strong>Mrs. T. Chikafu</strong> – Legal and Advocacy Lead</li>
+            <li><strong>Dr. N. Moyo</strong> – Strategic Development</li>
+            <li><strong>Mr. R. Chifamba</strong> – Community Outreach</li>
+            <li><strong>Ms. L. Ncube</strong> – Finance & Compliance</li>
+        </ul>
+        <p data-translate="ethical-direction">The board ensures ethical direction and accountability in all ConnectAid operations.</p>
+    </section>
+</main>
+{% endblock %}
