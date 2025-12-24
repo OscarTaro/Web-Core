@@ -4,8 +4,7 @@ A full-stack web application providing legal support and resources for Zimbabwea
 ConnectAid bridges justice gaps by offering free legal information, organization referrals, and educational resources with the mission of "Justice Through Community Support."
 
 ## Live Demo
-[ConnectAid.org](https://connectaid.org)  
-*Note: Update with your actual deployment URL*
+https://oscartaro.github.io/Web-Core/
 
 ## Features
 - Multi-language Support: English, Shona, Ndebele, and Shivenda
